@@ -7,14 +7,17 @@ function Card() {
   return (
     <>
       <StyledWrapper>
-        {cards.map(({ id, start_time, end_time, location }) => (
+        {cards.map(({ id, title, start_time, end_time, location }) => (
           <StyledList key={id}>
             {
-              <StyledDiv>
-                {start_time}
-                {end_time}
-                {location}
-              </StyledDiv>
+              <StyledContainer>
+                <StyledTitle>
+                  <div>{title}</div>
+                </StyledTitle>
+                <div>{start_time}</div>
+                <div>{end_time}</div>
+                <div>Location: {location}</div>
+              </StyledContainer>
             }
           </StyledList>
         ))}
@@ -25,24 +28,35 @@ function Card() {
 
 export default Card;
 
-const StyledDiv = styled.div`
+const StyledTitle = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+`;
+
+const StyledContainer = styled.div`
+  flex-direction: column;
+  display: flex;
+  gap: 10px;
+  /* align-content: space-between; */
 `;
 
 const StyledList = styled.li`
   display: flex;
-  border: 1px solid;
+  /* border: 1px solid; */
   border-radius: 8px;
-  /* justify-content: space-between; */
+  padding-left: 10px;
+  background-color: greenyellow;
+
+  justify-content: center;
 `;
 const StyledWrapper = styled.ul`
+  /* justify-content: space-between; */
   display: flex;
   flex-direction: column;
   margin: 10px;
   gap: 50px;
   list-style: none;
   padding: 0;
-  border: 1px solid;
+  /* border: 1px solid; */
   border-radius: 8px;
 `;
