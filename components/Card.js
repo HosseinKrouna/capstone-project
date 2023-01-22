@@ -12,7 +12,7 @@ function Card() {
             {
               <StyledContainer>
                 <StyledTitle>
-                  <div>{title}</div>
+                  <h2>{title}</h2>
                 </StyledTitle>
                 <div>{start_time}</div>
                 <div>{end_time}</div>
@@ -37,7 +37,7 @@ const StyledContainer = styled.div`
   flex-direction: column;
   display: flex;
   gap: 10px;
-  /* align-content: space-between; */
+  padding-bottom: 10px;
 `;
 
 const StyledList = styled.li`
@@ -46,6 +46,7 @@ const StyledList = styled.li`
   border-radius: 8px;
   padding-left: 10px;
   background-color: greenyellow;
+  border: 3px solid;
 
   justify-content: center;
 `;
