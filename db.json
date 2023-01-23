@@ -2,22 +2,22 @@
   {
     "id": "1",
     "title": "Fathersday",
-    "start_time": "THU 18.05.2023 10:45",
-    "end_time": "THU 18.05.2023 23:45",
+    "startTime": "THU 18.05.2023 10:45",
+    "endTime": "THU 18.05.2023 23:45",
     "location": "still unkown"
   },
   {
     "id": "2",
     "title": "Whisky Tasting",
-    "start_time": "FRI 03.03.2023 19:00",
-    "end_time": "SUN 04.03.2023 01:00",
+    "startTime": "FRI 03.03.2023 19:00",
+    "endTime": "SUN 04.03.2023 01:00",
     "location": "65933 Ffm"
   },
   {
     "id": "3",
     "title": "Sandra's Birthday",
-    "start_time": "SAT 01.04.2023 10:00",
-    "end_time": "SUN 02.04.2023 01:45",
+    "startTime": "SAT 01.04.2023 10:00",
+    "endTime": "SUN 02.04.2023 01:45",
     "location": "still unkown"
   }
 ]
