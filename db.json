@@ -6,7 +6,7 @@
     "endTime": "THU 18.05.2023 23:45",
     "location": "still unkown",
     "creator": "Martin",
-    "participate": true
+    "isParticipate": true
   },
   {
     "id": "2",
@@ -15,7 +15,7 @@
     "endTime": "SUN 04.03.2023 01:00",
     "location": "65933 Ffm",
     "creator": "Til",
-    "participate": false
+    "isParticipate": false
   },
   {
     "id": "3",
@@ -24,6 +24,6 @@
     "endTime": "SUN 02.04.2023 01:45",
     "location": "still unkown",
     "creator": "Sandra",
-    "participate": true
+    "isParticipate": true
   }
 ]

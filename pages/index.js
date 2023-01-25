@@ -3,24 +3,27 @@ import events from "@/db.json";
 import styled from "styled-components";
 import Link from "next/link";
 
-export default function HomePage({ event }) {
+export default function HomePage() {
   const cards = events;
   return (
     <>
       <h1>Friends Wall</h1>
       <StyledUl>
-        {cards?.map((card) => (
+        <Link href="/events">To all Events</Link>
+        {/* {cards?.map((card) => (
           <li key={card.id}>
-            <Link href="/detailspage/event">
+            <Link href="/events">
               <Card
                 title={card.title}
                 startTime={card.startTime}
                 endTime={card.endTime}
                 location={card.location}
+                creator={card.creator}
+                isParticipate={card.isParticipate}
               />
             </Link>
           </li>
-        ))}
+        ))} */}
       </StyledUl>
     </>
   );
