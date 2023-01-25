@@ -12,7 +12,7 @@ function EventDetail() {
     return <h1>hmm... no event yet 🤔?</h1>;
   }
 
-  const { title, startTime, endTime, location, creator, isParticipate } =
+  const { title, startTime, endTime, location, creator, isParticipant } =
     currentEvent;
 
   return (
@@ -22,7 +22,7 @@ function EventDetail() {
       <span>{endTime}</span>
       <p>Location: {location}</p>
       <p>Creator: {creator}</p>
-      <p>Are you there? {isParticipate ? "Yes" : "No"}</p>
+      <p>Are you there? {isParticipant ? "Yes" : "No"}</p>
       <Link href="/events">Go Back</Link>
     </>
   );

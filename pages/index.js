@@ -1,6 +1,4 @@
-import styled from "styled-components";
-import Link from "next/link";
-
+import EventsPage from "./events";
 export default function HomePage() {
   return (
     <>
@@ -8,20 +6,8 @@ export default function HomePage() {
         <h1>Friends Wall</h1>
       </header>
       <main>
-        <StyledUl>
-          <Link href="/events">To all Events</Link>
-        </StyledUl>
+        <EventsPage />
       </main>
     </>
   );
 }
-
-const StyledUl = styled.ul`
-  display: flex;
-  flex-direction: column;
-  list-style: none;
-  gap: 10px;
-  padding: 0;
-  margin: 10px;
-  cursor: pointer;
-`;

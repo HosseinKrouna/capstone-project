@@ -1,10 +1,10 @@
 import Link from "next/link";
 import events from "@/db.json";
 
-function Detailspage() {
+function EventsPage() {
   return (
     <>
-      <h1>Events</h1>
+      <h2>Events</h2>
       <ul>
         {events.map((event) => (
           <li key={event.id}>
@@ -16,4 +16,4 @@ function Detailspage() {
   );
 }
 
-export default Detailspage;
+export default EventsPage;
