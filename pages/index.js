@@ -1,8 +1,9 @@
 import Card from "@/components/Card";
 import events from "@/db.json";
 import styled from "styled-components";
+import Link from "next/link";
 
-export default function HomePage() {
+export default function HomePage({ event }) {
   const cards = events;
   return (
     <>
@@ -10,12 +11,14 @@ export default function HomePage() {
       <StyledUl>
         {cards?.map((card) => (
           <li key={card.id}>
-            <Card
-              title={card.title}
-              startTime={card.startTime}
-              endTime={card.endTime}
-              location={card.location}
-            />
+            <Link href="/detailspage/event">
+              <Card
+                title={card.title}
+                startTime={card.startTime}
+                endTime={card.endTime}
+                location={card.location}
+              />
+            </Link>
           </li>
         ))}
       </StyledUl>
@@ -30,4 +33,5 @@ const StyledUl = styled.ul`
   gap: 10px;
   padding: 0;
   margin: 10px;
+  cursor: pointer;
 `;
