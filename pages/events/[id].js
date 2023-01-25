@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import events from "@/db.json";
+import Link from "next/link";
 
 function EventDetail() {
   const router = useRouter();
@@ -19,6 +20,7 @@ function EventDetail() {
       <p>Location: {location}</p>
       <p>Creator: {creator}</p>
       <p>Are you there? {isParticipate ? "Yes" : "No"}</p>
+      <Link href="/events">Go Back</Link>
     </>
   );
 }
