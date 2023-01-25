@@ -5,12 +5,15 @@ import Link from "next/link";
 function EventDetail() {
   const router = useRouter();
   const { id } = router.query;
-  const eventIndex = events.findIndex((event) => event.id === id);
-  const event = events[eventIndex];
 
-  if (!event) return null;
+  const currentEvent = events.find((event) => event.id === id);
 
-  const { title, startTime, endTime, location, creator, isParticipate } = event;
+  if (!currentEvent) {
+    return <h1>hmm... no event yet 🤔?</h1>;
+  }
+
+  const { title, startTime, endTime, location, creator, isParticipate } =
+    currentEvent;
 
   return (
     <>
