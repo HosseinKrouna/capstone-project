@@ -103,7 +103,6 @@ const StyledLink = styled.a`
 const StyledButtonDiv = styled.div`
   display: flex;
   justify-content: space-around;
-
   gap: 10px;
 `;
 
