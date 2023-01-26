@@ -5,9 +5,6 @@ import Link from "next/link";
 import { useState } from "react";
 
 function EventDetail() {
-  // const [isThumpUp, setIsThumpUp] = useState(false);
-  // const [maybe, setMaybe] = useState("");
-  // const [thumpDown, setThumpDown] = useState("");
   const [emojiCheckmark, setEmojiCheckmark] = useState("");
 
   const router = useRouter();
@@ -21,8 +18,6 @@ function EventDetail() {
 
   const { title, startTime, endTime, location, creator } = currentEvent;
 
-  // function onToggleCheckmarks() {
-  //   }
   function thumpUpHandler() {
     if (!emojiCheckmark) {
       setEmojiCheckmark("👍");
@@ -33,7 +28,7 @@ function EventDetail() {
 
   function maybeHandler() {
     if (!emojiCheckmark) {
-      setEmojiCheckmark("❓");
+      setEmojiCheckmark("🤔");
     } else {
       setEmojiCheckmark("");
     }
@@ -50,7 +45,7 @@ function EventDetail() {
     <>
       <StyledWrapper>
         <h2>{title}</h2>
-        <span>{`${emojiCheckmark}`}</span>
+        <StyledemojiCheckmark>{`${emojiCheckmark}`}</StyledemojiCheckmark>
         <StyledCardDiv>
           <span>{startTime}</span>
           <span>{endTime}</span>
@@ -58,11 +53,7 @@ function EventDetail() {
           <p>Creator: {creator}</p>
         </StyledCardDiv>
         <StyledButtonDiv>
-          <StyledButtons
-            type="button"
-            // thumpUp={isThumpUp}
-            onClick={thumpUpHandler}
-          >
+          <StyledButtons type="button" onClick={thumpUpHandler}>
             👍
           </StyledButtons>
           <StyledButtons type="button" onClick={maybeHandler}>
@@ -79,6 +70,14 @@ function EventDetail() {
     </>
   );
 }
+
+const StyledemojiCheckmark = styled.span`
+  position: absolute;
+  top: 65px;
+  left: 285px;
+  right: 80px;
+  font-size: 27px;
+`;
 
 const StyledButtons = styled.button`
   font-size: 35px;
