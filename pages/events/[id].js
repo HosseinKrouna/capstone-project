@@ -73,8 +73,8 @@ function EventDetail() {
 
 const StyledemojiCheckmark = styled.span`
   position: absolute;
-  top: 65px;
-  left: 285px;
+  top: 61px;
+  left: 275px;
   right: 80px;
   font-size: 27px;
 `;
