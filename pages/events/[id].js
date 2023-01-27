@@ -73,7 +73,6 @@ const StyledWrapper = styled.div`
 `;
 
 const StyledLink = styled(Link)`
-  display: flex;
   background-color: lightblue;
   border: 1px solid;
   padding: 10px;
