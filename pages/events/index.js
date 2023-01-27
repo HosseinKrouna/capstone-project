@@ -10,7 +10,9 @@ function EventsPage() {
         {events.map((event) => (
           <StyledCardListContainer key={event.id}>
             <li>
-              <Link href={`/events/${event.id}`}>{event.title}</Link>
+              <StyledLink href={`/events/${event.id}`}>
+                {event.title}
+              </StyledLink>
             </li>
           </StyledCardListContainer>
         ))}
@@ -18,6 +20,13 @@ function EventsPage() {
     </>
   );
 }
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: black;
+  font-weight: 700;
+  cursor: pointer;
+`;
 
 const StyledCardListContainer = styled.div`
   display: flex;
@@ -27,6 +36,7 @@ const StyledCardListContainer = styled.div`
   border: 3px solid;
   background-color: limegreen;
   border-radius: 5px;
+  list-style: none;
 `;
 
 export default EventsPage;

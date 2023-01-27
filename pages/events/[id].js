@@ -19,10 +19,10 @@ function Votingpage() {
   const { title, startTime, endTime, location, creator } = currentEvent;
 
   function handleVoteEmoji(voteEmoji) {
-    if (emojiCheckmark === "") {
-      setEmojiCheckmark(voteEmoji);
-    } else {
+    if (emojiCheckmark === voteEmoji) {
       setEmojiCheckmark("");
+    } else {
+      setEmojiCheckmark(voteEmoji);
     }
   }
 
@@ -63,6 +63,7 @@ const StyledEmojiCheckmark = styled.span`
 
 const StyledVoteButtons = styled.button`
   font-size: 35px;
+  cursor: pointer;
 `;
 
 const StyledWrapper = styled.div`
