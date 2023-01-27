@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Link from "next/link";
 import { useState } from "react";
 
-function EventDetail() {
+function Votingpage() {
   const [emojiCheckmark, setEmojiCheckmark] = useState("");
 
   const router = useRouter();
@@ -18,60 +18,44 @@ function EventDetail() {
 
   const { title, startTime, endTime, location, creator } = currentEvent;
 
-  function thumpUpHandler() {
-    if (!emojiCheckmark) {
-      setEmojiCheckmark("👍");
+  function handleVoteEmoji(voteEmoji) {
+    if (emojiCheckmark === "") {
+      setEmojiCheckmark(voteEmoji);
     } else {
       setEmojiCheckmark("");
     }
   }
 
-  function maybeHandler() {
-    if (!emojiCheckmark) {
-      setEmojiCheckmark("🤔");
-    } else {
-      setEmojiCheckmark("");
-    }
-  }
-
-  function thumpDownHandler() {
-    if (!emojiCheckmark) {
-      setEmojiCheckmark("👎");
-    } else {
-      setEmojiCheckmark("");
-    }
-  }
   return (
-    <>
-      <StyledWrapper>
-        <h2>{title}</h2>
-        <StyledemojiCheckmark>{`${emojiCheckmark}`}</StyledemojiCheckmark>
-        <StyledCardDiv>
-          <span>{startTime}</span>
-          <span>{endTime}</span>
-          <p>Location: {location}</p>
-          <p>Creator: {creator}</p>
-        </StyledCardDiv>
-        <StyledButtonDiv>
-          <StyledButtons type="button" onClick={thumpUpHandler}>
-            👍
-          </StyledButtons>
-          <StyledButtons type="button" onClick={maybeHandler}>
-            ❓
-          </StyledButtons>
-          <StyledButtons type="button" onClick={thumpDownHandler}>
-            👎
-          </StyledButtons>
-        </StyledButtonDiv>
-        <Link href="/events">
-          <StyledLink>↩︎</StyledLink>
-        </Link>
-      </StyledWrapper>
-    </>
+    <StyledWrapper>
+      <h2>{title}</h2>
+      <StyledEmojiCheckmark>{emojiCheckmark}</StyledEmojiCheckmark>
+      <StyledCardContainer>
+        <span>{startTime}</span>
+        <span>{endTime}</span>
+        <p>Location: {location}</p>
+        <p>Creator: {creator}</p>
+      </StyledCardContainer>
+      <StyledVoteButtonContainer>
+        {["👍", "❓", "👎"].map((voteEmoji) => {
+          return (
+            <StyledVoteButtons
+              onClick={() => handleVoteEmoji(voteEmoji)}
+              key={voteEmoji}
+            >
+              <span aria-label="emoji">{voteEmoji}</span>
+            </StyledVoteButtons>
+          );
+        })}
+      </StyledVoteButtonContainer>
+      <Link href="/events">
+        <StyledLink>↩︎</StyledLink>
+      </Link>
+    </StyledWrapper>
   );
 }
 
-const StyledemojiCheckmark = styled.span`
+const StyledEmojiCheckmark = styled.span`
   position: absolute;
   top: 61px;
   left: 275px;
@@ -79,7 +63,7 @@ const StyledemojiCheckmark = styled.span`
   font-size: 27px;
 `;
 
-const StyledButtons = styled.button`
+const StyledVoteButtons = styled.button`
   font-size: 35px;
 `;
 
@@ -100,13 +84,13 @@ const StyledLink = styled.a`
   border-radius: 10px;
 `;
 
-const StyledButtonDiv = styled.div`
+const StyledVoteButtonContainer = styled.div`
   display: flex;
   justify-content: space-around;
   gap: 10px;
 `;
 
-const StyledCardDiv = styled.div`
+const StyledCardContainer = styled.div`
   display: flex;
   margin: 10px;
   padding: 10px;
@@ -116,4 +100,4 @@ const StyledCardDiv = styled.div`
   border-radius: 5px;
 `;
 
-export default EventDetail;
+export default Votingpage;

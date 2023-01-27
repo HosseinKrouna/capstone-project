@@ -8,18 +8,18 @@ function EventsPage() {
       <h2>Events</h2>
       <ul>
         {events.map((event) => (
-          <li key={event.id}>
-            <StyledCardDiv>
+          <StyledCardListContainer key={event.id}>
+            <li key={event.id}>
               <Link href={`/events/${event.id}`}>{event.title}</Link>
-            </StyledCardDiv>
-          </li>
+            </li>
+          </StyledCardListContainer>
         ))}
       </ul>
     </>
   );
 }
 
-const StyledCardDiv = styled.div`
+const StyledCardListContainer = styled.div`
   display: flex;
   margin: 10px;
   padding: 10px;
