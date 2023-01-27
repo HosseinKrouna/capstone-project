@@ -48,9 +48,7 @@ function Votingpage() {
           );
         })}
       </StyledVoteButtonContainer>
-      <Link href="/events">
-        <StyledLink>↩︎</StyledLink>
-      </Link>
+      <StyledLink href="/events">↩︎</StyledLink>
     </StyledWrapper>
   );
 }
@@ -74,7 +72,7 @@ const StyledWrapper = styled.div`
   margin: 0 auto 12px auto;
 `;
 
-const StyledLink = styled.a`
+const StyledLink = styled(Link)`
   display: flex;
   background-color: lightblue;
   border: 1px solid;

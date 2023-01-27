@@ -9,7 +9,7 @@ function EventsPage() {
       <ul>
         {events.map((event) => (
           <StyledCardListContainer key={event.id}>
-            <li key={event.id}>
+            <li>
               <Link href={`/events/${event.id}`}>{event.title}</Link>
             </li>
           </StyledCardListContainer>
