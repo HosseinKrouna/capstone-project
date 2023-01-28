@@ -48,7 +48,7 @@ function Votingpage() {
           );
         })}
       </StyledVoteButtonContainer>
-      <StyledLink href="/events">↩︎</StyledLink>
+      <StyledLink href="/">↩︎</StyledLink>
     </StyledWrapper>
   );
 }

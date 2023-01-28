@@ -1,3 +1,4 @@
+import CreateEventForm from "@/components/CreateEventForm";
 import EventsPage from "./events";
 export default function HomePage() {
   return (
