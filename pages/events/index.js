@@ -19,7 +19,7 @@ function EventsPage() {
             </StyledCardListContainer>
           ))}
         </StyledList>
-        <Link href="/components/CreateEventForm/">Add Event</Link>
+        <Link href="/createEventPage">Add Event</Link>
       </StyledWrapper>
     </>
   );
