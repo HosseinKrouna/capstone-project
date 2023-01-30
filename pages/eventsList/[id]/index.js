@@ -3,6 +3,7 @@ import events from "@/db.json";
 import styled from "styled-components";
 import { StyledWrapper } from "@/components/styles/Wrapper";
 import Head from "next/head";
+import { uuid } from "uuidv4";
 
 function EventsList() {
   return (
@@ -27,7 +28,7 @@ function EventsList() {
             </StyledCardListContainer>
           ))}
         </StyledList>
-        <Link href="/createEventPage">Add Event</Link>
+        <Link href="/createEventPage/index/">Add Event</Link>
       </StyledWrapper>
     </>
   );
