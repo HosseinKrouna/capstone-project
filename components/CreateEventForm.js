@@ -2,14 +2,14 @@ import styled from "styled-components";
 import { StyledWrapper } from "./styles/Wrapper";
 import { useRouter } from "next/router";
 import useLocalStorageState from "use-local-storage-state";
-import uuidv4 from "react-uuid";
+// import uuidv4 from "react-uuid";
 
 function CreateEventForm() {
   const router = useRouter();
   const [form, setForm] = useLocalStorageState("event", {
     defaultValue: [
       {
-        id: uuidv4(),
+        // id: uuidv4(),
         title: "",
         startTime: "",
         endTime: "",
