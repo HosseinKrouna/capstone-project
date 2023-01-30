@@ -1,10 +1,12 @@
 import { useRouter } from "next/router";
 import events from "@/db.json";
 import styled from "styled-components";
-import Link from "next/link";
 import { useState } from "react";
+import { StyledWrapper } from "@/components/styles/Wrapper";
+import { StyledCardContainer } from "@/components/styles/CardContainer";
+import { StyledBackLink } from "@/components/styles/BackLink";
 
-function Votingpage() {
+function Votepage() {
   const [emojiCheckmark, setEmojiCheckmark] = useState("");
 
   const router = useRouter();
@@ -13,7 +15,15 @@ function Votingpage() {
   const currentEvent = events.find((event) => event.id === id);
 
   if (!currentEvent) {
-    return <h1>hmm... no event yet 🤔?</h1>;
+    return (
+      <>
+        <StyledHelperWrapper>
+          <h2>hmm... no event yet 🤔?</h2>
+          <h3>Try here </h3>
+          <StyledBackLink href="/">↩︎</StyledBackLink>
+        </StyledHelperWrapper>
+      </>
+    );
   }
 
   const { title, startTime, endTime, location, creator } = currentEvent;
@@ -48,10 +58,16 @@ function Votingpage() {
           );
         })}
       </StyledVoteButtonContainer>
-      <StyledLink href="/">↩︎</StyledLink>
+      <StyledBackLink href="/">↩︎</StyledBackLink>
     </StyledWrapper>
   );
 }
+
+const StyledHelperWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
 const StyledEmojiCheckmark = styled.span`
   position: absolute;
@@ -66,36 +82,10 @@ const StyledVoteButtons = styled.button`
   cursor: pointer;
 `;
 
-const StyledWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0 auto 12px auto;
-`;
-
-const StyledLink = styled(Link)`
-  background-color: lightblue;
-  border: 1px solid;
-  padding: 10px;
-  margin: 50px 170px;
-  font-size: 25px;
-  border-radius: 10px;
-`;
-
 const StyledVoteButtonContainer = styled.div`
   display: flex;
   justify-content: space-around;
   gap: 10px;
 `;
 
-const StyledCardContainer = styled.div`
-  display: flex;
-  margin: 10px;
-  padding: 10px;
-  flex-direction: column;
-  border: 3px solid;
-  background-color: limegreen;
-  border-radius: 5px;
-`;
-
-export default Votingpage;
+export default Votepage;

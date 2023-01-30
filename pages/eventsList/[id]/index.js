@@ -1,18 +1,26 @@
 import Link from "next/link";
 import events from "@/db.json";
 import styled from "styled-components";
-import CreateEventForm from "@/components/CreateEventForm";
+import { StyledWrapper } from "@/components/styles/Wrapper";
+import Head from "next/head";
 
-function EventsPage() {
+function EventsList() {
   return (
     <>
       <StyledWrapper>
-        <h2>Events</h2>
+        <Head>
+          <title>Events</title>
+          <meta
+            name="viewport"
+            content="initial-scale=1.0, width=device-width"
+          />
+        </Head>
+
         <StyledList>
           {events.map((event) => (
             <StyledCardListContainer key={event.id}>
               <li>
-                <StyledLink href={`/events/${event.id}`}>
+                <StyledLink href={`/votepage/${event.id}`}>
                   {event.title}
                 </StyledLink>
               </li>
@@ -24,13 +32,6 @@ function EventsPage() {
     </>
   );
 }
-
-const StyledWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0 auto 12px auto;
-`;
 
 const StyledList = styled.ul`
   padding: 0;
@@ -54,4 +55,4 @@ const StyledCardListContainer = styled.div`
   border-radius: 5px;
 `;
 
-export default EventsPage;
+export default EventsList;

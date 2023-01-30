@@ -1,5 +1,4 @@
-import CreateEventForm from "@/components/CreateEventForm";
-import EventsPage from "./events";
+import EventsList from "./eventsList/[id]";
 export default function HomePage() {
   return (
     <>
@@ -7,7 +6,7 @@ export default function HomePage() {
         <h1>Friends Wall</h1>
       </header>
       <main>
-        <EventsPage />
+        <EventsList />
       </main>
     </>
   );

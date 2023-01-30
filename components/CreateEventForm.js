@@ -1,11 +1,28 @@
+import { useState } from "react";
 import styled from "styled-components";
+import { StyledWrapper } from "./styles/Wrapper";
+import { useRouter } from "next/router";
 
-function CreateEventForm({ onSubmit, formName, defaultData }) {
+function CreateEventForm() {
+  const router = useRouter();
+  const [form, setForm] = useState({
+    title: "",
+    startTime: "",
+    endTime: "",
+    location: "",
+    mapURL: "",
+    description: "",
+    creator: "",
+  });
+
   function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
-    onSubmit(data);
+
+    setForm(data);
+    console.log(form);
+    router.push("/previewPage/index");
   }
 
   return (
@@ -15,37 +32,41 @@ function CreateEventForm({ onSubmit, formName, defaultData }) {
           <h1>New Event</h1>
         </header>
         <main>
-          <FormContainer aria-labelledby={formName} onSubmit={handleSubmit}>
+          <FormContainer
+            aria-labelledby="createEventForm"
+            onSubmit={handleSubmit}
+          >
             <fieldset>
+              <legend>Create a new Event 👇</legend>
               <FormItems>
-                <legend>Create a new event 👇</legend>
                 <label htmlFor="title">Title:</label>
                 <input
                   id="title"
                   name="title"
                   type="text"
-                  defaultValue={defaultData?.title}
+                  // value={title}
+                  // defaultData={defaultData?.title}
                 />
                 <label htmlFor="start-time">Start Time:</label>
                 <input
                   id="start-time"
                   name="startTime"
                   type="datetime-local"
-                  defaultValue={defaultData?.startTime}
+                  // defaultData={defaultData?.startTime}
                 />
                 <label htmlFor="end-time">End Time:</label>
                 <input
                   id="end-time"
                   name="endTime"
                   type="datetime-local"
-                  defaultValue={defaultData?.endTime}
+                  // defaultData={defaultData?.endTime}
                 />
                 <label htmlFor="location">Location:</label>
                 <input
                   id="location"
                   name="location"
                   type="text"
-                  defaultValue={defaultData?.location}
+                  // defaultData={defaultData?.location}
                 />
                 <label htmlFor="map-url">Map URL:</label>
 
@@ -53,30 +74,37 @@ function CreateEventForm({ onSubmit, formName, defaultData }) {
                   id="map-url"
                   name="mapURL"
                   type="text"
-                  defaultValue={defaultData?.mapURL}
+                  // defaultData={defaultData?.mapURL}
                 />
 
-                <label htmlFor="description">Good To Know:</label>
+                <label htmlFor="description">Let a Comment:</label>
                 <textarea
                   cols="30"
                   id="description"
                   name="description"
                   type="text"
-                  defaultValue={defaultData?.description}
+                  // defaultData={defaultData?.description}
                 />
                 <label htmlFor="title">Creator:</label>
                 <input
                   id="creator"
                   name="creator"
                   type="text"
-                  defaultValue={defaultData?.creator}
+                  // defaultData={defaultData?.creator}
                 />
-                <button type="submit">
-                  {defaultData ? "Update Event" : "Add Event"}
+                <button type="submit" value={form}>
+                  Add Event
                 </button>
               </FormItems>
             </fieldset>
           </FormContainer>
+          <h2>{form.title}</h2>
+          <span>{form.startTime}</span>
+          <span>{form.endTime}</span>
+          <p>{form.mapURL}</p>
+          <p>{form.description}</p>
+          <p>Location: {form.location}</p>
+          <p>Creator: {form.creator}</p>
         </main>
       </StyledWrapper>
     </>
@@ -95,13 +123,6 @@ const FormContainer = styled.form`
   justify-content: start;
   height: 100vh;
   font-family: cursive;
-`;
-
-const StyledWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0 auto 12px auto;
 `;
 
 export default CreateEventForm;
