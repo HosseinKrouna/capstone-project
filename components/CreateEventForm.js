@@ -1,18 +1,24 @@
-import { useState } from "react";
 import styled from "styled-components";
 import { StyledWrapper } from "./styles/Wrapper";
 import { useRouter } from "next/router";
+import useLocalStorageState from "use-local-storage-state";
+import uuidv4 from "react-uuid";
 
 function CreateEventForm() {
   const router = useRouter();
-  const [form, setForm] = useState({
-    title: "",
-    startTime: "",
-    endTime: "",
-    location: "",
-    mapURL: "",
-    description: "",
-    creator: "",
+  const [form, setForm] = useLocalStorageState("event", {
+    defaultValue: [
+      {
+        id: uuidv4(),
+        title: "",
+        startTime: "",
+        endTime: "",
+        location: "",
+        mapURL: "",
+        description: "",
+        creator: "",
+      },
+    ],
   });
 
   function handleSubmit(event) {
@@ -44,7 +50,7 @@ function CreateEventForm() {
                   id="title"
                   name="title"
                   type="text"
-                  // value={title}
+
                   // defaultData={defaultData?.title}
                 />
                 <label htmlFor="start-time">Start Time:</label>
@@ -92,19 +98,10 @@ function CreateEventForm() {
                   type="text"
                   // defaultData={defaultData?.creator}
                 />
-                <button type="submit" value={form}>
-                  Add Event
-                </button>
+                <button type="submit">Add Event</button>
               </FormItems>
             </fieldset>
           </FormContainer>
-          <h2>{form.title}</h2>
-          <span>{form.startTime}</span>
-          <span>{form.endTime}</span>
-          <p>{form.mapURL}</p>
-          <p>{form.description}</p>
-          <p>Location: {form.location}</p>
-          <p>Creator: {form.creator}</p>
         </main>
       </StyledWrapper>
     </>

@@ -2,8 +2,10 @@ import CreateEventForm from "@/components/CreateEventForm";
 import { useState } from "react";
 
 function previewPage() {
-  console.log();
-
+  //   console.log();
+  //   function getItem(key) {
+  //     return JSON.parse(localStorage.getItem(key));
+  //   }
   //     function addEvent(newEntry){
   // setEvent(newEntry)
   // }
