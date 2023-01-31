@@ -49,7 +49,7 @@ function CreateEventForm({ onHandleEntryData }) {
                 />
                 <label htmlFor="title">Creator:</label>
                 <input id="creator" name="creator" type="text" />
-                <button type="submit">Add Event</button>
+                <button type="submit">Preview</button>
               </FormItems>
             </fieldset>
           </FormContainer>

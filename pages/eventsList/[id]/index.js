@@ -5,7 +5,9 @@ import { StyledWrapper } from "@/components/styles/Wrapper";
 import Head from "next/head";
 import { uuid } from "uuidv4";
 
-function EventsList() {
+//TODO - fix link to votepage
+
+function EventsList({ entryData }) {
   return (
     <>
       <StyledWrapper>
@@ -18,18 +20,21 @@ function EventsList() {
         </Head>
 
         <StyledList>
-          {events.map((event) => (
-            <StyledCardListContainer key={event.id}>
+          {Object.entries(entryData).map(([key, entryToList], index) => (
+            <StyledCardListContainer key={index}>
               <li>
-                <StyledLink href={`/votepage/${event.id}`}>
-                  {event.title}
+                <StyledLink href={`/votepage/${entryToList.index}`}>
+                  <span>
+                    {key}: Title: {entryToList}
+                  </span>
                 </StyledLink>
               </li>
             </StyledCardListContainer>
           ))}
         </StyledList>
-        <Link href="/createEventPage/index/">Add Event</Link>
+        <Link href="/createEventPage/index/">Create Event</Link>
       </StyledWrapper>
+      <div></div>
     </>
   );
 }

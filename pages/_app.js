@@ -3,7 +3,7 @@ import Head from "next/head";
 import useLocalStorageState from "use-local-storage-state";
 
 export default function App({ Component, pageProps }) {
-  const [entryData, setEntryData] = useLocalStorageState("event", {
+  const [entryData, setEntryData] = useLocalStorageState("entryData", {
     defaultValue: [
       {
         title: "",
