@@ -6,13 +6,15 @@ import { StyledWrapper } from "@/components/styles/Wrapper";
 import { StyledCardContainer } from "@/components/styles/CardContainer";
 import { StyledBackLink } from "@/components/styles/BackLink";
 
-function Votepage() {
+function Votepage({ entryData }) {
   const [emojiCheckmark, setEmojiCheckmark] = useState("");
 
   const router = useRouter();
   const { id } = router.query;
 
-  const currentEvent = events.find((event) => event.id === id);
+  const currentEvent = entryData.find(
+    (entryToVote) => entryToVote.index === id
+  );
 
   if (!currentEvent) {
     return (

@@ -1,13 +1,12 @@
 import Link from "next/link";
-import events from "@/db.json";
 import styled from "styled-components";
 import { StyledWrapper } from "@/components/styles/Wrapper";
 import Head from "next/head";
 import { uuid } from "uuidv4";
 
-//TODO - fix link to votepage
-
 function EventsList({ entryData }) {
+  const entryDataToList = [entryData];
+
   return (
     <>
       <StyledWrapper>
@@ -20,19 +19,27 @@ function EventsList({ entryData }) {
         </Head>
 
         <StyledList>
-          {Object.entries(entryData).map(([key, entryToList], index) => (
-            <StyledCardListContainer key={index}>
+          {entryDataToList.map(({ title }) => (
+            <StyledCardListContainer key={uuid}>
               <li>
-                <StyledLink href={`/votepage/${entryToList.index}`}>
-                  <span>
-                    {key}: Title: {entryToList}
-                  </span>
-                </StyledLink>
+                <StyledLink href={"/votepage/"}>{title}</StyledLink>
               </li>
             </StyledCardListContainer>
           ))}
         </StyledList>
+
+        {/* <div>{entries[0]}</div> */}
+
         <Link href="/createEventPage/index/">Create Event</Link>
+        {/* <ul>
+          {entryData.map((entryDataToList) => (
+            <div key={entryDataToList.id}>
+              <li href={`/votepage/${entryDataToList.id}`}>
+                {entryData.title}
+              </li>
+            </div>
+          ))}
+        </ul> */}
       </StyledWrapper>
       <div></div>
     </>
