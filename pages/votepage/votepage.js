@@ -4,6 +4,7 @@ import { useState } from "react";
 import { StyledWrapper } from "@/components/styles/Wrapper";
 import { StyledCardContainer } from "@/components/styles/CardContainer";
 import { StyledBackLink } from "@/components/styles/BackLink";
+import Link from "next/link";
 
 function Votepage({ entryData }) {
   const [emojiCheckmark, setEmojiCheckmark] = useState("");
@@ -21,13 +22,19 @@ function Votepage({ entryData }) {
         <StyledHelperWrapper>
           <h2>hmm... no event yet 🤔?</h2>
           <h3>Try here </h3>
-          <StyledBackLink href="/">↩︎</StyledBackLink>
+          <StyledBackLink
+            href="/
+          "
+          >
+            ↩︎
+          </StyledBackLink>
         </StyledHelperWrapper>
       </>
     );
   }
 
-  const { title, startTime, endTime, location, creator } = currentEvent;
+  const { title, startTime, endTime, location, creator, description } =
+    currentEvent;
 
   function handleVoteEmoji(voteEmoji) {
     if (emojiCheckmark === voteEmoji) {
@@ -60,7 +67,10 @@ function Votepage({ entryData }) {
           );
         })}
       </StyledVoteButtonContainer>
-      <StyledBackLink href="/">↩︎</StyledBackLink>
+      <Link href="/eventsList/eventsList">
+        <h3>👉Confirm</h3>
+      </Link>
+      <StyledBackLink href="/">Back ↩︎</StyledBackLink>
     </StyledWrapper>
   );
 }

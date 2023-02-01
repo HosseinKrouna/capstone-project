@@ -25,16 +25,25 @@ function CreateEventForm({ onHandleEntryData }) {
               <legend>Create a new Event 👇</legend>
               <FormItems>
                 <label htmlFor="title">Title:</label>
-                <input id="title" name="title" type="text" required />
+                <input
+                  id="title"
+                  name="title"
+                  type="text"
+                  maxLength="10"
+                  required
+                />
                 <label htmlFor="start-time">Start Time:</label>
                 <input id="start-time" name="startTime" type="datetime-local" />
                 <label htmlFor="end-time">End Time:</label>
                 <input id="end-time" name="endTime" type="datetime-local" />
                 <label htmlFor="location">Location:</label>
-                <input id="location" name="location" type="text" />
-                <label htmlFor="map-url">Map URL:</label>
-
-                <input id="map-url" name="mapURL" type="text" />
+                <input
+                  id="location"
+                  name="location"
+                  type="text"
+                  maxLength="10"
+                  required
+                />
 
                 <label htmlFor="description">Let a Comment:</label>
                 <textarea
@@ -42,9 +51,16 @@ function CreateEventForm({ onHandleEntryData }) {
                   id="description"
                   name="description"
                   type="text"
+                  maxLength="10"
                 />
                 <label htmlFor="title">Creator:</label>
-                <input id="creator" name="creator" type="text" />
+                <input
+                  id="creator"
+                  name="creator"
+                  type="text"
+                  maxLength="10"
+                  required
+                />
                 <button type="submit">Submit</button>
               </FormItems>
             </fieldset>

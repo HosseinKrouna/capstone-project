@@ -1,9 +1,34 @@
 import Link from "next/link";
 import styled from "styled-components";
-import { StyledWrapper } from "@/components/styles/Wrapper";
 import Head from "next/head";
+import { StyledWrapper } from "@/components/styles/Wrapper";
+import { StyledBackLink } from "@/components/styles/BackLink";
+import { useRouter } from "next/router";
+import { v4 } from "uuid";
 
 function EventsList({ entryData }) {
+  const router = useRouter();
+  const { id } = router.query;
+
+  const currentEventToVote = entryData.find(
+    (entryToVote) => entryToVote.index === id
+  );
+
+  if (!currentEventToVote) {
+    return (
+      <>
+        <StyledHelperWrapper>
+          <h2>Not to vote yet 🤔?</h2>
+          <h3>Try here </h3>
+          <h4>👇</h4>
+          <StyledBackLink href="/createEventPage/createEventPage">
+            <span>🎨</span>
+          </StyledBackLink>
+        </StyledHelperWrapper>
+      </>
+    );
+  }
+
   return (
     <StyledWrapper>
       <Head>
@@ -11,18 +36,20 @@ function EventsList({ entryData }) {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <StyledList>
-        {entryData.map((entry) => (
-          <li key={entry.id}>
-            <StyledCardListContainer>
-              <StyledLink href="/votepage/votepage">
+        <StyledLink href="/votepage/votepage">
+          {entryData.map((entry) => (
+            <li key={v4()}>
+              <StyledCardListContainer>
                 <h2>{entry.title}</h2>
-              </StyledLink>
-            </StyledCardListContainer>
-          </li>
-        ))}
+              </StyledCardListContainer>
+            </li>
+          ))}
+        </StyledLink>
       </StyledList>
+      <h2>⬆️To Vote⬆️</h2>
+      <p>or</p>
 
-      <Link href="/createEventPage/createEventPage">Create Event</Link>
+      <Link href="/createEventPage/createEventPage">👉New Event👈</Link>
     </StyledWrapper>
   );
 }
@@ -49,4 +76,9 @@ const StyledCardListContainer = styled.div`
   border-radius: 5px;
 `;
 
+const StyledHelperWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 export default EventsList;

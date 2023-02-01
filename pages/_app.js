@@ -8,18 +8,7 @@ export default function App({ Component, pageProps }) {
   const router = useRouter();
 
   const [entryData, setEntryData] = useLocalStorageState("entryData", {
-    defaultValue: [
-      {
-        id: "9b205e30-fc29-4f66-a18e-5081bf50e825",
-        title: "Fathersday",
-        startTime: "18.05.2023, 10:00",
-        endTime: "18.05.2023, 23:30",
-        location: "do not know yet",
-        mapURL: "https://www.google.com/maps/...",
-        description: "coming soon",
-        creator: "Peter Pan",
-      },
-    ],
+    defaultValue: [],
   });
 
   function handleEntryData(data) {
