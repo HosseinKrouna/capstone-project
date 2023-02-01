@@ -16,12 +16,12 @@ function PreviewPage({ entryData }) {
     <StyledWrapper>
       <h1>{currentEvent?.title}</h1>
       <StyledCardContainer>
-        <span>Start Time: {currentEvent.startTime}</span>
-        <span>End Time: {currentEvent.endTime}</span>
-        <span>Location: {currentEvent.location}</span>
-        <span>Map URL: {currentEvent.mapURL}</span>
-        <span>Let a Comment: {currentEvent.description}</span>
-        <span>Creator: {currentEvent.creator}</span>
+        <span>Start Time: {currentEvent?.startTime}</span>
+        <span>End Time: {currentEvent?.endTime}</span>
+        <span>Location: {currentEvent?.location}</span>
+        <span>Map URL: {currentEvent?.mapURL}</span>
+        <span>Let a Comment: {currentEvent?.description}</span>
+        <span>Creator: {currentEvent?.creator}</span>
       </StyledCardContainer>
       <Link href="/eventsList/eventsList">Add Event</Link>
 
