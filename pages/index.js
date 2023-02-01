@@ -1,12 +1,12 @@
-import EventsList from "./eventsList/[id]";
-export default function HomePage() {
+import EventsList from "./eventsList/[eventsList]";
+export default function HomePage({ entryData }) {
   return (
     <>
       <header>
         <h1>Friends Wall</h1>
       </header>
       <main>
-        <EventsList />
+        <EventsList entryData={entryData} />
       </main>
     </>
   );

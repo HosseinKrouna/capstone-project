@@ -6,13 +6,23 @@ export default function App({ Component, pageProps }) {
   const [entryData, setEntryData] = useLocalStorageState("entryData", {
     defaultValue: [
       {
-        title: "",
-        startTime: "",
-        endTime: "",
-        location: "",
-        mapURL: "",
-        description: "",
-        creator: "",
+        id: "9b205e30-fc29-4f66-a18e-5081bf50e825",
+        title: "Vattertag",
+        startTime: "montag",
+        endTime: "10:00",
+        location: "Ffm",
+        mapURL: "jhij",
+        description: "tg",
+        creator: "Ich",
+      },
+      {
+        id: "06e892b0-0ba1-4999-9b77-b998e4a4812b",
+        title: "Muttertag",
+        startTime: "montag",
+        endTime: "10:00",
+        location: "Ffm",
+        description: "tg",
+        creator: "Ich",
       },
     ],
   });

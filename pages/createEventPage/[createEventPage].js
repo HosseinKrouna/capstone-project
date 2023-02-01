@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { StyledWrapper } from "../../../components/styles/Wrapper";
+import { StyledWrapper } from "../../components/styles/Wrapper";
 import { useRouter } from "next/router";
 import { StyledBackLink } from "@/components/styles/BackLink";
 
@@ -12,7 +12,7 @@ function CreateEventForm({ onHandleEntryData }) {
     const data = Object.fromEntries(formData);
 
     onHandleEntryData(data);
-    router.push("/edit/index/");
+    router.push("/");
   }
   return (
     <>

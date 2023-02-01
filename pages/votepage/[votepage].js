@@ -1,5 +1,4 @@
 import { useRouter } from "next/router";
-import events from "@/db.json";
 import styled from "styled-components";
 import { useState } from "react";
 import { StyledWrapper } from "@/components/styles/Wrapper";
