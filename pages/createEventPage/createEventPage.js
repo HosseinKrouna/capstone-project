@@ -1,18 +1,14 @@
 import styled from "styled-components";
 import { StyledWrapper } from "../../components/styles/Wrapper";
-import { useRouter } from "next/router";
 import { StyledBackLink } from "@/components/styles/BackLink";
 
 function CreateEventForm({ onHandleEntryData }) {
-  const router = useRouter();
-
   function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
 
     onHandleEntryData(data);
-    router.push("/");
   }
   return (
     <>
@@ -49,7 +45,7 @@ function CreateEventForm({ onHandleEntryData }) {
                 />
                 <label htmlFor="title">Creator:</label>
                 <input id="creator" name="creator" type="text" />
-                <button type="submit">Preview</button>
+                <button type="submit">Submit</button>
               </FormItems>
             </fieldset>
           </FormContainer>

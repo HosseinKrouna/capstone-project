@@ -4,6 +4,7 @@ import { StyledWrapper } from "@/components/styles/Wrapper";
 import Head from "next/head";
 
 function EventsList({ entryData }) {
+  console.log("eventslist");
   console.log(entryData);
   return (
     <StyledWrapper>
@@ -12,21 +13,19 @@ function EventsList({ entryData }) {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <StyledList>
-        {Array.isArray(entryData)
-          ? entryData.map((entry) => {
-              return (
-                <li key={entry.id}>
-                  <StyledCardListContainer>
-                    <StyledLink href={"/votepage/"}>{entry.title}</StyledLink>
-                    <h2>{entry.location}</h2>
-                  </StyledCardListContainer>
-                </li>
-              );
-            })
-          : null}
+        {entryData.map((entry) => {
+          return (
+            <li key={entry.id}>
+              <StyledCardListContainer>
+                <StyledLink href={"/votepage/"}>{entry.title}</StyledLink>
+                <h2>{entry.location}</h2>
+              </StyledCardListContainer>
+            </li>
+          );
+        })}
       </StyledList>
 
-      <Link href="/createEventPage/index/">Create Event</Link>
+      <Link href="/createEventPage/createEventPage">Create Event</Link>
     </StyledWrapper>
   );
 }
