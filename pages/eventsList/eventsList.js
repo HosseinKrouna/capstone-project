@@ -4,11 +4,11 @@ import Head from "next/head";
 import { StyledWrapper } from "@/components/styles/Wrapper";
 import { StyledBackLink } from "@/components/styles/BackLink";
 import { useRouter } from "next/router";
-import { v4 } from "uuid";
 
 function EventsList({ entryData }) {
   const router = useRouter();
   const { id } = router.query;
+  console.log(entryData);
 
   const currentEventToVote = entryData.find(
     (entryToVote) => entryToVote.index === id
@@ -35,10 +35,16 @@ function EventsList({ entryData }) {
         <title>Events</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
+      <Link href="/createEventPage/createEventPage">
+        <h2>👉New Event👈</h2>
+      </Link>
+      <span>or</span>
+      <h2>⬇️To Vote⬇️</h2>
+
       <StyledList>
         <StyledLink href="/votepage/votepage">
-          {entryData.map((entry) => (
-            <li key={v4()}>
+          {entryData.map((entry, index) => (
+            <li key={entry[index]}>
               <StyledCardListContainer>
                 <h2>{entry.title}</h2>
               </StyledCardListContainer>
@@ -46,10 +52,6 @@ function EventsList({ entryData }) {
           ))}
         </StyledLink>
       </StyledList>
-      <h2>⬆️To Vote⬆️</h2>
-      <p>or</p>
-
-      <Link href="/createEventPage/createEventPage">👉New Event👈</Link>
     </StyledWrapper>
   );
 }
