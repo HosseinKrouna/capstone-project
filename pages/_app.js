@@ -19,15 +19,6 @@ export default function App({ Component, pageProps }) {
         description: "coming soon",
         creator: "Peter Pan",
       },
-      // {
-      //   id: "06e892b0-0ba1-4999-9b77-b998e4a4812b",
-      //   title: "Muttertag",
-      //   startTime: "montag",
-      //   endTime: "10:00",
-      //   location: "Ffm",
-      //   description: "tg",
-      //   creator: "Ich",
-      // },
     ],
   });
 

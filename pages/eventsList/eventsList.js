@@ -4,8 +4,6 @@ import { StyledWrapper } from "@/components/styles/Wrapper";
 import Head from "next/head";
 
 function EventsList({ entryData }) {
-  console.log("eventslist");
-  console.log(entryData);
   return (
     <StyledWrapper>
       <Head>
