@@ -12,24 +12,22 @@ function PreviewPage({ entryData }) {
 
   const currentEvent = entryData.find((entry) => entry.id === id);
   console.log(currentEvent);
-  return <h1>Hello ich bin eine Preview</h1>;
+  return (
+    <StyledWrapper>
+      <h1>{currentEvent?.title}</h1>
+      <StyledCardContainer>
+        <span>Start Time: {currentEvent.startTime}</span>
+        <span>End Time: {currentEvent.endTime}</span>
+        <span>Location: {currentEvent.location}</span>
+        <span>Map URL: {currentEvent.mapURL}</span>
+        <span>Let a Comment: {currentEvent.description}</span>
+        <span>Creator: {currentEvent.creator}</span>
+      </StyledCardContainer>
+      <Link href="/eventsList/eventsList">Add Event</Link>
 
-  {
-    /* <StyledWrapper>
-        <h1>{currentEvent?.title}</h1>
-        <StyledCardContainer>
-          <span>Start Time: {currentEvent.startTime}</span>
-          <span>End Time: {currentEvent.endTime}</span>
-          <span>Location: {currentEvent.location}</span>
-          <span>Map URL: {currentEvent.mapURL}</span>
-          <span>Let a Comment: {currentEvent.description}</span>
-          <span>Creator: {currentEvent.creator}</span>
-        </StyledCardContainer>
-        <Link href="/eventsList/">Add Event</Link>
-
-        <StyledBackLink href="/">↩︎</StyledBackLink>
-      </StyledWrapper> */
-  }
+      <StyledBackLink href="/">↩︎</StyledBackLink>
+    </StyledWrapper>
+  );
 }
 
 export default PreviewPage;

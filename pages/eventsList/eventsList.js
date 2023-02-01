@@ -13,16 +13,15 @@ function EventsList({ entryData }) {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <StyledList>
-        {entryData.map((entry) => {
-          return (
-            <li key={entry.id}>
-              <StyledCardListContainer>
-                <StyledLink href={"/votepage/"}>{entry.title}</StyledLink>
-                <h2>{entry.location}</h2>
-              </StyledCardListContainer>
-            </li>
-          );
-        })}
+        {entryData.map((entry) => (
+          <li key={entry.id}>
+            <StyledCardListContainer>
+              <StyledLink href="/votepage/votepage">
+                <h2>{entry.title}</h2>
+              </StyledLink>
+            </StyledCardListContainer>
+          </li>
+        ))}
       </StyledList>
 
       <Link href="/createEventPage/createEventPage">Create Event</Link>

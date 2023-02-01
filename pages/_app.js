@@ -11,31 +11,30 @@ export default function App({ Component, pageProps }) {
     defaultValue: [
       {
         id: "9b205e30-fc29-4f66-a18e-5081bf50e825",
-        title: "Vattertag",
-        startTime: "montag",
-        endTime: "10:00",
-        location: "Ffm",
-        mapURL: "jhij",
-        description: "tg",
-        creator: "Ich",
+        title: "Fathersday",
+        startTime: "18.05.2023, 10:00",
+        endTime: "18.05.2023, 23:30",
+        location: "do not know yet",
+        mapURL: "https://www.google.com/maps/...",
+        description: "coming soon",
+        creator: "Peter Pan",
       },
-      {
-        id: "06e892b0-0ba1-4999-9b77-b998e4a4812b",
-        title: "Muttertag",
-        startTime: "montag",
-        endTime: "10:00",
-        location: "Ffm",
-        description: "tg",
-        creator: "Ich",
-      },
+      // {
+      //   id: "06e892b0-0ba1-4999-9b77-b998e4a4812b",
+      //   title: "Muttertag",
+      //   startTime: "montag",
+      //   endTime: "10:00",
+      //   location: "Ffm",
+      //   description: "tg",
+      //   creator: "Ich",
+      // },
     ],
   });
 
   function handleEntryData(data) {
     const newData = { ...data, id: v4() };
     setEntryData([newData, ...entryData]);
-    return;
-    router.push(`/preview/${newData.id}/preview`);
+    return router.push(`/preview/${newData.id}/preview`);
   }
 
   return (
