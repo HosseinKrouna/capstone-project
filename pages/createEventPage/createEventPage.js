@@ -25,7 +25,7 @@ function CreateEventForm({ onHandleEntryData }) {
               <legend>Create a new Event 👇</legend>
               <FormItems>
                 <label htmlFor="title">Title:</label>
-                <input id="title" name="title" type="text" />
+                <input id="title" name="title" type="text" required />
                 <label htmlFor="start-time">Start Time:</label>
                 <input id="start-time" name="startTime" type="datetime-local" />
                 <label htmlFor="end-time">End Time:</label>

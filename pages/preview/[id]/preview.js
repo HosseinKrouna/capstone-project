@@ -19,7 +19,6 @@ function PreviewPage({ entryData }) {
         <span>Start Time: {currentEvent?.startTime}</span>
         <span>End Time: {currentEvent?.endTime}</span>
         <span>Location: {currentEvent?.location}</span>
-        <span>Map URL: {currentEvent?.mapURL}</span>
         <span>Let a Comment: {currentEvent?.description}</span>
         <span>Creator: {currentEvent?.creator}</span>
       </StyledCardContainer>

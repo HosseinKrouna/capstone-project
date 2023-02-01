@@ -45,6 +45,7 @@ function Votepage({ entryData }) {
         <span>{startTime}</span>
         <span>{endTime}</span>
         <p>Location: {location}</p>
+        <p>Let a Comment: {description}</p>
         <p>Creator: {creator}</p>
       </StyledCardContainer>
       <StyledVoteButtonContainer>
