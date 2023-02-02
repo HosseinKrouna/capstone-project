@@ -6,11 +6,11 @@ import { StyledBackLink } from "@/components/styles/BackLink";
 import { useRouter } from "next/router";
 
 function EventsList({ entryData }) {
-  // const router = useRouter();
-  // const { id } = router.query;
+  const router = useRouter();
+  const { id } = router.query;
 
   const currentEventToVote = entryData.find(
-    (entryToVote) => entryToVote.index === id
+    (entryToVote) => entryToVote.id === id
   );
 
   if (!currentEventToVote) {
