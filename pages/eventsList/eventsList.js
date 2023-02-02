@@ -5,8 +5,12 @@ import { StyledWrapper } from "@/components/styles/Wrapper";
 import { StyledBackLink } from "@/components/styles/BackLink";
 import { useRouter } from "next/router";
 
-function EventsList({ entryData }) {
-  console.log(entryData);
+function EventsList({ entryData, voteResultData }) {
+  console.log("EventsList entryData");
+  console.log(voteResultData);
+
+  // const { voteResult } = voteResultData;
+
   // const router = useRouter();
 
   // if (entryData === false) {
@@ -54,6 +58,7 @@ function EventsList({ entryData }) {
               <StyledLink href={`/votepage/${entry.id}`}>
                 <StyledCardListContainer>
                   <h2>{entry.title}</h2>
+                  <span></span>
                 </StyledCardListContainer>
               </StyledLink>
             </li>

@@ -10,7 +10,12 @@ export default function App({ Component, pageProps }) {
   const [entryData, setEntryData] = useLocalStorageState("entryData", {
     defaultValue: [],
   });
-
+  const [voteResultData, setVoteResultData] = useLocalStorageState(
+    "voteResultData",
+    {
+      defaultValue: [],
+    }
+  );
   // const [voteResultData, setVoteResultData] = useLocalStorageState(
   //   "voteResultData",
   //   {
@@ -24,15 +29,24 @@ export default function App({ Component, pageProps }) {
     return router.push(`/preview/${newData.id}/preview`);
   }
 
-  function handleVoteCheckmark(emojiCheckmark) {
-    console.log(emojiCheckmark);
-    //   const voteResult = {
-    //     ...emojiCheckmark,
-    //     voteEmojiCheckmark: emojiCheckmark,
-    //   };
-    //   setVoteResultData([voteResult, ...voteResultData]);
-    //   return router.push(`/eventsList/${voteResult.id}eventsList`);
+  // function handleVoteCheckmark(emojiCheckmark) {
+  //   console.log("ERGEBNIS aus votepage:" + emojiCheckmark);
+  //   //   const voteResult = {
+  //   //     ...emojiCheckmark,
+  //   //     voteEmojiCheckmark: emojiCheckmark,
+  //   //   };
+  //   //   setVoteResultData([voteResult, ...voteResultData]);
+  //   //   return router.push(`/eventsList/${voteResult.id}eventsList`);
+  // }
+
+  function handleVoteResult(voteResult, currentEvent) {
+    const resultVoteEvent = { ...currentEvent, voteResult };
+    setVoteResultData([resultVoteEvent, ...voteResultData]);
+    console.log("APP handelVoteResult");
+    console.log(resultVoteEvent);
+    // onHandleEventList(resultVoteEvent);
   }
+
   return (
     <>
       <GlobalStyle />
@@ -43,8 +57,9 @@ export default function App({ Component, pageProps }) {
         {...pageProps}
         entryData={entryData}
         onHandleEntryData={handleEntryData}
-        onHandleVoteCheckmark={handleVoteCheckmark}
-        // voteResultData={voteResultData}
+        onHandleVoteResult={handleVoteResult}
+        // onHandleEventList={onHandleEventList}
+        voteResultData={voteResultData}
       />
     </>
   );

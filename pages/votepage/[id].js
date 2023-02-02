@@ -6,15 +6,18 @@ import { StyledCardContainer } from "@/components/styles/CardContainer";
 import { StyledBackLink } from "@/components/styles/BackLink";
 import Link from "next/link";
 
-function Votepage({ entryData, onHandleVoteCheckmark }) {
+function Votepage({ entryData, onHandleVoteResult }) {
+  console.log("Votepage entrydata");
   console.log(entryData);
 
   const [emojiCheckmark, setEmojiCheckmark] = useState("");
   const router = useRouter();
   const { id } = router.query;
+  console.log("Votepage emojicheckmark");
   console.log(emojiCheckmark);
 
   const currentEvent = entryData.find((entryToVote) => entryToVote.id === id);
+  console.log(currentEvent);
 
   if (!currentEvent) {
     return (
@@ -45,8 +48,11 @@ function Votepage({ entryData, onHandleVoteCheckmark }) {
   }
 
   function handleVoteResult(emojiCheckmark) {
-    console.log(emojiCheckmark);
-    onHandleVoteCheckmark(emojiCheckmark);
+    const voteResult = emojiCheckmark;
+
+    onHandleVoteResult(voteResult, currentEvent);
+
+    return;
   }
 
   return (
@@ -73,10 +79,7 @@ function Votepage({ entryData, onHandleVoteCheckmark }) {
         })}
       </StyledVoteButtonContainer>
       <Link href="/eventsList/eventsList">
-        <button
-          onClick={() => handleVoteResult(emojiCheckmark)}
-          // value={emojiCheckmark}
-        >
+        <button onClick={() => handleVoteResult(emojiCheckmark)}>
           👉Confirm
         </button>
       </Link>
