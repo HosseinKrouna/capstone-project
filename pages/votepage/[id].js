@@ -6,7 +6,7 @@ import { StyledCardContainer } from "@/components/styles/CardContainer";
 import { StyledBackLink } from "@/components/styles/BackLink";
 import Link from "next/link";
 
-function Votepage({ entryData }) {
+function Votepage({ entryData, onHandleVoteCheckmark }) {
   console.log(entryData);
 
   const [emojiCheckmark, setEmojiCheckmark] = useState("");
@@ -44,9 +44,10 @@ function Votepage({ entryData }) {
     }
   }
 
-  // function handleVoteResult(emojiCheckmark) {
-  //   onHandleVoteCheckmark(emojiCheckmark);
-  // }
+  function handleVoteResult(emojiCheckmark) {
+    console.log(emojiCheckmark);
+    onHandleVoteCheckmark(emojiCheckmark);
+  }
 
   return (
     <StyledWrapper>
@@ -72,12 +73,12 @@ function Votepage({ entryData }) {
         })}
       </StyledVoteButtonContainer>
       <Link href="/eventsList/eventsList">
-        {/* <button
+        <button
           onClick={() => handleVoteResult(emojiCheckmark)}
-          value={emojiCheckmark}
+          // value={emojiCheckmark}
         >
           👉Confirm
-        </button> */}
+        </button>
       </Link>
       <StyledBackLink href="/">Back ↩︎</StyledBackLink>
     </StyledWrapper>

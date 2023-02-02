@@ -1,4 +1,4 @@
-import EventsList from "./eventsList/eventsList";
+import EventsList from "./eventsList/[id]";
 export default function HomePage({ entryData }) {
   return (
     <>

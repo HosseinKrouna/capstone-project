@@ -24,14 +24,15 @@ export default function App({ Component, pageProps }) {
     return router.push(`/preview/${newData.id}/preview`);
   }
 
-  // function handleVoteCheckmark(emojiCheckmark) {
-  //   const voteResult = {
-  //     ...emojiCheckmark,
-  //     voteEmojiCheckmark: emojiCheckmark,
-  //   };
-  //   setVoteResultData([voteResult, ...voteResultData]);
-  //   return router.push(`/eventsList/${voteResult.id}eventsList`);
-  // }
+  function handleVoteCheckmark(emojiCheckmark) {
+    console.log(emojiCheckmark);
+    //   const voteResult = {
+    //     ...emojiCheckmark,
+    //     voteEmojiCheckmark: emojiCheckmark,
+    //   };
+    //   setVoteResultData([voteResult, ...voteResultData]);
+    //   return router.push(`/eventsList/${voteResult.id}eventsList`);
+  }
   return (
     <>
       <GlobalStyle />
@@ -42,7 +43,7 @@ export default function App({ Component, pageProps }) {
         {...pageProps}
         entryData={entryData}
         onHandleEntryData={handleEntryData}
-        // onHandleVoteCheckmark={handleVoteCheckmark}
+        onHandleVoteCheckmark={handleVoteCheckmark}
         // voteResultData={voteResultData}
       />
     </>

@@ -6,27 +6,34 @@ import { StyledBackLink } from "@/components/styles/BackLink";
 import { useRouter } from "next/router";
 
 function EventsList({ entryData }) {
-  const router = useRouter();
-  const { id } = router.query;
+  console.log(entryData);
+  // const router = useRouter();
 
-  const currentEventToVote = entryData.find(
-    (entryToVote) => entryToVote.id === id
-  );
+  // if (entryData === false) {
+  //   return router.push("/createEventPage/createEventPage");
+  // }
 
-  if (!currentEventToVote) {
-    return (
-      <>
-        <StyledHelperWrapper>
-          <h2>Not to vote yet 🤔?</h2>
-          <h3>Try here </h3>
-          <h4>👇</h4>
-          <StyledBackLink href="/createEventPage/createEventPage">
-            <span>🎨</span>
-          </StyledBackLink>
-        </StyledHelperWrapper>
-      </>
-    );
-  }
+  // const router = useRouter();
+  // const { id } = router.query;
+
+  // const currentEventToVote = entryData.find(
+  //   (entryToVote) => entryToVote.index === id
+  // );
+
+  // if (!currentEventToVote) {
+  //   return (
+  //     <>
+  //       <StyledHelperWrapper>
+  //         <h2>Not to vote yet 🤔?</h2>
+  //         <h3>Try here </h3>
+  //         <h4>👇</h4>
+  //         <StyledBackLink href="/createEventPage/createEventPage">
+  //           <span>🎨</span>
+  //         </StyledBackLink>
+  //       </StyledHelperWrapper>
+  //     </>
+  //   );
+  // }
 
   return (
     <StyledWrapper>
@@ -42,7 +49,7 @@ function EventsList({ entryData }) {
 
       <div>
         <StyledList>
-          {entryData.map((entry) => (
+          {entryData?.map((entry) => (
             <li key={entry.id}>
               <StyledLink href={`/votepage/${entry.id}`}>
                 <StyledCardListContainer>
