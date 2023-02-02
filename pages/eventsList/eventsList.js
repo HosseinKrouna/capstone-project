@@ -6,9 +6,8 @@ import { StyledBackLink } from "@/components/styles/BackLink";
 import { useRouter } from "next/router";
 
 function EventsList({ entryData }) {
-  const router = useRouter();
-  const { id } = router.query;
-  console.log(entryData);
+  // const router = useRouter();
+  // const { id } = router.query;
 
   const currentEventToVote = entryData.find(
     (entryToVote) => entryToVote.index === id
@@ -41,17 +40,19 @@ function EventsList({ entryData }) {
       <span>or</span>
       <h2>⬇️To Vote⬇️</h2>
 
-      <StyledList>
-        <StyledLink href="/votepage/votepage">
-          {entryData.map((entry, index) => (
-            <li key={entry[index]}>
-              <StyledCardListContainer>
-                <h2>{entry.title}</h2>
-              </StyledCardListContainer>
+      <div>
+        <StyledList>
+          {entryData.map((entry) => (
+            <li key={entry.id}>
+              <StyledLink href={`/votepage/${entry.id}`}>
+                <StyledCardListContainer>
+                  <h2>{entry.title}</h2>
+                </StyledCardListContainer>
+              </StyledLink>
             </li>
           ))}
-        </StyledLink>
-      </StyledList>
+        </StyledList>
+      </div>
     </StyledWrapper>
   );
 }

@@ -9,6 +9,7 @@ function PreviewPage({ entryData }) {
   const { id } = router.query;
 
   const currentEvent = entryData.find((entry) => entry.id === id);
+
   return (
     <StyledWrapper>
       <h1>{currentEvent?.title}</h1>

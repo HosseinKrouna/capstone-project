@@ -11,12 +11,27 @@ export default function App({ Component, pageProps }) {
     defaultValue: [],
   });
 
+  // const [voteResultData, setVoteResultData] = useLocalStorageState(
+  //   "voteResultData",
+  //   {
+  //     defaultValue: [],
+  //   }
+  // );
+
   function handleEntryData(data) {
     const newData = { ...data, id: v4() };
     setEntryData([newData, ...entryData]);
     return router.push(`/preview/${newData.id}/preview`);
   }
 
+  // function handleVoteCheckmark(emojiCheckmark) {
+  //   const voteResult = {
+  //     ...emojiCheckmark,
+  //     voteEmojiCheckmark: emojiCheckmark,
+  //   };
+  //   setVoteResultData([voteResult, ...voteResultData]);
+  //   return router.push(`/eventsList/${voteResult.id}eventsList`);
+  // }
   return (
     <>
       <GlobalStyle />
@@ -27,6 +42,8 @@ export default function App({ Component, pageProps }) {
         {...pageProps}
         entryData={entryData}
         onHandleEntryData={handleEntryData}
+        // onHandleVoteCheckmark={handleVoteCheckmark}
+        // voteResultData={voteResultData}
       />
     </>
   );

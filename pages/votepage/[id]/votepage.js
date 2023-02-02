@@ -7,14 +7,14 @@ import { StyledBackLink } from "@/components/styles/BackLink";
 import Link from "next/link";
 
 function Votepage({ entryData }) {
-  const [emojiCheckmark, setEmojiCheckmark] = useState("");
+  console.log(entryData);
 
+  const [emojiCheckmark, setEmojiCheckmark] = useState("");
   const router = useRouter();
   const { id } = router.query;
+  console.log(emojiCheckmark);
 
-  const currentEvent = entryData.find(
-    (entryToVote) => entryToVote.index === id
-  );
+  const currentEvent = entryData.find((entryToVote) => entryToVote.id === id);
 
   if (!currentEvent) {
     return (
@@ -44,6 +44,10 @@ function Votepage({ entryData }) {
     }
   }
 
+  // function handleVoteResult(emojiCheckmark) {
+  //   onHandleVoteCheckmark(emojiCheckmark);
+  // }
+
   return (
     <StyledWrapper>
       <h2>{title}</h2>
@@ -68,7 +72,12 @@ function Votepage({ entryData }) {
         })}
       </StyledVoteButtonContainer>
       <Link href="/eventsList/eventsList">
-        <h3>👉Confirm</h3>
+        {/* <button
+          onClick={() => handleVoteResult(emojiCheckmark)}
+          value={emojiCheckmark}
+        >
+          👉Confirm
+        </button> */}
       </Link>
       <StyledBackLink href="/">Back ↩︎</StyledBackLink>
     </StyledWrapper>
