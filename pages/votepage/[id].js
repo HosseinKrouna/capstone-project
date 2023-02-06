@@ -10,7 +10,7 @@ import { useImmer } from "use-immer";
 function Votepage({ entryData, onHandleUpdateVoteEvent }) {
   const [voteResultData, updateVoteResultData] = useImmer({});
   const [emojiCheckmark, setEmojiCheckmark] = useState("");
-
+  console.log(voteResultData);
   const router = useRouter();
   const { id } = router.query;
 
@@ -47,9 +47,9 @@ function Votepage({ entryData, onHandleUpdateVoteEvent }) {
   function handleVoteResult(emojiCheckmark) {
     const resultVoteEvent = { ...currentEvent, voteResult: emojiCheckmark };
     updateVoteResultData((draft) => {
-      draft.resultVoteEvent = entryData;
+      draft.entryData.voteResult = emojiCheckmark;
     });
-    onHandleUpdateVoteEvent(voteResultData);
+    onHandleUpdateVoteEvent(resultVoteEvent);
   }
 
   return (
@@ -75,11 +75,11 @@ function Votepage({ entryData, onHandleUpdateVoteEvent }) {
           );
         })}
       </StyledVoteButtonContainer>
-      <Link href="/eventsList/eventsList">
-        <button onClick={() => handleVoteResult(emojiCheckmark)}>
-          👉Confirm
-        </button>
-      </Link>
+
+      <button onClick={() => handleVoteResult(emojiCheckmark)}>
+        👉Confirm
+      </button>
+
       <StyledBackLink href="/">Back ↩︎</StyledBackLink>
     </StyledWrapper>
   );

@@ -11,17 +11,17 @@ export default function App({ Component, pageProps }) {
   const [entryData, setEntryData] = useLocalStorageState("entryData", {
     defaultValue: [],
   });
-  const [voteEvent, updateVoteEvent] = useImmer({});
+  // const [voteEvent, updateVoteEvent] = useImmer({});
   function handleEntryData(data) {
     const newData = { ...data, id: v4() };
     setEntryData([newData, ...entryData]);
     console.log(entryData);
-    return router.push(`/preview/${newData.id}/preview`);
+    return router.push(`/preview/${newData.id}`);
   }
 
   // function handleUpdateVoteEvent(index, resultVoteEvent) {
   //   console.log("resultVoteEvent with handleUpdateVoteEvent:");
-  //   //NOTE -  - here is my update event
+  //   -  - here is my update event
 
   //   console.log(resultVoteEvent);
   //   // const newVote = {...resultVoteEvent, resultVoteEvent}
@@ -34,9 +34,9 @@ export default function App({ Component, pageProps }) {
   //   // updateVoteEvent();
   // }
 
-  function handleUpdateVoteEvent(voteResultData) {
-    console.log(voteResultData);
-  }
+  // function handleUpdateVoteEvent(voteResultData) {
+  //   console.log(voteResultData);
+  // }
 
   return (
     <>
@@ -48,7 +48,7 @@ export default function App({ Component, pageProps }) {
         {...pageProps}
         entryData={entryData}
         onHandleEntryData={handleEntryData}
-        onHandleUpdateVoteEvent={handleUpdateVoteEvent}
+        // onHandleUpdateVoteEvent={handleUpdateVoteEvent}
       />
     </>
   );

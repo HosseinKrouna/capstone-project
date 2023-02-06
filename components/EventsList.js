@@ -46,7 +46,7 @@ function EventsList({ entryData, voteResultData }) {
         <title>Events</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <Link href="/createEventPage/createEventPage">
+      <Link href="/createEventPage">
         <h2>👉New Event👈</h2>
       </Link>
       <span>or</span>

@@ -19,7 +19,6 @@ function PreviewPage({ entryData }) {
         <span>Location: {currentEvent?.location}</span>
         <span>Let a Comment: {currentEvent?.description}</span>
         <span>Creator: {currentEvent?.creator}</span>
-        <Link href="/eventsList/eventsList">👉Add to Eventlist👈</Link>
       </StyledCardContainer>
 
       <StyledBackLink href="/">↩︎</StyledBackLink>
