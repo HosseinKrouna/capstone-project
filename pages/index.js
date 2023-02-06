@@ -7,10 +7,7 @@ export default function HomePage({ entryData, voteResultData }) {
         <h1>Friends Wall</h1>
       </header>
       <main>
-        <EventsList
-          entryData={entryData}
-          // voteResultData={voteResultData}
-        />
+        <EventsList entryData={entryData} voteResultData={voteResultData} />
       </main>
     </>
   );

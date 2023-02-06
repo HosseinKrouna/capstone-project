@@ -12,19 +12,30 @@ export default function App({ Component, pageProps }) {
     defaultValue: [],
   });
   const [voteEvent, updateVoteEvent] = useImmer({});
-
   function handleEntryData(data) {
     const newData = { ...data, id: v4() };
     setEntryData([newData, ...entryData]);
+    console.log(entryData);
     return router.push(`/preview/${newData.id}/preview`);
   }
 
-  function handleUpdateVoteEvent(resultVoteEvent) {
-    console.log("resultVoteEvent with handleUpdateVoteEvent:");
-    //NOTE -  - here is my update event
+  // function handleUpdateVoteEvent(index, resultVoteEvent) {
+  //   console.log("resultVoteEvent with handleUpdateVoteEvent:");
+  //   //NOTE -  - here is my update event
 
-    console.log(resultVoteEvent);
-    updateVoteEvent();
+  //   console.log(resultVoteEvent);
+  //   // const newVote = {...resultVoteEvent, resultVoteEvent}
+  //   updateVoteEvent((prevVoteEvent) => {
+  //     if (prevVoteEvent[index])
+  //       prevVoteEvent[index].voteResult = resultVoteEvent.voteResult;
+  //   });
+  //   console.log(voteEvent);
+  //   console.log(entryData);
+  //   // updateVoteEvent();
+  // }
+
+  function handleUpdateVoteEvent(voteResultData) {
+    console.log(voteResultData);
   }
 
   return (

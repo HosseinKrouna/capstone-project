@@ -6,19 +6,18 @@ import { StyledBackLink } from "@/components/styles/BackLink";
 import { useRouter } from "next/router";
 
 function EventsList({ entryData, voteResultData }) {
-  console.log("EventsList entryData und voteResultData");
+  const router = useRouter();
+  if (!entryData) {
+    return router.push("/createEventPage/createEventPage");
+  }
   console.log(entryData);
+  // console.log("EventsList entryData und voteResultData");
   // console.log(voteResultData);
-
+  // console.log(voteResultData);
   // const currentResultVote = voteResultData.filter(
   //   (resultVote) => resultVote.voteResult
   // );
   // console.log(currentResultVote);
-
-  // const router = useRouter();
-  // if (!entryData) {
-  //   return router.push("/createEventPage/createEventPage");
-  // }
   // const { voteResult, id } = voteResultData;
 
   // const router = useRouter();
@@ -28,22 +27,18 @@ function EventsList({ entryData, voteResultData }) {
   //   (entryToVote) => entryToVote.id === id
   // );
 
-  // console.log(currentEventToVote);
-
-  // if (!currentEventToVote) {
-  //   return (
-  //     <>
-  //       <StyledHelperWrapper>
-  //         <h2>Not to vote yet 🤔?</h2>
-  //         <h3>Try here </h3>
-  //         <h4>👇</h4>
-  //         <StyledBackLink href="/createEventPage/createEventPage">
-  //           <span>🎨</span>
-  //         </StyledBackLink>
-  //       </StyledHelperWrapper>
-  //     </>
-  //   );
-  // }
+  // return (
+  //   <>
+  //     <StyledHelperWrapper>
+  //       <h2>Not to vote yet 🤔?</h2>
+  //       <h3>Try here </h3>
+  //       <h4>👇</h4>
+  //       <StyledBackLink href="/createEventPage/createEventPage">
+  //         <span>🎨</span>
+  //       </StyledBackLink>
+  //     </StyledHelperWrapper>
+  //   </>
+  // );
 
   return (
     <StyledWrapper>

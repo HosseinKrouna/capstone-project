@@ -49,7 +49,7 @@ function Votepage({ entryData, onHandleUpdateVoteEvent }) {
     updateVoteResultData((draft) => {
       draft.resultVoteEvent = entryData;
     });
-    onHandleUpdateVoteEvent(resultVoteEvent);
+    onHandleUpdateVoteEvent(voteResultData);
   }
 
   return (
