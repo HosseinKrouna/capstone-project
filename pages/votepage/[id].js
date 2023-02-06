@@ -5,16 +5,14 @@ import { StyledWrapper } from "@/components/styles/Wrapper";
 import { StyledCardContainer } from "@/components/styles/CardContainer";
 import { StyledBackLink } from "@/components/styles/BackLink";
 import Link from "next/link";
+import { useImmer } from "use-immer";
 
-function Votepage({ entryData, onHandleVoteResult }) {
-  console.log("Votepage entrydata");
-  console.log(entryData);
-
+function Votepage({ entryData, onHandleUpdateVoteEvent }) {
+  const [voteResultData, updateVoteResultData] = useImmer({});
   const [emojiCheckmark, setEmojiCheckmark] = useState("");
+
   const router = useRouter();
   const { id } = router.query;
-  console.log("Votepage emojicheckmark");
-  console.log(emojiCheckmark);
 
   const currentEvent = entryData.find((entryToVote) => entryToVote.id === id);
   console.log(currentEvent);
@@ -46,13 +44,12 @@ function Votepage({ entryData, onHandleVoteResult }) {
       setEmojiCheckmark(voteEmoji);
     }
   }
-
   function handleVoteResult(emojiCheckmark) {
-    const voteResult = emojiCheckmark;
-
-    onHandleVoteResult(voteResult, currentEvent);
-
-    return;
+    const resultVoteEvent = { ...currentEvent, voteResult: emojiCheckmark };
+    updateVoteResultData((draft) => {
+      draft.resultVoteEvent = entryData;
+    });
+    onHandleUpdateVoteEvent(resultVoteEvent);
   }
 
   return (

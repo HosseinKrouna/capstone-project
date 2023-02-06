@@ -3,6 +3,7 @@ import Head from "next/head";
 import useLocalStorageState from "use-local-storage-state";
 import { v4 } from "uuid";
 import { useRouter } from "next/router";
+import { useImmer } from "use-immer";
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
@@ -10,18 +11,7 @@ export default function App({ Component, pageProps }) {
   const [entryData, setEntryData] = useLocalStorageState("entryData", {
     defaultValue: [],
   });
-  const [voteResultData, setVoteResultData] = useLocalStorageState(
-    "voteResultData",
-    {
-      defaultValue: [],
-    }
-  );
-  // const [voteResultData, setVoteResultData] = useLocalStorageState(
-  //   "voteResultData",
-  //   {
-  //     defaultValue: [],
-  //   }
-  // );
+  const [voteEvent, updateVoteEvent] = useImmer({});
 
   function handleEntryData(data) {
     const newData = { ...data, id: v4() };
@@ -29,22 +19,12 @@ export default function App({ Component, pageProps }) {
     return router.push(`/preview/${newData.id}/preview`);
   }
 
-  // function handleVoteCheckmark(emojiCheckmark) {
-  //   console.log("ERGEBNIS aus votepage:" + emojiCheckmark);
-  //   //   const voteResult = {
-  //   //     ...emojiCheckmark,
-  //   //     voteEmojiCheckmark: emojiCheckmark,
-  //   //   };
-  //   //   setVoteResultData([voteResult, ...voteResultData]);
-  //   //   return router.push(`/eventsList/${voteResult.id}eventsList`);
-  // }
+  function handleUpdateVoteEvent(resultVoteEvent) {
+    console.log("resultVoteEvent with handleUpdateVoteEvent:");
+    //NOTE -  - here is my update event
 
-  function handleVoteResult(voteResult, currentEvent) {
-    const resultVoteEvent = { ...currentEvent, voteResult };
-    setVoteResultData([resultVoteEvent, ...voteResultData]);
-    console.log("APP handelVoteResult");
     console.log(resultVoteEvent);
-    // onHandleEventList(resultVoteEvent);
+    updateVoteEvent();
   }
 
   return (
@@ -57,9 +37,7 @@ export default function App({ Component, pageProps }) {
         {...pageProps}
         entryData={entryData}
         onHandleEntryData={handleEntryData}
-        onHandleVoteResult={handleVoteResult}
-        // onHandleEventList={onHandleEventList}
-        voteResultData={voteResultData}
+        onHandleUpdateVoteEvent={handleUpdateVoteEvent}
       />
     </>
   );

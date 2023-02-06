@@ -6,23 +6,29 @@ import { StyledBackLink } from "@/components/styles/BackLink";
 import { useRouter } from "next/router";
 
 function EventsList({ entryData, voteResultData }) {
-  console.log("EventsList entryData");
-  console.log(voteResultData);
+  console.log("EventsList entryData und voteResultData");
+  console.log(entryData);
+  // console.log(voteResultData);
 
-  // const { voteResult } = voteResultData;
+  // const currentResultVote = voteResultData.filter(
+  //   (resultVote) => resultVote.voteResult
+  // );
+  // console.log(currentResultVote);
 
   // const router = useRouter();
-
-  // if (entryData === false) {
+  // if (!entryData) {
   //   return router.push("/createEventPage/createEventPage");
   // }
+  // const { voteResult, id } = voteResultData;
 
   // const router = useRouter();
   // const { id } = router.query;
 
-  // const currentEventToVote = entryData.find(
-  //   (entryToVote) => entryToVote.index === id
+  // const currentEventToVote = voteResultData.find(
+  //   (entryToVote) => entryToVote.id === id
   // );
+
+  // console.log(currentEventToVote);
 
   // if (!currentEventToVote) {
   //   return (
@@ -58,7 +64,11 @@ function EventsList({ entryData, voteResultData }) {
               <StyledLink href={`/votepage/${entry.id}`}>
                 <StyledCardListContainer>
                   <h2>{entry.title}</h2>
-                  <span></span>
+                  {/* {voteResultData.id === entry.id ? (
+                    <span>{voteResultData.voteResult}</span>
+                  ) : (
+                    <span>🥸</span>
+                  )} */}
                 </StyledCardListContainer>
               </StyledLink>
             </li>
