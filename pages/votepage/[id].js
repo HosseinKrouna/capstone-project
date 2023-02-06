@@ -4,58 +4,43 @@ import { useState } from "react";
 import { StyledWrapper } from "@/components/styles/Wrapper";
 import { StyledCardContainer } from "@/components/styles/CardContainer";
 import { StyledBackLink } from "@/components/styles/BackLink";
-import Link from "next/link";
-import { useImmer } from "use-immer";
 
 function Votepage({ entryData, onHandleUpdateVoteEvent }) {
-  // const [voteResultData, updateVoteResultData] = useImmer({});
   const [emojiCheckmark, setEmojiCheckmark] = useState("");
   const router = useRouter();
   const { id } = router.query;
 
   const currentEvent = entryData.find((entryToVote) => entryToVote.id === id);
-  console.log(currentEvent);
 
   if (!currentEvent) {
     return (
-      <>
-        <StyledHelperWrapper>
-          <h2>hmm... no event yet 🤔?</h2>
-          <h3>Try here </h3>
-          <StyledBackLink
-            href="/
+      <StyledHelperWrapper>
+        <h2>hmm... no event yet 🤔?</h2>
+        <h3>Try here </h3>
+        <StyledBackLink
+          href="/
           "
-          >
-            ↩︎
-          </StyledBackLink>
-        </StyledHelperWrapper>
-      </>
+        >
+          ↩︎
+        </StyledBackLink>
+      </StyledHelperWrapper>
     );
   }
 
   const { title, startTime, endTime, location, creator, description } =
     currentEvent;
 
-  // function handleVoteEmoji(voteEmoji) {
-  //   if (emojiCheckmark === voteEmoji) {
-  //     setEmojiCheckmark("");
-  //   } else {
-  //     setEmojiCheckmark(voteEmoji);
-  //   }
-  // }
   function handleVoteResult() {
     const resultVoteEvent = { ...currentEvent, voteResult: emojiCheckmark };
-    // updateVoteResultData((draft) => {
-    //   draft.entryData.voteResult = emojiCheckmark;
-    // });
+
     onHandleUpdateVoteEvent(resultVoteEvent);
   }
 
   return (
     <StyledWrapper>
       <h2>{title}</h2>
-      {/* <StyledEmojiCheckmark>{emojiCheckmark}</StyledEmojiCheckmark> */}
       <StyledCardContainer>
+        <StyledEmojiCheckmark>{emojiCheckmark}</StyledEmojiCheckmark>
         <span>{startTime}</span>
         <span>{endTime}</span>
         <p>Location: {location}</p>

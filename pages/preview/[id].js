@@ -1,7 +1,6 @@
 import { StyledBackLink } from "@/components/styles/BackLink";
 import { StyledCardContainer } from "@/components/styles/CardContainer";
 import { StyledWrapper } from "@/components/styles/Wrapper";
-import Link from "next/link";
 import { useRouter } from "next/router";
 
 function PreviewPage({ entryData }) {

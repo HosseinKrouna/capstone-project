@@ -2,43 +2,13 @@ import Link from "next/link";
 import styled from "styled-components";
 import Head from "next/head";
 import { StyledWrapper } from "@/components/styles/Wrapper";
-import { StyledBackLink } from "@/components/styles/BackLink";
 import { useRouter } from "next/router";
 
-function EventsList({ entryData, voteResultData }) {
+function EventsList({ entryData }) {
   const router = useRouter();
   if (!entryData) {
     return router.push("/createEventPage/createEventPage");
   }
-  console.log(entryData);
-  // console.log("EventsList entryData und voteResultData");
-  // console.log(voteResultData);
-  // console.log(voteResultData);
-  // const currentResultVote = voteResultData.filter(
-  //   (resultVote) => resultVote.voteResult
-  // );
-  // console.log(currentResultVote);
-  // const { voteResult, id } = voteResultData;
-
-  // const router = useRouter();
-  // const { id } = router.query;
-
-  // const currentEventToVote = voteResultData.find(
-  //   (entryToVote) => entryToVote.id === id
-  // );
-
-  // return (
-  //   <>
-  //     <StyledHelperWrapper>
-  //       <h2>Not to vote yet 🤔?</h2>
-  //       <h3>Try here </h3>
-  //       <h4>👇</h4>
-  //       <StyledBackLink href="/createEventPage/createEventPage">
-  //         <span>🎨</span>
-  //       </StyledBackLink>
-  //     </StyledHelperWrapper>
-  //   </>
-  // );
 
   return (
     <StyledWrapper>
@@ -59,11 +29,7 @@ function EventsList({ entryData, voteResultData }) {
               <StyledLink href={`/votepage/${entry.id}`}>
                 <StyledCardListContainer>
                   <h2>{entry.title}</h2>
-                  {/* {voteResultData.id === entry.id ? (
-                    <span>{voteResultData.voteResult}</span>
-                  ) : (
-                    <span>🥸</span>
-                  )} */}
+                  <span>{entry.voteResult}</span>
                 </StyledCardListContainer>
               </StyledLink>
             </li>
@@ -96,9 +62,4 @@ const StyledCardListContainer = styled.div`
   border-radius: 5px;
 `;
 
-const StyledHelperWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
 export default EventsList;
