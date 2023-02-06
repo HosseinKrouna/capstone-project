@@ -4,11 +4,12 @@ import useLocalStorageState from "use-local-storage-state";
 import { v4 } from "uuid";
 import { useRouter } from "next/router";
 import { useImmer } from "use-immer";
+import { useImmerLocalStorageState } from "@/lib/hooks";
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
 
-  const [entryData, setEntryData] = useLocalStorageState("entryData", {
+  const [entryData, setEntryData] = useImmerLocalStorageState("entryData", {
     defaultValue: [],
   });
   // const [voteEvent, updateVoteEvent] = useImmer({});
@@ -34,9 +35,15 @@ export default function App({ Component, pageProps }) {
   //   // updateVoteEvent();
   // }
 
-  // function handleUpdateVoteEvent(voteResultData) {
-  //   console.log(voteResultData);
-  // }
+  function handleUpdateVoteEvent(voteResultData) {
+    console.log(voteResultData);
+    setEntryData((draft) => {
+      const votedEvent = draft.find(
+        (voteEvent) => voteEvent.id === voteResultData.id
+      );
+      votedEvent.voteResult = voteResultData.voteResult;
+    });
+  }
 
   return (
     <>
@@ -48,7 +55,7 @@ export default function App({ Component, pageProps }) {
         {...pageProps}
         entryData={entryData}
         onHandleEntryData={handleEntryData}
-        // onHandleUpdateVoteEvent={handleUpdateVoteEvent}
+        onHandleUpdateVoteEvent={handleUpdateVoteEvent}
       />
     </>
   );

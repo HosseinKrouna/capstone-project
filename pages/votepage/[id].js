@@ -8,9 +8,8 @@ import Link from "next/link";
 import { useImmer } from "use-immer";
 
 function Votepage({ entryData, onHandleUpdateVoteEvent }) {
-  const [voteResultData, updateVoteResultData] = useImmer({});
+  // const [voteResultData, updateVoteResultData] = useImmer({});
   const [emojiCheckmark, setEmojiCheckmark] = useState("");
-  console.log(voteResultData);
   const router = useRouter();
   const { id } = router.query;
 
@@ -37,25 +36,25 @@ function Votepage({ entryData, onHandleUpdateVoteEvent }) {
   const { title, startTime, endTime, location, creator, description } =
     currentEvent;
 
-  function handleVoteEmoji(voteEmoji) {
-    if (emojiCheckmark === voteEmoji) {
-      setEmojiCheckmark("");
-    } else {
-      setEmojiCheckmark(voteEmoji);
-    }
-  }
-  function handleVoteResult(emojiCheckmark) {
+  // function handleVoteEmoji(voteEmoji) {
+  //   if (emojiCheckmark === voteEmoji) {
+  //     setEmojiCheckmark("");
+  //   } else {
+  //     setEmojiCheckmark(voteEmoji);
+  //   }
+  // }
+  function handleVoteResult() {
     const resultVoteEvent = { ...currentEvent, voteResult: emojiCheckmark };
-    updateVoteResultData((draft) => {
-      draft.entryData.voteResult = emojiCheckmark;
-    });
+    // updateVoteResultData((draft) => {
+    //   draft.entryData.voteResult = emojiCheckmark;
+    // });
     onHandleUpdateVoteEvent(resultVoteEvent);
   }
 
   return (
     <StyledWrapper>
       <h2>{title}</h2>
-      <StyledEmojiCheckmark>{emojiCheckmark}</StyledEmojiCheckmark>
+      {/* <StyledEmojiCheckmark>{emojiCheckmark}</StyledEmojiCheckmark> */}
       <StyledCardContainer>
         <span>{startTime}</span>
         <span>{endTime}</span>
@@ -67,7 +66,7 @@ function Votepage({ entryData, onHandleUpdateVoteEvent }) {
         {["👍", "❓", "👎"].map((voteEmoji) => {
           return (
             <StyledVoteButtons
-              onClick={() => handleVoteEmoji(voteEmoji)}
+              onClick={() => setEmojiCheckmark(voteEmoji)}
               key={voteEmoji}
             >
               <span aria-label="emoji">{voteEmoji}</span>
@@ -76,9 +75,7 @@ function Votepage({ entryData, onHandleUpdateVoteEvent }) {
         })}
       </StyledVoteButtonContainer>
 
-      <button onClick={() => handleVoteResult(emojiCheckmark)}>
-        👉Confirm
-      </button>
+      <button onClick={() => handleVoteResult()}>👉Confirm</button>
 
       <StyledBackLink href="/">Back ↩︎</StyledBackLink>
     </StyledWrapper>
