@@ -12,21 +12,6 @@ function Votepage({ entryData, onHandleUpdateVoteEvent }) {
 
   const currentEvent = entryData.find((entryToVote) => entryToVote.id === id);
 
-  if (!currentEvent) {
-    return (
-      <StyledHelperWrapper>
-        <h2>hmm... no event yet 🤔?</h2>
-        <h3>Try here </h3>
-        <StyledBackLink
-          href="/
-          "
-        >
-          ↩︎
-        </StyledBackLink>
-      </StyledHelperWrapper>
-    );
-  }
-
   const { title, startTime, endTime, location, creator, description } =
     currentEvent;
 
@@ -66,12 +51,6 @@ function Votepage({ entryData, onHandleUpdateVoteEvent }) {
     </StyledWrapper>
   );
 }
-
-const StyledHelperWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
 
 const StyledEmojiCheckmark = styled.span`
   position: absolute;

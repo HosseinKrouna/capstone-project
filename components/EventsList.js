@@ -2,15 +2,9 @@ import Link from "next/link";
 import styled from "styled-components";
 import Head from "next/head";
 import { StyledWrapper } from "@/components/styles/Wrapper";
-import { useRouter } from "next/router";
 
 function EventsList({ entryData }) {
-  const router = useRouter();
-  if (!entryData) {
-    return router.push("/createEventPage/createEventPage");
-  }
-
-  return (
+  return entryData?.length > 0 ? (
     <StyledWrapper>
       <Head>
         <title>Events</title>
@@ -19,9 +13,8 @@ function EventsList({ entryData }) {
       <Link href="/createEventPage">
         <h2>👉New Event👈</h2>
       </Link>
-      <span>or</span>
-      <h2>⬇️To Vote⬇️</h2>
-
+      <h3>OR</h3>
+      <h2>⬇️Vote⬇️</h2>
       <div>
         <StyledList>
           {entryData?.map((entry) => (
@@ -37,6 +30,10 @@ function EventsList({ entryData }) {
         </StyledList>
       </div>
     </StyledWrapper>
+  ) : (
+    <Link href="/createEventPage">
+      <h2>👉New Event👈</h2>
+    </Link>
   );
 }
 

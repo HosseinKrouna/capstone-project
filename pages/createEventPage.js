@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { StyledWrapper } from "../components/styles/Wrapper";
 import { StyledBackLink } from "@/components/styles/BackLink";
-
 function CreateEventForm({ onHandleEntryData }) {
   function handleSubmit(event) {
     event.preventDefault();
@@ -12,11 +11,11 @@ function CreateEventForm({ onHandleEntryData }) {
   }
   return (
     <>
-      <StyledWrapper>
-        <header>
-          <h1>New Event</h1>
-        </header>
-        <main>
+      <header>
+        <h1>New Event</h1>
+      </header>
+      <main>
+        <StyledWrapper>
           <FormContainer
             aria-labelledby="createEventForm"
             onSubmit={handleSubmit}
@@ -66,8 +65,8 @@ function CreateEventForm({ onHandleEntryData }) {
             </fieldset>
           </FormContainer>
           <StyledBackLink href="/">↩︎</StyledBackLink>
-        </main>
-      </StyledWrapper>
+        </StyledWrapper>
+      </main>
     </>
   );
 }
@@ -84,6 +83,7 @@ const FormContainer = styled.form`
   justify-content: start;
   height: 100vh;
   font-family: cursive;
+  padding: 0;
 `;
 
 export default CreateEventForm;
