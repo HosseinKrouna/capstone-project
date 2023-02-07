@@ -12,9 +12,6 @@ function Votepage({ entryData, onHandleUpdateVoteEvent }) {
 
   const currentEvent = entryData.find((entryToVote) => entryToVote.id === id);
 
-  // const { title, startTime, endTime, location, creator, description } =
-  //   currentEvent;
-
   function handleVoteResult() {
     const resultVoteEvent = { ...currentEvent, voteResult: emojiCheckmark };
 
