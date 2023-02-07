@@ -8,16 +8,17 @@ function PreviewPage({ entryData }) {
   const { id } = router.query;
 
   const currentEvent = entryData.find((entry) => entry.id === id);
-
+  const { title, startTime, endTime, location, description, creator } =
+    currentEvent;
   return (
     <StyledWrapper>
-      <h1>{currentEvent?.title}</h1>
+      <h1>{title}</h1>
       <StyledCardContainer>
-        <span>Start Time: {currentEvent?.startTime}</span>
-        <span>End Time: {currentEvent?.endTime}</span>
-        <span>Location: {currentEvent?.location}</span>
-        <span>Let a Comment: {currentEvent?.description}</span>
-        <span>Creator: {currentEvent?.creator}</span>
+        <span>Start Time: {startTime}</span>
+        <span>End Time: {endTime}</span>
+        <span>Location: {location}</span>
+        <span>Let a Comment: {description}</span>
+        <span>Creator: {creator}</span>
       </StyledCardContainer>
 
       <StyledBackLink href="/">↩︎</StyledBackLink>
