@@ -12,8 +12,8 @@ function Votepage({ entryData, onHandleUpdateVoteEvent }) {
 
   const currentEvent = entryData.find((entryToVote) => entryToVote.id === id);
 
-  const { title, startTime, endTime, location, creator, description } =
-    currentEvent;
+  // const { title, startTime, endTime, location, creator, description } =
+  //   currentEvent;
 
   function handleVoteResult() {
     const resultVoteEvent = { ...currentEvent, voteResult: emojiCheckmark };
@@ -23,14 +23,14 @@ function Votepage({ entryData, onHandleUpdateVoteEvent }) {
 
   return (
     <StyledWrapper>
-      <h2>{title}</h2>
+      <h2>{currentEvent?.title}</h2>
       <StyledCardContainer>
         <StyledEmojiCheckmark>{emojiCheckmark}</StyledEmojiCheckmark>
-        <span>{startTime}</span>
-        <span>{endTime}</span>
-        <p>Location: {location}</p>
-        <p>Let a Comment: {description}</p>
-        <p>Creator: {creator}</p>
+        <span>{currentEvent?.startTime}</span>
+        <span>{currentEvent?.endTime}</span>
+        <p>Location: {currentEvent?.location}</p>
+        <p>Let a Comment: {currentEvent?.description}</p>
+        <p>Creator: {currentEvent?.creator}</p>
       </StyledCardContainer>
       <StyledVoteButtonContainer>
         {["👍", "❓", "👎"].map((voteEmoji) => {
