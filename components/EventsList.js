@@ -6,20 +6,20 @@ import EventCard from "@/components/EventCard";
 
 function EventsList({ entryData }) {
   return (
-    <StyledWrapper>
+    <>
       <Head>
         <title>Events List</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <Link href="/createEventPage">
-        <p>👉New Event👈</p>
-      </Link>
-      <span>
-        {entryData?.length > 0 ? (
+      <StyledWrapper>
+        <Link href="/createEventPage">
+          <p>👉New Event👈</p>
+        </Link>
+        {entryData.length > 0 ? (
           <>
             <h2>⬇️Vote⬇️</h2>
             <StyledList>
-              {entryData?.map((entry) => (
+              {entryData.map((entry) => (
                 <li key={entry.id}>
                   <StyledLink href={`/votepage/${entry.id}`}>
                     <EventCard entry={entry} />
@@ -31,8 +31,8 @@ function EventsList({ entryData }) {
         ) : (
           <p>Nothing to vote 🤨</p>
         )}
-      </span>
-    </StyledWrapper>
+      </StyledWrapper>
+    </>
   );
 }
 

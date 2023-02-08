@@ -25,7 +25,7 @@ function Votepage({ entryData, onHandleUpdateVoteEvent }) {
         emojiCheckmark={emojiCheckmark}
         currentEvent={currentEvent}
         entryData={entryData}
-      ></VoteDetails>
+      />
       <StyledVoteButtonContainer>
         {["👍", "❓", "👎"].map((voteEmoji) => {
           return (
@@ -41,7 +41,9 @@ function Votepage({ entryData, onHandleUpdateVoteEvent }) {
         })}
       </StyledVoteButtonContainer>
 
-      <button onClick={handleVoteResult}>👉Confirm</button>
+      <button type="button" onClick={handleVoteResult}>
+        👉Confirm
+      </button>
 
       <StyledBackLink href="/">Back ↩︎</StyledBackLink>
     </StyledWrapper>
