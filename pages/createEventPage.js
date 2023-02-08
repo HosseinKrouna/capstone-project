@@ -12,14 +12,11 @@ function CreateEventForm({ onHandleEntryData }) {
   return (
     <>
       <header>
-        <h1>New Event</h1>
+        <h1 aria-labelledby="createEventForm">New Event</h1>
       </header>
       <main>
         <StyledWrapper>
-          <FormContainer
-            aria-labelledby="createEventForm"
-            onSubmit={handleSubmit}
-          >
+          <FormContainer id="createEventForm" onSubmit={handleSubmit}>
             <fieldset>
               <legend>Create a new Event 👇</legend>
               <FormItems>

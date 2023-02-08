@@ -20,7 +20,7 @@ function PreviewPage({ entryData }) {
         <span>Creator: {currentEvent?.creator}</span>
       </StyledCardContainer>
 
-      <StyledBackLink href="/">↩︎</StyledBackLink>
+      <StyledBackLink href="/">Back ↩︎</StyledBackLink>
     </StyledWrapper>
   );
 }

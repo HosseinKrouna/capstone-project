@@ -2,9 +2,8 @@ import { useRouter } from "next/router";
 import styled from "styled-components";
 import { useState } from "react";
 import { StyledWrapper } from "@/components/styles/Wrapper";
-import { StyledCardContainer } from "@/components/styles/CardContainer";
 import { StyledBackLink } from "@/components/styles/BackLink";
-
+import VoteDetails from "@/components/VoteDetails";
 function Votepage({ entryData, onHandleUpdateVoteEvent }) {
   const [emojiCheckmark, setEmojiCheckmark] = useState("");
   const router = useRouter();
@@ -21,14 +20,12 @@ function Votepage({ entryData, onHandleUpdateVoteEvent }) {
   return (
     <StyledWrapper>
       <h2>{currentEvent?.title}</h2>
-      <StyledCardContainer>
-        <StyledEmojiCheckmark>{emojiCheckmark}</StyledEmojiCheckmark>
-        <span>{currentEvent?.startTime}</span>
-        <span>{currentEvent?.endTime}</span>
-        <p>Location: {currentEvent?.location}</p>
-        <p>Let a Comment: {currentEvent?.description}</p>
-        <p>Creator: {currentEvent?.creator}</p>
-      </StyledCardContainer>
+      {emojiCheckmark}
+      <VoteDetails
+        emojiCheckmark={emojiCheckmark}
+        currentEvent={currentEvent}
+        entryData={entryData}
+      ></VoteDetails>
       <StyledVoteButtonContainer>
         {["👍", "❓", "👎"].map((voteEmoji) => {
           return (
@@ -36,26 +33,20 @@ function Votepage({ entryData, onHandleUpdateVoteEvent }) {
               onClick={() => setEmojiCheckmark(voteEmoji)}
               key={voteEmoji}
             >
-              <span aria-label="emoji">{voteEmoji}</span>
+              <span aria-label="Emoji image on vote button" role="img">
+                {voteEmoji}
+              </span>
             </StyledVoteButtons>
           );
         })}
       </StyledVoteButtonContainer>
 
-      <button onClick={() => handleVoteResult()}>👉Confirm</button>
+      <button onClick={handleVoteResult}>👉Confirm</button>
 
       <StyledBackLink href="/">Back ↩︎</StyledBackLink>
     </StyledWrapper>
   );
 }
-
-const StyledEmojiCheckmark = styled.span`
-  position: absolute;
-  top: 61px;
-  left: 275px;
-  right: 80px;
-  font-size: 27px;
-`;
 
 const StyledVoteButtons = styled.button`
   font-size: 35px;
