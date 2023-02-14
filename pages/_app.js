@@ -1,19 +1,15 @@
 import GlobalStyle from "@/styles";
 import Head from "next/head";
-import { v4 } from "uuid";
-import { useRouter } from "next/router";
+import { v4 as uuidv4 } from "uuid";
 import { useImmerLocalStorageState } from "@/lib/hooks";
 
 export default function App({ Component, pageProps }) {
-  const router = useRouter();
-
   const [entryData, setEntryData] = useImmerLocalStorageState("entryData", {
     defaultValue: [],
   });
   function handleEntryData(data) {
-    const newData = { ...data, id: v4() };
+    const newData = { ...data, id: uuidv4() };
     setEntryData([newData, ...entryData]);
-    return router.push(`/preview/${newData.id}`);
   }
 
   function handleUpdateVoteEvent(voteResultData) {

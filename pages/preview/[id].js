@@ -6,8 +6,13 @@ import { useRouter } from "next/router";
 function PreviewPage({ entryData }) {
   const router = useRouter();
   const { id } = router.query;
-
+  console.log(entryData);
   const currentEvent = entryData.find((entry) => entry.id === id);
+  console.log(currentEvent);
+
+  // if (!currentEvent) {
+  //   return router.push("/");
+  // }
 
   return (
     <StyledWrapper>

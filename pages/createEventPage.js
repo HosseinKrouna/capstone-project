@@ -1,13 +1,19 @@
 import styled from "styled-components";
 import { StyledWrapper } from "../components/styles/Wrapper";
 import { StyledBackLink } from "@/components/styles/BackLink";
+import { useRouter } from "next/router";
+
 function CreateEventForm({ onHandleEntryData }) {
+  const router = useRouter();
+  // const { id } = router.query;
+
   function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
 
     onHandleEntryData(data);
+    router.push(`/`);
   }
   return (
     <>
@@ -61,7 +67,7 @@ function CreateEventForm({ onHandleEntryData }) {
               </FormItems>
             </fieldset>
           </FormContainer>
-          <StyledBackLink href="/">↩︎</StyledBackLink>
+          <StyledBackLink href="/">Back↩︎</StyledBackLink>
         </StyledWrapper>
       </main>
     </>
