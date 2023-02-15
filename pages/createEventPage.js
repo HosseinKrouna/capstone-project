@@ -20,23 +20,27 @@ function CreateEventForm({ onHandleEntryData }) {
       </header>
       <main>
         <FormContainer id="createEventForm" onSubmit={handleSubmit}>
-          <fieldset>
-            <legend>Create a new Event 👇</legend>
+          <StyledFieldSet>
+            <legend>Create a new Event</legend>
             <FormItems>
               <label htmlFor="title">Title:</label>
-              <input
+              <StyledInput
                 id="title"
                 name="title"
                 type="text"
-                maxLength="20"
+                maxLength="10"
                 required
               />
               <label htmlFor="start-time">Start Time:</label>
-              <input id="start-time" name="startTime" type="datetime-local" />
+              <StyledInput
+                id="start-time"
+                name="startTime"
+                type="datetime-local"
+              />
               <label htmlFor="end-time">End Time:</label>
-              <input id="end-time" name="endTime" type="datetime-local" />
+              <StyledInput id="end-time" name="endTime" type="datetime-local" />
               <label htmlFor="location">Location:</label>
-              <input
+              <StyledInput
                 id="location"
                 name="location"
                 type="text"
@@ -53,7 +57,7 @@ function CreateEventForm({ onHandleEntryData }) {
                 maxLength="10"
               />
               <label htmlFor="title">Creator:</label>
-              <input
+              <StyledInput
                 id="creator"
                 name="creator"
                 type="text"
@@ -62,27 +66,32 @@ function CreateEventForm({ onHandleEntryData }) {
               />
               <button type="submit">Submit</button>
             </FormItems>
-          </fieldset>
+          </StyledFieldSet>
         </FormContainer>
         <StyledBackLink href="/">Back↩︎</StyledBackLink>
       </main>
     </>
   );
 }
+const StyledInput = styled.input`
+  &:focus ~ label,
+  &:valid {
+    transform: translateX(-13px) translateY(-35px);
+    font-size: 1em;
+  }
+`;
+
+const StyledFieldSet = styled.fieldset`
+  border: none;
+`;
+
 const FormItems = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 9px;
 `;
 
 const FormContainer = styled.form`
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  align-items: center;
-  justify-content: start;
   height: 100vh;
-  font-family: cursive;
-  padding: 0;
 `;
-
 export default CreateEventForm;
