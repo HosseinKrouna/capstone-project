@@ -1,10 +1,14 @@
-import { StyledCardContainer } from "./styles/CardContainer";
-
+import {
+  StyledCardContainer,
+  StyledEventTitle,
+  StyledVoteResult,
+} from "./styles/CardContainer";
+// import { StyledEventTitle} from "./styles"
 export default function EventCard({ entry }) {
   return (
     <StyledCardContainer>
-      <h2>{entry.title}</h2>
-      <span>{entry.voteResult}</span>
+      <StyledEventTitle>{entry.title}</StyledEventTitle>
+      <StyledVoteResult>{entry.voteResult}</StyledVoteResult>
     </StyledCardContainer>
   );
 }
