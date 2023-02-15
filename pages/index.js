@@ -26,7 +26,6 @@ export default function HomePage({ entryData, voteResultData }) {
 }
 const StyledMain = styled.main`
   display: flex;
-  height: 100vh;
   flex-direction: column;
   align-items: center;
   gap: 10px;

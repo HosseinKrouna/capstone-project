@@ -3,7 +3,6 @@ import {
   StyledEventTitle,
   StyledVoteResult,
 } from "./styles/CardContainer";
-// import { StyledEventTitle} from "./styles"
 export default function EventCard({ entry }) {
   return (
     <StyledCardContainer>

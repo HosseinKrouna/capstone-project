@@ -22,12 +22,12 @@ function Votepage({ entryData, onHandleUpdateVoteEvent }) {
       <StyledMain>
         <h2>{currentEvent?.title}</h2>
         <StyledVoteEventCard>
-          {emojiCheckmark}
           <VoteDetails
             emojiCheckmark={emojiCheckmark}
             currentEvent={currentEvent}
             entryData={entryData}
           />
+          {emojiCheckmark}
         </StyledVoteEventCard>
         <StyledVoteButtonContainer>
           {["👍", "❓", "👎"].map((voteEmoji) => {
@@ -44,15 +44,57 @@ function Votepage({ entryData, onHandleUpdateVoteEvent }) {
           })}
         </StyledVoteButtonContainer>
 
-        <button type="button" onClick={handleVoteResult}>
-          👉Confirm
-        </button>
-
-        <StyledBackLink href="/">Back ↩︎</StyledBackLink>
+        <StyledButtonConfirm type="button" onClick={handleVoteResult}>
+          Confirm
+        </StyledButtonConfirm>
       </StyledMain>
+      <StyledBackLink href="/">Home</StyledBackLink>
     </>
   );
 }
+const StyledButtonConfirm = styled.button`
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+  border: 0;
+  vertical-align: middle;
+  text-decoration: none;
+  font-size: inherit;
+  font-family: inherit;
+
+  font-weight: 600;
+  padding: 1.25em 2em;
+  border-radius: 0.75em;
+  transform-style: preserve-3d;
+  transition: transform 150ms cubic-bezier(0, 0, 0.58, 1),
+    background 150ms cubic-bezier(0, 0, 0.58, 1);
+  &::before {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    transform: translate3d(0, 0.75em, -1em);
+    transition: transform 150ms cubic-bezier(0, 0, 0.58, 1),
+      box-shadow 150ms cubic-bezier(0, 0, 0.58, 1);
+  }
+  &:hover {
+    transform: translate(0, 0.25em);
+    &::before {
+      transform: translate3d(0, 0.5em, -1em);
+    }
+  }
+  &:active {
+    transform: translate(0em, 0.75em);
+    &::before {
+      transform: translate3d(0, 0, -1em);
+    }
+  }
+`;
 
 const StyledVoteEventCard = styled.span`
   display: flex;
@@ -77,8 +119,45 @@ const StyledMain = styled.main`
 `;
 
 const StyledVoteButtons = styled.button`
-  font-size: 35px;
+  position: relative;
+  display: inline-block;
   cursor: pointer;
+  outline: none;
+  border: 0;
+  vertical-align: middle;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-family: inherit;
+  padding: 1em 2em;
+  border-radius: 1em;
+  transform-style: preserve-3d;
+  transition: all 175ms cubic-bezier(0, 0, 1, 1);
+  &::before {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    transform: translate3d(0, 0.75em, -1em);
+    transition: all 175ms cubic-bezier(0, 0, 1, 1);
+  }
+  &:hover {
+    transform: translate(0, 0.375em);
+  }
+  &:hover::before {
+    transform: translate3d(0, 0.75em, -1em);
+  }
+  &:active {
+    transform: translate(0em, 0.75em);
+  }
+  &:active::before {
+    transform: translate3d(0, 0, -1em);
+  }
 `;
 
 const StyledVoteButtonContainer = styled.div`
