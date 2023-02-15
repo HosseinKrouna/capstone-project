@@ -3,20 +3,18 @@ import styled from "styled-components";
 export default function VoteDetails({ currentEvent }) {
   return (
     <StyledVoteCardDetails>
-      <StyledListItem>Start: {currentEvent?.startTime}</StyledListItem>
-      <StyledListItem>End: {currentEvent?.endTime}</StyledListItem>
-      <StyledListItem>Location: {currentEvent?.location}</StyledListItem>
-      <StyledListItem>
-        Let a Comment: {currentEvent?.description}
-      </StyledListItem>
-      <StyledListItem>Creator: {currentEvent?.creator}</StyledListItem>
+      <StyledListItem>{currentEvent?.startTime}</StyledListItem>
+      <StyledListItem>{currentEvent?.endTime}</StyledListItem>
+      <StyledListItem>{currentEvent?.location}</StyledListItem>
+      <StyledListItem>{currentEvent?.description}</StyledListItem>
+      <StyledListItem>{currentEvent?.creator}</StyledListItem>
     </StyledVoteCardDetails>
   );
 }
 
 const StyledListItem = styled.li`
-  font-size: 18px;
-  font-weight: bold;
+  font-size: 27px;
+  font-weight: 900;
 `;
 
 const StyledVoteCardDetails = styled.ul`

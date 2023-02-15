@@ -1,10 +1,26 @@
 import Link from "next/link";
 import styled from "styled-components";
 import EventCard from "@/components/EventCard";
+import Head from "next/head";
+import { Animated } from "react-animated-css";
+import { u1F389 } from "react-icons-kit/noto_emoji_regular/u1F389";
+import Icon from "react-icons-kit";
 
 function EventsList({ entryData }) {
+  const styleAlternativeEventListEmpty = {
+    color: "#00ff00",
+    textAlign: "center",
+    paddingTop: "50px",
+  };
+
   return (
     <>
+      <Head>
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"
+        />
+      </Head>
       {entryData.length > 0 ? (
         <>
           <StyledList>
@@ -18,11 +34,24 @@ function EventsList({ entryData }) {
           </StyledList>
         </>
       ) : (
-        <p>Nothing to vote 🤨</p>
+        <Animated
+          animationIn="rotateInUpLeft"
+          animationOut="slideOutUp"
+          isVisible={true}
+        >
+          <span>
+            <Icon
+              icon={u1F389}
+              style={styleAlternativeEventListEmpty}
+              size={200}
+            />
+          </span>
+        </Animated>
       )}
     </>
   );
 }
+
 const StyledListItem = styled.li`
   border-radius: 50px;
   box-shadow: 0 1rem 1.25rem 0 rgba(22, 75, 195, 0.5),

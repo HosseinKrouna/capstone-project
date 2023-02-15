@@ -7,12 +7,22 @@ import { StyledAddEventLink } from "../components/styles/AddEventLink";
 import { Icon } from "react-icons-kit";
 import { ic_add_circle_outline_outline } from "react-icons-kit/md/ic_add_circle_outline_outline";
 import styled from "styled-components";
+import Head from "next/head";
+import { Animated } from "react-animated-css";
 
 export default function HomePage({ entryData, voteResultData }) {
   return (
     <>
+      <Head>
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"
+        />
+      </Head>
       <StyledHeaderHomepage>
-        <StyledAppTitle>Friends Wall</StyledAppTitle>
+        <Animated animationIn="flash" animationOut="fadeOut" isVisible={true}>
+          <StyledAppTitle>Friends Wall</StyledAppTitle>
+        </Animated>
       </StyledHeaderHomepage>
       <StyledEventTitle>Events</StyledEventTitle>
       <StyledMain>
@@ -32,5 +42,8 @@ const StyledMain = styled.main`
 `;
 
 const StyledEventTitle = styled.h2`
+  margin: 0;
   padding-left: 23px;
+  color: #e0ffff;
+  font-size: 32px;
 `;

@@ -15,9 +15,6 @@ function CreateEventForm({ onHandleEntryData }) {
   }
   return (
     <>
-      <header>
-        <h1 aria-labelledby="createEventForm">New Event</h1>
-      </header>
       <StyledLedegend>Create a new Event</StyledLedegend>
       <main>
         <FormContainer id="createEventForm" onSubmit={handleSubmit}>
@@ -28,7 +25,7 @@ function CreateEventForm({ onHandleEntryData }) {
                 id="title"
                 name="title"
                 type="text"
-                maxLength="10"
+                maxLength="50"
                 required
                 autoFocus
               />
@@ -45,7 +42,7 @@ function CreateEventForm({ onHandleEntryData }) {
                 id="location"
                 name="location"
                 type="text"
-                maxLength="10"
+                maxLength="50"
                 required
               />
 
@@ -62,7 +59,7 @@ function CreateEventForm({ onHandleEntryData }) {
                 id="creator"
                 name="creator"
                 type="text"
-                maxLength="10"
+                maxLength="50"
                 required
               />
               <StyledSubmitButton type="submit">Submit</StyledSubmitButton>
@@ -77,15 +74,17 @@ function CreateEventForm({ onHandleEntryData }) {
 
 const StyledTextArea = styled.textarea`
   background: linear-gradient(21deg, #10abff, #1beabd);
+  border-radius: 6px;
 `;
 
 const StyledLedegend = styled.legend`
-  font-size: 35px;
+  font-size: 39px;
   font-weight: 800px;
   color: #fdfdfe;
   text-shadow: 0px 0px 5px #b393d3, 0px 0px 10px #b393d3, 0px 0px 10px #b393d3,
     0px 0px 20px #b393d3;
-  padding: 3px;
+  padding-left: 15px;
+  padding-top: 14px;
 `;
 
 const StyledSubmitButton = styled.button`
@@ -97,7 +96,7 @@ const StyledSubmitButton = styled.button`
   line-height: 1.5rem;
   font-size: 1.6rem;
   font-weight: 500;
-
+  width: 207px;
   border: 1px solid #012880;
   background-image: linear-gradient(-180deg, #ff89d6 0%, #c01f9e 100%);
   box-shadow: 0 1rem 1.25rem 0 rgba(22, 75, 195, 0.5),
@@ -134,6 +133,7 @@ const StyledSubmitButton = styled.button`
 
 const StyledInput = styled.input`
   background: linear-gradient(21deg, #10abff, #1beabd);
+  border-radius: 6px;
 `;
 
 const StyledFieldSet = styled.fieldset`
@@ -143,10 +143,13 @@ const StyledFieldSet = styled.fieldset`
 const FormItems = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 9px;
+  gap: 4px;
+  align-items: center;
+  align-content: space-between;
 `;
 
 const FormContainer = styled.form`
-  height: 100vh;
+  padding: 10px;
+  /* height: 100vh; */
 `;
 export default CreateEventForm;

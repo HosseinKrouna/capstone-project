@@ -3,9 +3,12 @@ import styled from "styled-components";
 import { useState } from "react";
 import { StyledBackLink } from "@/components/styles/BackLink";
 import VoteDetails from "@/components/VoteDetails";
+import Confetti from "react-confetti";
 
 function Votepage({ entryData, onHandleUpdateVoteEvent }) {
   const [emojiCheckmark, setEmojiCheckmark] = useState("");
+  const [confetti, setConfetti] = useState(false);
+
   const router = useRouter();
   const { id } = router.query;
 
@@ -15,19 +18,23 @@ function Votepage({ entryData, onHandleUpdateVoteEvent }) {
     const resultVoteEvent = { ...currentEvent, voteResult: emojiCheckmark };
 
     onHandleUpdateVoteEvent(resultVoteEvent);
+    setConfetti(true);
   }
 
   return (
     <>
       <StyledMain>
-        <h2>{currentEvent?.title}</h2>
+        {confetti && <Confetti />}
+
+        <StyledVoteTitle>{currentEvent?.title}</StyledVoteTitle>
         <StyledVoteEventCard>
           <VoteDetails
             emojiCheckmark={emojiCheckmark}
             currentEvent={currentEvent}
             entryData={entryData}
           />
-          {emojiCheckmark}
+
+          <StyledEmojiCheckmark>{emojiCheckmark}</StyledEmojiCheckmark>
         </StyledVoteEventCard>
         <StyledVoteButtonContainer>
           {["👍", "❓", "👎"].map((voteEmoji) => {
@@ -52,6 +59,17 @@ function Votepage({ entryData, onHandleUpdateVoteEvent }) {
     </>
   );
 }
+
+const StyledEmojiCheckmark = styled.span`
+  font-size: 30px;
+`;
+
+const StyledVoteTitle = styled.h2`
+  font-size: 40px;
+  margin: 0;
+  margin-top: 10px;
+`;
+
 const StyledButtonConfirm = styled.button`
   position: relative;
   display: inline-block;
@@ -60,9 +78,17 @@ const StyledButtonConfirm = styled.button`
   border: 0;
   vertical-align: middle;
   text-decoration: none;
-  font-size: inherit;
+  font-size: 16px;
   font-family: inherit;
 
+  border: 1px solid #012880;
+  background-image: linear-gradient(-180deg, #ff89d6 0%, #c01f9e 100%);
+  box-shadow: 0 1rem 1.25rem 0 rgba(22, 75, 195, 0.5),
+    0 -0.25rem 1.5rem rgba(110, 15, 155, 1) inset,
+    0 0.75rem 0.5rem rgba(255, 255, 255, 0.4) inset,
+    0 0.25rem 0.5rem 0 rgba(180, 70, 207, 1) inset;
+  transform-style: preserve-3d;
+  transition: all 175ms cubic-bezier(0, 0, 1, 1);
   font-weight: 600;
   padding: 1.25em 2em;
   border-radius: 0.75em;
@@ -71,8 +97,8 @@ const StyledButtonConfirm = styled.button`
     background 150ms cubic-bezier(0, 0, 0.58, 1);
   &::before {
     position: absolute;
-    width: 100%;
-    height: 100%;
+    /* width: 100%;
+    height: 100%; */
     top: 0;
     left: 0;
     right: 0;
@@ -103,7 +129,7 @@ const StyledVoteEventCard = styled.span`
   padding: 10px;
   border-radius: 4px;
   background: linear-gradient(to left, white, #d9d9d9);
-  height: 360px;
+  height: 250px;
   width: 300px;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
     rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
@@ -124,6 +150,7 @@ const StyledVoteButtons = styled.button`
   cursor: pointer;
   outline: none;
   border: 0;
+  background: transparent;
   vertical-align: middle;
   text-decoration: none;
   font-size: 1.5rem;
@@ -136,8 +163,8 @@ const StyledVoteButtons = styled.button`
   transition: all 175ms cubic-bezier(0, 0, 1, 1);
   &::before {
     position: absolute;
-    width: 100%;
-    height: 100%;
+    /* width: 100%;
+    height: 100%; */
     top: 0;
     left: 0;
     right: 0;
