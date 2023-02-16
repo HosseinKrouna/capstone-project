@@ -5,14 +5,13 @@ import Head from "next/head";
 import { Animated } from "react-animated-css";
 import { u1F389 } from "react-icons-kit/noto_emoji_regular/u1F389";
 import Icon from "react-icons-kit";
-
+import ConfettiExplosion from "react-confetti-explosion";
 function EventsList({ entryData }) {
   const styleAlternativeEventListEmpty = {
     color: "#00ff00",
     textAlign: "center",
     paddingTop: "50px",
   };
-
   return (
     <>
       <Head>
@@ -40,6 +39,7 @@ function EventsList({ entryData }) {
           isVisible={true}
         >
           <span>
+            <ConfettiExplosion />
             <Icon
               icon={u1F389}
               style={styleAlternativeEventListEmpty}
@@ -58,8 +58,6 @@ const StyledListItem = styled.li`
     0 -0.25rem 1.5rem rgba(376, 15, 155, 1) inset,
     0 0.75rem 0.5rem rgba(255, 255, 255, 0.4) inset,
     0 0.25rem 0.5rem 0 rgba(180, 70, 207, 1) inset;
-  /* transform-style: preserve-3d; */
-  /* transition: all 175ms cubic-bezier(0, 0, 1, 1); */
   &::before {
     transform: translate3d(0, 0.75em, -1em);
     transition: all 175ms cubic-bezier(0, 0, 1, 1);

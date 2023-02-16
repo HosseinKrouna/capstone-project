@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { StyledBackLink } from "@/components/styles/BackLink";
 import { useRouter } from "next/router";
 
-function CreateEventForm({ onHandleEntryData }) {
+function CreateEventForm({ onHandleEntryData, onHandleConfettiExplosion }) {
   const router = useRouter();
 
   function handleSubmit(event) {
@@ -11,6 +11,7 @@ function CreateEventForm({ onHandleEntryData }) {
     const data = Object.fromEntries(formData);
 
     onHandleEntryData(data);
+
     router.push(`/`);
   }
   return (

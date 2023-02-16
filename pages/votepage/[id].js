@@ -3,11 +3,9 @@ import styled from "styled-components";
 import { useState } from "react";
 import { StyledBackLink } from "@/components/styles/BackLink";
 import VoteDetails from "@/components/VoteDetails";
-import Confetti from "react-confetti";
 
 function Votepage({ entryData, onHandleUpdateVoteEvent }) {
   const [emojiCheckmark, setEmojiCheckmark] = useState("");
-  const [confetti, setConfetti] = useState(false);
 
   const router = useRouter();
   const { id } = router.query;
@@ -18,14 +16,11 @@ function Votepage({ entryData, onHandleUpdateVoteEvent }) {
     const resultVoteEvent = { ...currentEvent, voteResult: emojiCheckmark };
 
     onHandleUpdateVoteEvent(resultVoteEvent);
-    setConfetti(true);
   }
 
   return (
     <>
       <StyledMain>
-        {confetti && <Confetti />}
-
         <StyledVoteTitle>{currentEvent?.title}</StyledVoteTitle>
         <StyledVoteEventCard>
           <VoteDetails
