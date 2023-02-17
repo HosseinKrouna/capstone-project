@@ -2,10 +2,17 @@ import styled from "styled-components";
 
 export const StyledCardContainer = styled.div`
   display: flex;
-  margin: 10px;
+  justify-content: space-around;
+  margin-bottom: 10px;
   padding: 10px;
-  flex-direction: column;
-  border: 3px solid;
-  background-color: limegreen;
-  border-radius: 5px;
+  border-radius: 4px;
+  height: 80px;
+  width: 300px;
+`;
+export const StyledEventTitle = styled.h2`
+  align-self: center;
+`;
+export const StyledVoteResult = styled.span`
+  align-self: center;
+  font-size: 25px;
 `;

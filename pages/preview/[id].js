@@ -1,6 +1,5 @@
 import { StyledBackLink } from "@/components/styles/BackLink";
 import { StyledCardContainer } from "@/components/styles/CardContainer";
-import { StyledWrapper } from "@/components/styles/Wrapper";
 import { useRouter } from "next/router";
 
 function PreviewPage({ entryData }) {
@@ -15,7 +14,7 @@ function PreviewPage({ entryData }) {
   // }
 
   return (
-    <StyledWrapper>
+    <>
       <h1>{currentEvent?.title}</h1>
       <StyledCardContainer>
         <span>Start Time: {currentEvent?.startTime}</span>
@@ -28,7 +27,7 @@ function PreviewPage({ entryData }) {
       <StyledBackLink aria-label="Homepage" href="/">
         Back ↩︎
       </StyledBackLink>
-    </StyledWrapper>
+    </>
   );
 }
 

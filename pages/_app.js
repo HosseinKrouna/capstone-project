@@ -27,12 +27,14 @@ export default function App({ Component, pageProps }) {
       <Head>
         <title>Capstone Project</title>
       </Head>
-      <Component
-        {...pageProps}
-        entryData={entryData}
-        onHandleEntryData={handleEntryData}
-        onHandleUpdateVoteEvent={handleUpdateVoteEvent}
-      />
+      <main>
+        <Component
+          {...pageProps}
+          entryData={entryData}
+          onHandleEntryData={handleEntryData}
+          onHandleUpdateVoteEvent={handleUpdateVoteEvent}
+        />
+      </main>
     </>
   );
 }
