@@ -1,6 +1,27 @@
-# New Project
+# Friends Wall - Capstone Project
 
-The Friends Wall App should make it easier and faster to react to an event entry.
+> The Friends Wall App should make it easier and faster to react to an event entry.
+
+![app_impression](./public/user-conent/images/Screenshot%202023-02-17%20at%2014.07.49.png)
+
+## `Description`
+
+**This is a capstone project for [neuefische](https://www.neuefische.de/) web development bootcamp.**
+
+You can create events and add them to a list. It is possible to pick and choose events. You could then have a vote on whether you are there or not or whether it is still unclear.
+With a confirmation the party can start 🎉
+
+### `Demo`
+
+You can find the demo version here: [Friends Wall](https://friends-wall.vercel.app/)
+
+**_IMPORTANT NOTE: currently optimized for mobile!_**
+
+## `Tech Stack`
+
+- [React](https://reactjs.org/)
+- [Next.js](https://nextjs.org/)
+- [styled components](https://styled-components.com/)
 
 ## Development
 
