@@ -1,6 +1,6 @@
 # New Project
 
-The Friends Wall App should make it easier and faster to react to an event entry
+The Friends Wall App should make it easier and faster to react to an event entry.
 
 ## Development
 

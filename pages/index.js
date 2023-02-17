@@ -38,7 +38,7 @@ const StyledMain = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 11px;
 `;
 
 const StyledEventTitle = styled.h2`
