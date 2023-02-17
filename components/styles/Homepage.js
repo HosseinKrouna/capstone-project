@@ -5,7 +5,7 @@ export const StyledHeaderHomepage = styled.header`
 `;
 
 export const StyledAppTitle = styled.h1`
-  font-size: 60px;
+  font-size: 45px;
   color: #fdfdfe;
   text-shadow: 0px 0px 5px #b393d3, 0px 0px 10px #b393d3, 0px 0px 10px #b393d3,
     0px 0px 20px #b393d3;
@@ -25,4 +25,5 @@ export const StyledFooter = styled.footer`
 
 export const StyledEventsTitle = styled.h2`
   text-align: center;
+  left: 50px;
 `;

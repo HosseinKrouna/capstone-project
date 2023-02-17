@@ -43,7 +43,8 @@ const StyledMain = styled.main`
 
 const StyledEventTitle = styled.h2`
   margin: 0;
-  padding-left: 23px;
+  padding-left: 60px;
   color: #e0ffff;
   font-size: 32px;
+  left: 50px;
 `;

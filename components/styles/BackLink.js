@@ -4,7 +4,7 @@ import Link from "next/link";
 export const StyledBackLink = styled(Link)`
   position: absolute;
   text-align: center;
-  right: 137px;
+  right: 154px;
   bottom: 20px;
   padding: 10px;
   margin: 0;
