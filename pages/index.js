@@ -21,10 +21,10 @@ export default function HomePage({ entryData, voteResultData }) {
       </Head>
       <StyledHeaderHomepage>
         <Animated animationIn="flash" animationOut="fadeOut" isVisible={true}>
-          <StyledAppTitle>HAPPY BIRTHDAY🥳</StyledAppTitle>
+          <StyledAppTitle>Friends Wall</StyledAppTitle>
         </Animated>
       </StyledHeaderHomepage>
-      <StyledEventTitle>CAN und TIM</StyledEventTitle>
+      <StyledEventTitle>Events</StyledEventTitle>
       <StyledMain>
         <EventsList entryData={entryData} voteResultData={voteResultData} />
         <StyledAddEventLink href="/createEventPage">
