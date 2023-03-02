@@ -22,6 +22,8 @@ You can find the demo version here: [Friends Wall](https://friends-wall.vercel.a
 - [React](https://reactjs.org/)
 - [Next.js](https://nextjs.org/)
 - [styled components](https://styled-components.com/)
+- [Immer](https://immerjs.github.io/immer/example-setstate/)
+- [npm](https://docs.npmjs.com/about-npm)
 
 ## Development
 
