@@ -26,7 +26,7 @@ function CreateEventForm({ onHandleEntryData, onHandleConfettiExplosion }) {
 								id="title"
 								name="title"
 								type="text"
-								maxLength="50"
+								maxLength="25"
 								required
 								autoFocus
 							/>
@@ -43,7 +43,7 @@ function CreateEventForm({ onHandleEntryData, onHandleConfettiExplosion }) {
 								id="location"
 								name="location"
 								type="text"
-								maxLength="50"
+								maxLength="30"
 								required
 							/>
 
@@ -60,7 +60,7 @@ function CreateEventForm({ onHandleEntryData, onHandleConfettiExplosion }) {
 								id="creator"
 								name="creator"
 								type="text"
-								maxLength="50"
+								maxLength="15"
 								required
 							/>
 							<StyledSubmitButton type="submit">Submit</StyledSubmitButton>
