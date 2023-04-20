@@ -1,18 +1,16 @@
 import styled from "styled-components";
 
 export const StyledCardContainer = styled.div`
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 10px;
-  padding: 10px;
-  border-radius: 4px;
-  height: 80px;
-  width: 300px;
+	display: flex;
+	height: 200px;
+	width: 400px;
+	flex-direction: column;
+	align-items: center;
 `;
-export const StyledEventTitle = styled.h2`
-  align-self: center;
-`;
+export const StyledEventTitle = styled.h2``;
 export const StyledVoteResult = styled.span`
-  align-self: center;
-  font-size: 25px;
+	align-self: flex-end;
 `;
+export const StyledStartTime = styled.span``;
+export const StyledEndTime = styled.span``;
+export const StyledLocation = styled.span``;
