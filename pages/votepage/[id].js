@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useState } from "react";
 import { StyledBackLink } from "@/components/styles/BackLink";
 import VoteDetails from "@/components/VoteDetails";
+import { dataIcons } from "@/Icons/dataIcons";
 
 function Votepage({ entryData, onHandleUpdateVoteEvent }) {
 	const [emojiCheckmark, setEmojiCheckmark] = useState("");
@@ -33,24 +34,27 @@ function Votepage({ entryData, onHandleUpdateVoteEvent }) {
 
 					<StyledEmojiCheckmark>{emojiCheckmark}</StyledEmojiCheckmark>
 				</StyledVoteEventCard>
+
 				<StyledVoteButtonContainer>
-					{["👍", "❓", "👎"].map((voteEmoji) => {
+					{/* //FIXME - Object Mapping!! */}
+
+					{dataIcons.map((dataIcon) => {
 						return (
 							<StyledVoteButtons
-								onClick={() => setEmojiCheckmark(voteEmoji)}
-								key={voteEmoji}
+								onClick={() => setEmojiCheckmark(dataIcon.imageSrc)}
+								key={dataIcon.id}
 							>
 								<span aria-label="Emoji image on vote button" role="img">
-									{voteEmoji}
+									{dataIcon.imageSrc}
 								</span>
 							</StyledVoteButtons>
 						);
 					})}
 				</StyledVoteButtonContainer>
 
-				{/* <StyledButtonConfirm type="button" onClick={handleVoteResult}>
+				<StyledButtonConfirm type="button" onClick={handleVoteResult}>
 					Confirm
-				</StyledButtonConfirm> */}
+				</StyledButtonConfirm>
 			</StyledMain>
 		</>
 	);

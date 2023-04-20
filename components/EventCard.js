@@ -9,11 +9,11 @@ import {
 export default function EventCard({ entry }) {
 	return (
 		<StyledCardContainer>
-			<StyledVoteResult>{entry.voteResult}</StyledVoteResult>
 			<StyledEventTitle>{entry.title}</StyledEventTitle>
 			<StyledStartTime>{entry.startTime}</StyledStartTime>
 			<StyledEndTime>{entry.endTime}</StyledEndTime>
 			<StyledLocation>{entry.location}</StyledLocation>
+			<StyledVoteResult>{entry.voteResult}</StyledVoteResult>
 		</StyledCardContainer>
 	);
 }

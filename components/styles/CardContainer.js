@@ -10,6 +10,10 @@ export const StyledCardContainer = styled.div`
 export const StyledEventTitle = styled.h2``;
 export const StyledVoteResult = styled.span`
 	align-self: flex-end;
+	border: solid 3px;
+	margin-right: 25px;
+	border-radius: 50%;
+	padding: 10px;
 `;
 export const StyledStartTime = styled.span``;
 export const StyledEndTime = styled.span``;
