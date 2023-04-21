@@ -3,16 +3,17 @@ import styled from "styled-components";
 import { useState } from "react";
 import { StyledBackLink } from "@/components/styles/BackLink";
 import VoteDetails from "@/components/VoteDetails";
-// import { dataIcons } from "@/Icons/dataIcons";
-function DataIcons() {
-	const dataIcons = [
-		{ id: 0, imageSrc: require("@/Icons/hakchen.png") },
-		{ id: 1, imageSrc: require("@/Icons/fragezeichen.png") },
-		{ id: 2, imageSrc: require("@/Icons/absagen.png") },
-	];
-}
+import { voteIcons } from "@/Icons/dataIcons/";
+import Image from "next/image";
 
 function Votepage({ entryData, onHandleUpdateVoteEvent }) {
+	// const voteIcons = [
+	// 	,
+	// 	"@/Icons/fragezeichen.png",
+	// 	"@/Icons/absagen.png",
+	// ];
+	// const voteIconsToMap = voteIcons.map(voteIcon => <li>{voteIcon}</li>)
+
 	const [emojiCheckmark, setEmojiCheckmark] = useState("");
 
 	const router = useRouter();
@@ -43,18 +44,28 @@ function Votepage({ entryData, onHandleUpdateVoteEvent }) {
 				</StyledVoteEventCard>
 
 				<StyledVoteButtonContainer>
-					{DataIcons.dataIcons.map(({ id, imageSrc }) => {
+					{voteIcons.map((voteIcon) => (
+						<div key={voteIcon.id}>
+							<Image
+								width={80}
+								height={80}
+								src={voteIcon.imageSrc}
+								alt={voteIcon.description}
+							/>
+						</div>
+					))}
+					{/* {voteIcons.map((voteIcon, index) => {
 						return (
 							<StyledVoteButtons
-								onClick={() => setEmojiCheckmark(imageSrc)}
-								key={id}
+								onClick={() => setEmojiCheckmark(voteIcon)}
+								key={index}
 							>
 								<span aria-label="Emoji image on vote button" role="img">
-									{imageSrc}
+									{voteIcon}
 								</span>
 							</StyledVoteButtons>
 						);
-					})}
+					})} */}
 				</StyledVoteButtonContainer>
 
 				<StyledButtonConfirm type="button" onClick={handleVoteResult}>
