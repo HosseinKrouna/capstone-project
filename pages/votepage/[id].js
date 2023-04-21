@@ -3,7 +3,14 @@ import styled from "styled-components";
 import { useState } from "react";
 import { StyledBackLink } from "@/components/styles/BackLink";
 import VoteDetails from "@/components/VoteDetails";
-import { dataIcons } from "@/Icons/dataIcons";
+// import { dataIcons } from "@/Icons/dataIcons";
+function DataIcons() {
+	const dataIcons = [
+		{ id: 0, imageSrc: require("@/Icons/hakchen.png") },
+		{ id: 1, imageSrc: require("@/Icons/fragezeichen.png") },
+		{ id: 2, imageSrc: require("@/Icons/absagen.png") },
+	];
+}
 
 function Votepage({ entryData, onHandleUpdateVoteEvent }) {
 	const [emojiCheckmark, setEmojiCheckmark] = useState("");
@@ -36,16 +43,14 @@ function Votepage({ entryData, onHandleUpdateVoteEvent }) {
 				</StyledVoteEventCard>
 
 				<StyledVoteButtonContainer>
-					{/* //FIXME - Object Mapping!! */}
-
-					{dataIcons.map((dataIcon) => {
+					{DataIcons.dataIcons.map(({ id, imageSrc }) => {
 						return (
 							<StyledVoteButtons
-								onClick={() => setEmojiCheckmark(dataIcon.imageSrc)}
-								key={dataIcon.id}
+								onClick={() => setEmojiCheckmark(imageSrc)}
+								key={id}
 							>
 								<span aria-label="Emoji image on vote button" role="img">
-									{dataIcon.imageSrc}
+									{imageSrc}
 								</span>
 							</StyledVoteButtons>
 						);
