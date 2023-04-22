@@ -66,18 +66,6 @@ function Votepage({ entryData, onHandleUpdateVoteEvent }) {
 							/>
 						</StyledVoteButtons>
 					))}
-					{/* {voteIcons.map((voteIcon, index) => {
-						return (
-							<StyledVoteButtons
-								onClick={() => setEmojiCheckmark(voteIcon)}
-								key={index}
-							>
-								<span aria-label="Emoji image on vote button" role="img">
-									{voteIcon}
-								</span>
-							</StyledVoteButtons>
-						);
-					})} */}
 				</StyledVoteButtonContainer>
 
 				<StyledButtonConfirm type="button" onClick={handleVoteResult}>
@@ -162,7 +150,7 @@ const StyledVoteButtons = styled.button`
 
 const StyledVoteButtonContainer = styled.div`
 	display: flex;
-	justify-content: space-around;
+	justify-content: space-between;
 	gap: 10px;
 `;
 

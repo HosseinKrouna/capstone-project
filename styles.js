@@ -15,6 +15,6 @@ export default createGlobalStyle`
   align-items: center;
   height: 100vh;
   font-family: "Sansita Swashed", cursive;
-  background: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+  /* background: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12); */
   }
   `;
