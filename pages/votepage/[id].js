@@ -15,7 +15,7 @@ function Votepage({ entryData, onHandleUpdateVoteEvent }) {
 	// const voteIconsToMap = voteIcons.map(voteIcon => <li>{voteIcon}</li>)
 
 	const [emojiCheckmark, setEmojiCheckmark] = useState("");
-
+	console.log(emojiCheckmark);
 	const router = useRouter();
 	const { id } = router.query;
 
@@ -45,14 +45,26 @@ function Votepage({ entryData, onHandleUpdateVoteEvent }) {
 
 				<StyledVoteButtonContainer>
 					{voteIcons.map((voteIcon) => (
-						<div key={voteIcon.id}>
+						<StyledVoteButtons
+							onClick={() =>
+								setEmojiCheckmark(
+									<Image
+										width={50}
+										height={50}
+										src={voteIcon.imageSrc}
+										alt={voteIcon.description}
+									/>
+								)
+							}
+							key={voteIcon.id}
+						>
 							<Image
 								width={80}
 								height={80}
 								src={voteIcon.imageSrc}
 								alt={voteIcon.description}
 							/>
-						</div>
+						</StyledVoteButtons>
 					))}
 					{/* {voteIcons.map((voteIcon, index) => {
 						return (
