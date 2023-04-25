@@ -86,8 +86,10 @@ const StyledList = styled.ul`
 const StyledLink = styled(Link)`
 	text-decoration: none;
 	color: black;
-	font-weight: 700;
+	font-weight: 600;
 	cursor: pointer;
+	width: 300px;
+	height: 250px;
 `;
 
 export default EventsList;

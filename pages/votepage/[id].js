@@ -7,15 +7,7 @@ import { voteIcons } from "@/Icons/dataIcons/";
 import Image from "next/image";
 
 function Votepage({ entryData, onHandleUpdateVoteEvent }) {
-	// const voteIcons = [
-	// 	,
-	// 	"@/Icons/fragezeichen.png",
-	// 	"@/Icons/absagen.png",
-	// ];
-	// const voteIconsToMap = voteIcons.map(voteIcon => <li>{voteIcon}</li>)
-
 	const [emojiCheckmark, setEmojiCheckmark] = useState("");
-	console.log(emojiCheckmark);
 	const router = useRouter();
 	const { id } = router.query;
 
