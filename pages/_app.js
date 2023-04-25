@@ -21,6 +21,11 @@ export default function App({ Component, pageProps }) {
 		});
 	}
 
+	function handelDeleteEntry(id) {
+		const newEntryData = entryData.filter((item) => item.id !== id);
+		setEntryData(newEntryData);
+	}
+
 	return (
 		<>
 			<GlobalStyle />
@@ -33,6 +38,7 @@ export default function App({ Component, pageProps }) {
 					entryData={entryData}
 					onHandleEntryData={handleEntryData}
 					onHandleUpdateVoteEvent={handleUpdateVoteEvent}
+					onHandelDeleteEntry={handelDeleteEntry}
 				/>
 			</main>
 		</>

@@ -6,13 +6,16 @@ import { Animated } from "react-animated-css";
 import { u1F389 } from "react-icons-kit/noto_emoji_regular/u1F389";
 import Icon from "react-icons-kit";
 import ConfettiExplosion from "react-confetti-explosion";
+import Image from "next/image";
+import { optionIcon } from "@/Icons/optionIcon";
 
-function EventsList({ entryData }) {
+function EventsList({ entryData, onHandelDeleteEntry }) {
 	const styleAlternativeEventListEmpty = {
 		color: "#00ff00",
 		textAlign: "center",
 		paddingTop: "50px",
 	};
+
 	return (
 		<>
 			<Head>
@@ -21,37 +24,50 @@ function EventsList({ entryData }) {
 					href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"
 				/>
 			</Head>
-			{entryData.length > 0 ? (
-				<>
-					<StyledList>
-						{entryData.map((entry) => (
-							<StyledListItem key={entry.id}>
-								<StyledLink href={`/votepage/${entry.id}`}>
-									<EventCard entry={entry} />
-								</StyledLink>
-							</StyledListItem>
-						))}
-					</StyledList>
-				</>
-			) : (
-				<Animated
-					animationIn="rotateInUpLeft"
-					animationOut="slideOutUp"
-					isVisible={true}
-				>
-					<span>
-						<ConfettiExplosion />
-						<Icon
-							icon={u1F389}
-							style={styleAlternativeEventListEmpty}
-							size={200}
-						/>
-					</span>
-				</Animated>
-			)}
+			<div>
+				{entryData.length > 0 ? (
+					<>
+						<StyledList>
+							{entryData.map((entry) => (
+								<StyledListItem key={entry.id}>
+									<StyledLink href={`/votepage/${entry.id}`}>
+										<EventCard entry={entry} />
+									</StyledLink>
+									<StyledOptionImage
+										onClick={() => onHandelDeleteEntry(entry.id)}
+										src={optionIcon[0].imageSrc}
+										alt="Option Image"
+										width={30}
+										height={30}
+									/>
+								</StyledListItem>
+							))}
+						</StyledList>
+					</>
+				) : (
+					<Animated
+						animationIn="rotateInUpLeft"
+						animationOut="slideOutUp"
+						isVisible={true}
+					>
+						<span>
+							<ConfettiExplosion />
+							<Icon
+								icon={u1F389}
+								style={styleAlternativeEventListEmpty}
+								size={200}
+							/>
+						</span>
+					</Animated>
+				)}
+			</div>
 		</>
 	);
 }
+
+const StyledOptionImage = styled(Image)`
+	cursor: pointer;
+`;
 
 const StyledListItem = styled.li`
 	border: solid 5px;

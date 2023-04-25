@@ -10,7 +10,11 @@ import styled from "styled-components";
 import Head from "next/head";
 import { Animated } from "react-animated-css";
 
-export default function HomePage({ entryData, voteResultData }) {
+export default function HomePage({
+	entryData,
+	voteResultData,
+	onHandelDeleteEntry,
+}) {
 	return (
 		<>
 			<Head>
@@ -26,7 +30,11 @@ export default function HomePage({ entryData, voteResultData }) {
 			</StyledHeaderHomepage>
 			<StyledEventTitle>Events</StyledEventTitle>
 			<StyledMain>
-				<EventsList entryData={entryData} voteResultData={voteResultData} />
+				<EventsList
+					entryData={entryData}
+					voteResultData={voteResultData}
+					onHandelDeleteEntry={onHandelDeleteEntry}
+				/>
 				<StyledAddEventLink href="/createEventPage">
 					<Icon icon={ic_add_circle_outline_outline} size={80} />
 				</StyledAddEventLink>
