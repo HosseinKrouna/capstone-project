@@ -45,20 +45,7 @@ function EventsList({ entryData, onHandelDeleteEntry }) {
 						</StyledList>
 					</>
 				) : (
-					<Animated
-						animationIn="rotateInUpLeft"
-						animationOut="slideOutUp"
-						isVisible={true}
-					>
-						<span>
-							<ConfettiExplosion />
-							<Icon
-								icon={u1F389}
-								style={styleAlternativeEventListEmpty}
-								size={200}
-							/>
-						</span>
-					</Animated>
+					<ConfettiExplosion />
 				)}
 			</div>
 		</>

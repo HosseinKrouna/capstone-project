@@ -28,7 +28,6 @@ export default function HomePage({
 					<StyledAppTitle>Friends Wall</StyledAppTitle>
 				</Animated>
 			</StyledHeaderHomepage>
-			<StyledEventTitle>Events</StyledEventTitle>
 			<StyledMain>
 				<EventsList
 					entryData={entryData}
@@ -47,12 +46,4 @@ const StyledMain = styled.main`
 	flex-direction: column;
 	align-items: center;
 	gap: 11px;
-`;
-
-const StyledEventTitle = styled.h2`
-	margin: 0;
-	padding-left: 60px;
-	color: #e0ffff;
-	font-size: 32px;
-	left: 50px;
 `;

@@ -2,8 +2,6 @@ import styled from "styled-components";
 import Link from "next/link";
 
 export const StyledBackLink = styled(Link)`
-	align-self: flex-start;
-
 	padding: 10px;
 	margin: 0;
 	text-decoration: none;

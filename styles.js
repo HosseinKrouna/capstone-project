@@ -8,6 +8,7 @@ export default createGlobalStyle`
   }
 
   body {
+    background-image: url(https://images.unsplash.com/photo-1624792896718-76e9f7885ef3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80);
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -15,6 +16,5 @@ export default createGlobalStyle`
   align-items: center;
   height: 100vh;
   font-family: "Sansita Swashed", cursive;
-  /* background: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12); */
   }
   `;
