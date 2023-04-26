@@ -2,20 +2,11 @@ import Link from "next/link";
 import styled from "styled-components";
 import EventCard from "@/components/EventCard";
 import Head from "next/head";
-import { Animated } from "react-animated-css";
-import { u1F389 } from "react-icons-kit/noto_emoji_regular/u1F389";
-import Icon from "react-icons-kit";
 import ConfettiExplosion from "react-confetti-explosion";
 import Image from "next/image";
-import { optionIcon } from "@/Icons/optionIcon";
+import { optionIcons } from "@/Icons/optionIcon";
 
 function EventsList({ entryData, onHandelDeleteEntry }) {
-	const styleAlternativeEventListEmpty = {
-		color: "#00ff00",
-		textAlign: "center",
-		paddingTop: "50px",
-	};
-
 	return (
 		<>
 			<Head>
@@ -35,7 +26,7 @@ function EventsList({ entryData, onHandelDeleteEntry }) {
 									</StyledLink>
 									<StyledOptionImage
 										onClick={() => onHandelDeleteEntry(entry.id)}
-										src={optionIcon[0].imageSrc}
+										src={optionIcons[0].imageSrc}
 										alt="Option Image"
 										width={30}
 										height={30}

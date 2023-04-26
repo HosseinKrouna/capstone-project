@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { StyledBackLink } from "@/components/styles/BackLink";
 import { useRouter } from "next/router";
-import { StyledSubmitButton } from "@/components/styles/SubmitButton";
+import MuiCreateEventForm from "@/components/MuiCreateEventForm";
 
 function CreateEventForm({ onHandleEntryData }) {
 	const router = useRouter();
@@ -17,67 +17,62 @@ function CreateEventForm({ onHandleEntryData }) {
 	}
 	return (
 		<>
-			<StyledCreatePageBody>
-				<StyledHeaderCreateEventPage>
-					<StyledBackLink href="/">Home</StyledBackLink>
-					<StyledLedegend>New Event</StyledLedegend>
-				</StyledHeaderCreateEventPage>
-				<main>
-					<StyledFormContainer id="createEventForm" onSubmit={handleSubmit}>
-						<StyledFieldSet>
-							<FormItems>
-								<label htmlFor="title">Title:</label>
-								<StyledInput
-									id="title"
-									name="title"
-									type="text"
-									maxLength="25"
-									required
-									autoFocus
-								/>
-								<label htmlFor="start-time">Start Time:</label>
-								<StyledInput
-									id="start-time"
-									name="startTime"
-									type="datetime-local"
-								/>
-								<label htmlFor="end-time">End Time:</label>
-								<StyledInput
-									id="end-time"
-									name="endTime"
-									type="datetime-local"
-								/>
-								<label htmlFor="location">Location:</label>
-								<StyledInput
-									id="location"
-									name="location"
-									type="text"
-									maxLength="30"
-									required
-								/>
+			<StyledHeaderCreateEventPage>
+				<StyledBackLink href="/">Home</StyledBackLink>
+				<StyledLedegend>New Event</StyledLedegend>
+			</StyledHeaderCreateEventPage>
+			<div>
+				<MuiCreateEventForm />
+				{/* <StyledFormContainer id="createEventForm" onSubmit={handleSubmit}>
+					<StyledFieldSet>
+						<FormItems>
+							<label htmlFor="title">Title:</label>
+							<StyledInput
+								id="title"
+								name="title"
+								type="text"
+								maxLength="25"
+								required
+								autoFocus
+							/>
+							<label htmlFor="start-time">Start Time:</label>
+							<StyledInput
+								id="start-time"
+								name="startTime"
+								type="datetime-local"
+							/>
+							<label htmlFor="end-time">End Time:</label>
+							<StyledInput id="end-time" name="endTime" type="datetime-local" />
+							<label htmlFor="location">Location:</label>
+							<StyledInput
+								id="location"
+								name="location"
+								type="text"
+								maxLength="30"
+								required
+							/>
 
-								<label htmlFor="description">Let a Comment:</label>
-								<StyledTextArea
-									cols="30"
-									id="description"
-									name="description"
-									type="text"
-									maxLength="50"
-								/>
-								<label htmlFor="title">Creator:</label>
-								<StyledInput
-									id="creator"
-									name="creator"
-									type="text"
-									maxLength="15"
-									required
-								/>
-								<StyledSubmitButton type="submit">Submit</StyledSubmitButton>
-							</FormItems>
-						</StyledFieldSet>
-					</StyledFormContainer>
-				</main>
-			</StyledCreatePageBody>
+							<label htmlFor="description">Let a Comment:</label>
+							<StyledTextArea
+								cols="30"
+								id="description"
+								name="description"
+								type="text"
+								maxLength="50"
+							/>
+							<label htmlFor="title">Creator:</label>
+							<StyledInput
+								id="creator"
+								name="creator"
+								type="text"
+								maxLength="15"
+								required
+							/>
+							<StyledSubmitButton type="submit">Submit</StyledSubmitButton>
+						</FormItems>
+					</StyledFieldSet>
+				</StyledFormContainer> */}
+			</div>
 		</>
 	);
 }

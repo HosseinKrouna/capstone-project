@@ -4,13 +4,15 @@ import {
 	StyledAppTitle,
 } from "../components/styles/Homepage";
 import { StyledAddEventLink } from "../components/styles/AddEventLink";
-import { Icon } from "react-icons-kit";
-import { ic_add_circle_outline_outline } from "react-icons-kit/md/ic_add_circle_outline_outline";
 import styled from "styled-components";
 import Head from "next/head";
 import { Animated } from "react-animated-css";
-
-export default function HomePage({
+import Image from "next/image";
+import { optionIcons } from "@/Icons/optionIcon";
+import { Typography, Stack } from "@mui/material";
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+export default function Homepage({
 	entryData,
 	voteResultData,
 	onHandelDeleteEntry,
@@ -35,12 +37,18 @@ export default function HomePage({
 					onHandelDeleteEntry={onHandelDeleteEntry}
 				/>
 				<StyledAddEventLink href="/createEventPage">
-					<Icon icon={ic_add_circle_outline_outline} size={80} />
+					<Image
+						src={optionIcons[1].imageSrc}
+						alt="Plus-Icon for create new event "
+						width={70}
+						height={70}
+					/>
 				</StyledAddEventLink>
 			</StyledMain>
 		</>
 	);
 }
+
 const StyledMain = styled.main`
 	display: flex;
 	flex-direction: column;

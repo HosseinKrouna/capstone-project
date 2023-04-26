@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const StyledSubmitButton = styled.button`
 	cursor: pointer;
 	position: relative;
-	margin-top: 20px;
+	margin-top: 120px;
 	padding: 0.5rem 0.5rem;
 	border-radius: 1.75rem;
 	line-height: 1.5rem;

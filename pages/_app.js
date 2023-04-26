@@ -3,7 +3,7 @@ import Head from "next/head";
 import { v4 as uuidv4 } from "uuid";
 import { useImmerLocalStorageState } from "@/lib/hooks";
 
-export default function App({ Component, pageProps }) {
+export default function App({ Component, pageProps, children }) {
 	const [entryData, setEntryData] = useImmerLocalStorageState("entryData", {
 		defaultValue: [],
 	});
