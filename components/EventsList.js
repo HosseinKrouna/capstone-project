@@ -1,11 +1,11 @@
 import Link from "next/link";
 import styled from "styled-components";
-import EventCard from "@/components/EventCard";
+import EventCardData from "@/components/EventCardData";
 import Head from "next/head";
 import ConfettiExplosion from "react-confetti-explosion";
 import Image from "next/image";
 import { optionIcons } from "@/Icons/optionIcon";
-
+import { Paper } from "@mui/material";
 function EventsList({ entryData, onHandelDeleteEntry }) {
 	return (
 		<>
@@ -15,30 +15,27 @@ function EventsList({ entryData, onHandelDeleteEntry }) {
 					href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"
 				/>
 			</Head>
-			<div>
-				{entryData.length > 0 ? (
-					<>
-						<StyledList>
-							{entryData.map((entry) => (
-								<StyledListItem key={entry.id}>
-									<StyledLink href={`/votepage/${entry.id}`}>
-										<EventCard entry={entry} />
-									</StyledLink>
-									<StyledOptionImage
-										onClick={() => onHandelDeleteEntry(entry.id)}
-										src={optionIcons[0].imageSrc}
-										alt="Option Image"
-										width={30}
-										height={30}
-									/>
-								</StyledListItem>
-							))}
-						</StyledList>
-					</>
-				) : (
-					<ConfettiExplosion />
-				)}
-			</div>
+
+			{entryData.length > 0 ? (
+				<StyledList>
+					<StyledOptionImage
+						onClick={onHandelDeleteEntry}
+						src={optionIcons[0].imageSrc}
+						width={30}
+						height={30}
+						alt="Actual to delete card"
+					/>
+					{entryData.map((entry) => (
+						<StyledListItem key={entry.id}>
+							<StyledLink href={`/votepage/${entry.id}`}>
+								<EventCardData entry={entry} />
+							</StyledLink>
+						</StyledListItem>
+					))}
+				</StyledList>
+			) : (
+				<ConfettiExplosion />
+			)}
 		</>
 	);
 }
@@ -48,6 +45,7 @@ const StyledOptionImage = styled(Image)`
 `;
 
 const StyledListItem = styled.li`
+	background-color: #e8f6f6;
 	border: solid 5px;
 	border-radius: 50px;
 	box-shadow: 0 1rem 1.25rem 0 rgba(22, 75, 195, 0.5),
@@ -73,7 +71,8 @@ const StyledListItem = styled.li`
 `;
 
 const StyledList = styled.ul`
-	padding: 0;
+	display: flex;
+	flex-direction: row-reverse;
 	list-style: none;
 `;
 

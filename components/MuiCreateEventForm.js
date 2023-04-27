@@ -1,12 +1,10 @@
-import { TextField, Stack, FormControl } from "@mui/material";
+import { TextField, Stack, FormControl, Paper } from "@mui/material";
 import {
 	LocalizationProvider,
 	MobileDateTimePicker,
 } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { StyledSubmitButton } from "./styles/SubmitButton";
-import styled from "styled-components";
-import { StyledBackLink } from "@/components/styles/BackLink";
 import { useRouter } from "next/router";
 
 function MuiCreateEventForm({ onHandleEntryData }) {
@@ -22,7 +20,7 @@ function MuiCreateEventForm({ onHandleEntryData }) {
 		router.push(`/`);
 	}
 	return (
-		<>
+		<Paper sx={{ backgroundColor: "transparent" }}>
 			<Stack justifyContent="center" alignItems="center">
 				<Stack
 					sx={{
@@ -38,8 +36,8 @@ function MuiCreateEventForm({ onHandleEntryData }) {
 						direction="column"
 						justifyContent="flex-start"
 						alignItems="center"
-						// sx={{ alignSelf: "center" }}
 					>
+						{/* <LocalizationProvider dateAdapter={AdapterDayjs}> */}
 						<form id="createEventForm" onSubmit={handleSubmit}>
 							<FormControl
 								required
@@ -61,22 +59,30 @@ function MuiCreateEventForm({ onHandleEntryData }) {
 									color="secondary"
 									required
 								/>
-								<LocalizationProvider dateAdapter={AdapterDayjs}>
-									<MobileDateTimePicker
-										id="startTime"
-										name="startTime"
-										sx={{
-											background: "#E8F6F6",
-										}}
-									/>
-									<MobileDateTimePicker
-										id="endTime"
-										name="endTime"
-										sx={{
-											background: "#E8F6F6",
-										}}
-									/>
-								</LocalizationProvider>
+								<TextField
+									InputLabelProps={{
+										shrink: true,
+									}}
+									type="datetime-local"
+									label="StartTime"
+									id="startTime"
+									name="startTime"
+									sx={{
+										background: "#E8F6F6",
+									}}
+								/>
+								<TextField
+									InputLabelProps={{
+										shrink: true,
+									}}
+									type="datetime-local"
+									label="EndTime"
+									id="endTime"
+									name="endTime"
+									sx={{
+										background: "#E8F6F6",
+									}}
+								/>
 								<TextField
 									id="location"
 									name="location"
@@ -104,10 +110,11 @@ function MuiCreateEventForm({ onHandleEntryData }) {
 								<StyledSubmitButton type="Submit">Submit</StyledSubmitButton>
 							</FormControl>
 						</form>
+						{/* </LocalizationProvider> */}
 					</Stack>
 				</Stack>
 			</Stack>
-		</>
+		</Paper>
 	);
 }
 
