@@ -4,17 +4,17 @@ import { useRouter } from "next/router";
 import MuiCreateEventForm from "@/components/MuiCreateEventForm";
 
 function CreateEventForm({ onHandleEntryData }) {
-	const router = useRouter();
+	// const router = useRouter();
 
-	function handleSubmit(event) {
-		event.preventDefault();
-		const formData = new FormData(event.target);
-		const data = Object.fromEntries(formData);
+	// function handleSubmit(event) {
+	// 	event.preventDefault();
+	// 	const formData = new FormData(event.target);
+	// 	const data = Object.fromEntries(formData);
 
-		onHandleEntryData(data);
+	// 	onHandleEntryData(data);
 
-		router.push(`/`);
-	}
+	// 	router.push(`/`);
+	// }
 	return (
 		<>
 			<StyledHeaderCreateEventPage>
@@ -22,7 +22,7 @@ function CreateEventForm({ onHandleEntryData }) {
 				<StyledLedegend>New Event</StyledLedegend>
 			</StyledHeaderCreateEventPage>
 			<div>
-				<MuiCreateEventForm />
+				<MuiCreateEventForm onHandleEntryData={onHandleEntryData} />
 				{/* <StyledFormContainer id="createEventForm" onSubmit={handleSubmit}>
 					<StyledFieldSet>
 						<FormItems>
