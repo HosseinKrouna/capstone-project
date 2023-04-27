@@ -3,14 +3,14 @@ import { StyledBackLink } from "@/components/styles/BackLink";
 import { useRouter } from "next/router";
 import MuiCreateEventForm from "@/components/MuiCreateEventForm";
 
-function CreateEventForm({ onHandleEntryData }) {
+function CreateEventForm({ onHandleEntryData, currentData }) {
 	// const router = useRouter();
 
 	// function handleSubmit(event) {
 	// 	event.preventDefault();
 	// 	const formData = new FormData(event.target);
 	// 	const data = Object.fromEntries(formData);
-
+	// 	console.log(data);
 	// 	onHandleEntryData(data);
 
 	// 	router.push(`/`);
