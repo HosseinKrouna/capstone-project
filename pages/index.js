@@ -30,28 +30,26 @@ export default function Homepage({
 					<StyledAppTitle>Friends Wall</StyledAppTitle>
 				</Animated>
 			</StyledHeaderHomepage>
-			<StyledMain>
-				<EventsList
-					entryData={entryData}
-					voteResultData={voteResultData}
-					onHandelDeleteEntry={onHandelDeleteEntry}
+			<EventsList
+				entryData={entryData}
+				voteResultData={voteResultData}
+				onHandelDeleteEntry={onHandelDeleteEntry}
+			/>
+			<StyledAddEventLink href="/createEventPage">
+				<Image
+					src={optionIcons[1].imageSrc}
+					alt="Plus-Icon for create new event "
+					width={70}
+					height={70}
 				/>
-				<StyledAddEventLink href="/createEventPage">
-					<Image
-						src={optionIcons[1].imageSrc}
-						alt="Plus-Icon for create new event "
-						width={70}
-						height={70}
-					/>
-				</StyledAddEventLink>
-			</StyledMain>
+			</StyledAddEventLink>
 		</>
 	);
 }
 
-const StyledMain = styled.main`
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: 11px;
-`;
+// const StyledMain = styled.main`
+// 	display: flex;
+// 	flex-direction: column;
+// 	align-items: center;
+// 	gap: 11px;
+// `;

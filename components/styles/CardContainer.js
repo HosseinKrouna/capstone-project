@@ -1,11 +1,23 @@
 import styled from "styled-components";
+import Image from "next/image";
 
 export const StyledCardContainer = styled.div`
-	display: flex;
-	height: 180px;
-	width: 400px;
+	display: grid;
+	grid-template-areas:
+		"eventTitel ."
+		"eventDescription optionIcon"
+		"voteDescription voteResultIcon";
+	column-gap: 2px;
+	row-gap: 2px;
+
+	/* display: flex;
 	flex-direction: column;
-	align-items: center;
+	justify-items: center; */
+	/* height: 180px;
+	width: 400px; */
+
+	/* flex-direction: column; */
+	/* align-items: center; */
 `;
 export const StyledEventTitle = styled.h2`
 	text-decoration: solid underline 4px;
@@ -20,3 +32,7 @@ export const StyledVoteResult = styled.span`
 export const StyledStartTime = styled.span``;
 export const StyledEndTime = styled.span``;
 export const StyledLocation = styled.span``;
+
+export const StyledOptionImage = styled(Image)`
+	cursor: pointer;
+`;
