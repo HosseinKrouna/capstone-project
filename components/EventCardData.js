@@ -7,14 +7,20 @@ import {
 	StyledStartTime,
 	StyledVoteResult,
 	StyledOptionImage,
+	StyledFromText,
+	StyledToText,
+	StyledWhereText,
 } from "./styles/CardContainer";
 import { optionIcons } from "@/Icons/optionIcon";
 
 export default function EventCardData({ entry }) {
 	return (
 		<StyledCardContainer>
+			<StyledFromText>From: </StyledFromText>
+			<StyledToText>To: </StyledToText>
+			<StyledWhereText>Where? </StyledWhereText>
 			<StyledEventTitle>{entry.title}</StyledEventTitle>
-			<StyledStartTime>From: {entry.startTime}</StyledStartTime>
+			<StyledStartTime>{entry.startTime}</StyledStartTime>
 			<StyledOptionImage
 				// onClick={() => onHandelDeleteEntry(entry.id)}
 				src={optionIcons[0].imageSrc}
@@ -22,8 +28,8 @@ export default function EventCardData({ entry }) {
 				width={30}
 				height={30}
 			/>
-			<StyledEndTime>To: {entry.endTime}</StyledEndTime>
-			<StyledLocation>Where? {entry.location}</StyledLocation>
+			<StyledEndTime>{entry.endTime}</StyledEndTime>
+			<StyledLocation>{entry.location}</StyledLocation>
 			<StyledVoteResult>
 				{!entry.voteResult ? "Vote Now!!" : "Your Vote: "}
 				{entry.voteResult}

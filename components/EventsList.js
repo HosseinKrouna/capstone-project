@@ -25,13 +25,6 @@ function EventsList({ entryData, onHandelDeleteEntry }) {
 				<StyledList>
 					{entryData.map((entry) => (
 						<StyledListItem key={entry.id}>
-							{/* <StyledOptionImage
-								onClick={() => onHandelDeleteEntry(entry.id)}
-								src={optionIcons[0].imageSrc}
-								alt="Option Image"
-								width={30}
-								height={30}
-							/> */}
 							<StyledLink href={`/votepage/${entry.id}`}>
 								<EventCardData entry={entry} />
 							</StyledLink>
