@@ -61,6 +61,8 @@ function EventsList({ entryData, onHandelDeleteEntry }) {
 // `;
 
 const StyledListItem = styled.li`
+	width: 350px;
+	height: 150px;
 	/* display: grid;
 	grid-template-areas:
 		". . ."
@@ -98,6 +100,8 @@ const StyledListItem = styled.li`
 `;
 
 const StyledList = styled.ul`
+	justify-content: center;
+	display: flex;
 	padding: 0;
 	list-style: none;
 `;
