@@ -4,19 +4,11 @@ import {
 	StyledAppTitle,
 } from "../components/styles/Homepage";
 import { StyledAddEventLink } from "../components/styles/AddEventLink";
-import styled from "styled-components";
 import Head from "next/head";
 import { Animated } from "react-animated-css";
 import Image from "next/image";
 import { optionIcons } from "@/Icons/optionIcon";
-import { Typography, Stack } from "@mui/material";
-import { LocalizationProvider } from "@mui/x-date-pickers";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-export default function Homepage({
-	entryData,
-	voteResultData,
-	onHandelDeleteEntry,
-}) {
+export default function Homepage({ entryData, voteResultData }) {
 	return (
 		<>
 			<Head>
@@ -30,11 +22,7 @@ export default function Homepage({
 					<StyledAppTitle>Friends Wall</StyledAppTitle>
 				</Animated>
 			</StyledHeaderHomepage>
-			<EventsList
-				entryData={entryData}
-				voteResultData={voteResultData}
-				onHandelDeleteEntry={onHandelDeleteEntry}
-			/>
+			<EventsList entryData={entryData} voteResultData={voteResultData} />
 			<StyledAddEventLink href="/createEventPage">
 				<Image
 					src={optionIcons[1].imageSrc}
@@ -46,10 +34,3 @@ export default function Homepage({
 		</>
 	);
 }
-
-// const StyledMain = styled.main`
-// 	display: flex;
-// 	flex-direction: column;
-// 	align-items: center;
-// 	gap: 11px;
-// `;

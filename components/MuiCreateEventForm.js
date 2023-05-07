@@ -1,9 +1,4 @@
 import { TextField, Stack, FormControl, Paper } from "@mui/material";
-import {
-	LocalizationProvider,
-	MobileDateTimePicker,
-} from "@mui/x-date-pickers";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { StyledSubmitButton } from "./styles/SubmitButton";
 import { useRouter } from "next/router";
 
@@ -14,11 +9,11 @@ function MuiCreateEventForm({ onHandleEntryData }) {
 		event.preventDefault();
 		const formData = new FormData(event.target);
 		const data = Object.fromEntries(formData);
-		console.log(data);
 		onHandleEntryData(data);
 
 		router.push(`/`);
 	}
+
 	return (
 		<Paper sx={{ backgroundColor: "transparent" }}>
 			<Stack justifyContent="center" alignItems="center">
@@ -37,7 +32,6 @@ function MuiCreateEventForm({ onHandleEntryData }) {
 						justifyContent="flex-start"
 						alignItems="center"
 					>
-						{/* <LocalizationProvider dateAdapter={AdapterDayjs}> */}
 						<form id="createEventForm" onSubmit={handleSubmit}>
 							<FormControl
 								required
@@ -110,7 +104,6 @@ function MuiCreateEventForm({ onHandleEntryData }) {
 								<StyledSubmitButton type="Submit">Submit</StyledSubmitButton>
 							</FormControl>
 						</form>
-						{/* </LocalizationProvider> */}
 					</Stack>
 				</Stack>
 			</Stack>

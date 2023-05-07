@@ -1,4 +1,3 @@
-import { Stack } from "@mui/material";
 import {
 	StyledCardContainer,
 	StyledEndTime,
@@ -12,7 +11,6 @@ import {
 	StyledWhereText,
 } from "./styles/CardContainer";
 import { optionIcons } from "@/Icons/optionIcon";
-
 export default function EventCardData({ entry }) {
 	return (
 		<StyledCardContainer>
@@ -22,7 +20,6 @@ export default function EventCardData({ entry }) {
 			<StyledEventTitle>{entry.title}</StyledEventTitle>
 			<StyledStartTime>{entry.startTime}</StyledStartTime>
 			<StyledOptionImage
-				// onClick={() => onHandelDeleteEntry(entry.id)}
 				src={optionIcons[0].imageSrc}
 				alt="Option Image"
 				width={30}
