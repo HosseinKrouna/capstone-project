@@ -8,6 +8,7 @@ import Head from "next/head";
 import { Animated } from "react-animated-css";
 import Image from "next/image";
 import { optionIcons } from "@/Icons/optionIcon";
+
 export default function Homepage({ entryData, voteResultData }) {
 	return (
 		<>
