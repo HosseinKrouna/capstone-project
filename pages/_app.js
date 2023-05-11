@@ -1,10 +1,14 @@
 import GlobalStyle from "@/styles";
 import Head from "next/head";
 import { v4 as uuidv4 } from "uuid";
-
+import { useState } from "react";
 export default function App({ Component, pageProps }) {
 	//-------------------------------------------------------------------------------------------------------------
-	function handleEntryData(data) {}
+	const [entryData, setentryData] = useState();
+	console.log(entryData);
+	function handleEntryData(data) {
+		setentryData([data]);
+	}
 	//-------------------------------------------------------------------------------------------------------------
 	// function handleUpdateVoteEvent(resultVoteEvent) {
 	// 	console.log(resultVoteEvent);
@@ -26,10 +30,9 @@ export default function App({ Component, pageProps }) {
 			</Head>
 			<main>
 				<Component
+					entryData={entryData}
 					{...pageProps}
-					// entryData={entryData}
 					onHandleEntryData={handleEntryData}
-					// createEventFormRef={createEventFormRef}
 					// onHandleUpdateVoteEvent={handleUpdateVoteEvent}
 				/>
 			</main>

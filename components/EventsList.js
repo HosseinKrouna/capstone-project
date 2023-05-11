@@ -4,11 +4,12 @@ import EventCardData from "@/components/EventCardData";
 import ConfettiExplosion from "react-confetti-explosion";
 
 function EventsList({ entryData }) {
+	console.log(entryData);
 	return (
 		<>
 			{entryData ? (
 				<StyledList>
-					{entryData.map((entry) => (
+					{entryData?.map((entry) => (
 						<StyledListItem key={entry.id}>
 							<StyledLink href={`/votepage/${entry.id}`}>
 								<EventCardData entry={entry} />

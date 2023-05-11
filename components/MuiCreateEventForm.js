@@ -13,15 +13,13 @@ const { eventDetails } = db;
 
 function MuiCreateEventForm({ onHandleEntryData }) {
 	const router = useRouter();
-	const alignItems = useLiveQuery(() => eventDetails.toArray(), []);
-	console.log("======>", alignItems);
+	const allItems = useLiveQuery(() => eventDetails.toArray(), []);
+	console.log("======>", allItems);
 
 	async function handleSubmit(event) {
 		event.preventDefault();
 		const formData = new FormData(event.target);
 		const data = Object.fromEntries(formData);
-
-		console.log(data);
 
 		await eventDetails.add({
 			title: data.title,
