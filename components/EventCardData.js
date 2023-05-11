@@ -11,25 +11,26 @@ import {
 	StyledWhereText,
 } from "./styles/CardContainer";
 import { optionIcons } from "@/Icons/optionIcon";
-export default function EventCardData({ entry }) {
+export default function EventCardData({ item }) {
 	return (
 		<StyledCardContainer>
+			<StyledEventTitle>{item.title}</StyledEventTitle>
+
 			<StyledFromText>From: </StyledFromText>
 			<StyledToText>To: </StyledToText>
 			<StyledWhereText>Where? </StyledWhereText>
-			<StyledEventTitle>{entry.title}</StyledEventTitle>
-			<StyledStartTime>{entry.startTime}</StyledStartTime>
+			<StyledStartTime>{item.startTime}</StyledStartTime>
 			<StyledOptionImage
 				src={optionIcons[0].imageSrc}
 				alt="Option Image"
 				width={30}
 				height={30}
 			/>
-			<StyledEndTime>{entry.endTime}</StyledEndTime>
-			<StyledLocation>{entry.location}</StyledLocation>
+			<StyledEndTime>{item.endTime}</StyledEndTime>
+			<StyledLocation>{item.location}</StyledLocation>
 			<StyledVoteResult>
-				{!entry.voteResult ? "Vote Now!!" : "Your Vote: "}
-				{entry.voteResult}
+				{!item.voteResult ? "Vote Now!!" : "Your Vote: "}
+				{item.voteResult}
 			</StyledVoteResult>
 		</StyledCardContainer>
 	);

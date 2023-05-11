@@ -9,7 +9,7 @@ import { Animated } from "react-animated-css";
 import Image from "next/image";
 import { optionIcons } from "@/Icons/optionIcon";
 
-export default function Homepage({ entryData, voteResultData }) {
+export default function Homepage({ allItems, voteResultData }) {
 	return (
 		<>
 			<Head>
@@ -23,7 +23,7 @@ export default function Homepage({ entryData, voteResultData }) {
 					<StyledAppTitle>Friends Wall</StyledAppTitle>
 				</Animated>
 			</StyledHeaderHomepage>
-			<EventsList entryData={entryData} voteResultData={voteResultData} />
+			<EventsList allItems={allItems} voteResultData={voteResultData} />
 			<StyledAddEventLink href="/createEventPage">
 				<Image
 					src={optionIcons[1].imageSrc}

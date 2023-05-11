@@ -1,34 +1,14 @@
 import { TextField, Stack, FormControl, Paper } from "@mui/material";
 import { StyledSubmitButton } from "./styles/SubmitButton";
 import { useRouter } from "next/router";
-import { useLiveQuery } from "dexie-react-hooks";
-import Dexie from "dexie";
-
-const db = new Dexie("eventCards");
-db.version(1).stores({
-	eventDetails: "++id,title,startTime,endTime,location,introduce,creator",
-});
-
-const { eventDetails } = db;
 
 function MuiCreateEventForm({ onHandleEntryData }) {
 	const router = useRouter();
-	const allItems = useLiveQuery(() => eventDetails.toArray(), []);
-	console.log("======>", allItems);
 
 	async function handleSubmit(event) {
 		event.preventDefault();
 		const formData = new FormData(event.target);
 		const data = Object.fromEntries(formData);
-
-		await eventDetails.add({
-			title: data.title,
-			startTime: data.startTime,
-			endTime: data.endTime,
-			location: data.location,
-			introduce: data.introduce,
-			creator: data.creator,
-		});
 
 		onHandleEntryData(data);
 

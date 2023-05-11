@@ -3,16 +3,16 @@ import styled from "styled-components";
 import EventCardData from "@/components/EventCardData";
 import ConfettiExplosion from "react-confetti-explosion";
 
-function EventsList({ entryData }) {
-	console.log(entryData);
+function EventsList({ allItems }) {
+	console.log(allItems);
 	return (
 		<>
-			{entryData ? (
+			{allItems ? (
 				<StyledList>
-					{entryData?.map((entry) => (
-						<StyledListItem key={entry.id}>
-							<StyledLink href={`/votepage/${entry.id}`}>
-								<EventCardData entry={entry} />
+					{allItems.map((item) => (
+						<StyledListItem key={item.id}>
+							<StyledLink href={`/votepage/${item.id}`}>
+								<EventCardData item={item} />
 							</StyledLink>
 						</StyledListItem>
 					))}

@@ -7,7 +7,7 @@ export default function VoteDetails({ currentEvent }) {
 			<StyledListItem>{currentEvent?.startTime}</StyledListItem>
 			<StyledListItem>{currentEvent?.endTime}</StyledListItem>
 			<StyledListItem>{currentEvent?.location}</StyledListItem>
-			<StyledListItem>{currentEvent?.description}</StyledListItem>
+			<StyledListItem>{currentEvent?.intoduce}</StyledListItem>
 			<StyledListItem>{currentEvent?.creator}</StyledListItem>
 		</StyledVoteCardDetails>
 	);
