@@ -1,85 +1,37 @@
 import { TextField, Stack, FormControl, Paper } from "@mui/material";
 import { StyledSubmitButton } from "./styles/SubmitButton";
 import { useRouter } from "next/router";
+import { useLiveQuery } from "dexie-react-hooks";
+import Dexie from "dexie";
+
+const db = new Dexie("eventCards");
+db.version(1).stores({
+	eventDetails: "++id,title,startTime,endTime,location,introduce,creator",
+});
+
+const { eventDetails } = db;
 
 function MuiCreateEventForm({ onHandleEntryData }) {
 	const router = useRouter();
+	const alignItems = useLiveQuery(() => eventDetails.toArray(), []);
+	console.log("======>", alignItems);
 
-	//-------------------------------------------------------------------------------------------------------------
-	// const [eventData, setEventData] = useState({
-	// 	title: "",
-	// 	startTime: "",
-	// 	endTime: "",
-	// 	location: "",
-	// 	introduce: "",
-	// 	creator: "",
-	// });
-
-	// useEffect(
-	// 	() => {
-	// 		// create the store
-
-	// 		db.version(1).stores({ formData: "id,value" });
-
-	// 		// perform a read/write transatiction on the new store
-	// 		db.transaction("rw", db.formData, async () => {
-	// 			// get the first and last name from the data
-	// 			const dbTitle = await db.formData.get("title");
-	// 			const dbStartTime = await db.formData.get("startTime");
-	// 			const dbEndTime = await db.formData.get("endTime");
-	// 			const dbLocation = await db.formData.get("location");
-	// 			const dbIntroduce = await db.formData.get("introduce");
-	// 			const dbCreator = await db.formData.get("creator");
-
-	// 			// if the first or last name fields have not be added, add them
-	// 			if (!dbTitle) await db.formData.add({ id: "title", value: "" });
-	// 			if (!dbStartTime) await db.formData.add({ id: "startTime", value: "" });
-	// 			if (!dbEndTime) await db.formData.add({ id: "endTime", value: "" });
-	// 			if (!dbLocation) await db.formData.add({ id: "location", value: "" });
-	// 			if (!dbIntroduce) await db.formData.add({ id: "introduce", value: "" });
-	// 			if (!dbCreator) await db.formData.add({ id: "creator", value: "" });
-
-	// 			// set the initial values
-	// 			setEventData({
-	// 				title: dbTitle ? dbTitle.value : "",
-	// 				startTime: dbStartTime ? dbStartTime.value : "",
-	// 				endTime: dbEndTime ? dbEndTime.value : "",
-	// 				location: dbLocation ? dbLocation.value : "",
-	// 				introduce: dbIntroduce ? dbIntroduce.value : "",
-	// 				creator: dbCreator ? dbCreator.value : "",
-	// 			});
-	// 		}).catch((e) => {
-	// 			// log any errors
-	// 			console.log(e.stack || e);
-	// 		});
-
-	// 		// close the database connection if form is unmounted or the
-	// 		// database connection changes
-	// 		return () => db.close();
-	// 	},
-	// 	// run effect whenever the database connection changes
-	// 	[db]
-	// );
-
-	// // sets the name in the store and in the state hook
-	// const setEvent = (id) => (value) => {
-	// 	// update the store
-	// 	db.formData.put({ id, value });
-	// 	// update the state hook
-	// 	setEventData((prevEventData) => ({ ...prevEventData, [id]: value }));
-	// };
-
-	// const handleSetEvent = (id) => (e) => setEvent(id)(e.target.value);
-
-	// when the form is submitted, prevent the default action
-	// which reloads the page and reset the first and last name
-	// in both the store and in the state hook
-	//-------------------------------------------------------------------------------------------------------------
-
-	function handleSubmit(event) {
+	async function handleSubmit(event) {
 		event.preventDefault();
 		const formData = new FormData(event.target);
 		const data = Object.fromEntries(formData);
+
+		console.log(data);
+
+		await eventDetails.add({
+			title: data.title,
+			startTime: data.startTime,
+			endTime: data.endTime,
+			location: data.location,
+			introduce: data.introduce,
+			creator: data.creator,
+		});
+
 		onHandleEntryData(data);
 
 		router.push(`/`);
@@ -123,8 +75,6 @@ function MuiCreateEventForm({ onHandleEntryData }) {
 									label="Title"
 									color="secondary"
 									required
-									value={eventData.title}
-									onChange={handleSetEvent("title")}
 								/>
 								<TextField
 									InputLabelProps={{
@@ -137,8 +87,6 @@ function MuiCreateEventForm({ onHandleEntryData }) {
 									sx={{
 										background: "#E8F6F6",
 									}}
-									value={eventData.startTime}
-									onChange={handleSetEvent("startTime")}
 								/>
 								<TextField
 									InputLabelProps={{
@@ -151,8 +99,6 @@ function MuiCreateEventForm({ onHandleEntryData }) {
 									sx={{
 										background: "#E8F6F6",
 									}}
-									value={eventData.endTime}
-									onChange={handleSetEvent("endTime")}
 								/>
 								<TextField
 									id="location"
@@ -161,8 +107,6 @@ function MuiCreateEventForm({ onHandleEntryData }) {
 									label="Location"
 									color="secondary"
 									required
-									value={eventData.location}
-									onChange={handleSetEvent("location")}
 								/>
 								<TextField
 									id="introduce"
@@ -171,8 +115,6 @@ function MuiCreateEventForm({ onHandleEntryData }) {
 									label="Introduce"
 									color="secondary"
 									required
-									value={eventData.introduce}
-									onChange={handleSetEvent("introduce")}
 								/>
 								<TextField
 									name="creator"
@@ -181,13 +123,8 @@ function MuiCreateEventForm({ onHandleEntryData }) {
 									label="Creator"
 									color="secondary"
 									required
-									value={eventData.creator}
-									onChange={handleSetEvent("creator")}
 								/>
-								{/* <Online> */}
 								<StyledSubmitButton type="Submit">Submit</StyledSubmitButton>
-								{/* </Online> */}
-								{/* <Offline>You are currently offline!</Offline> */}
 							</FormControl>
 						</form>
 					</Stack>
