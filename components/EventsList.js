@@ -3,16 +3,21 @@ import styled from "styled-components";
 import EventCardData from "@/components/EventCardData";
 import ConfettiExplosion from "react-confetti-explosion";
 
-function EventsList({ allItems }) {
+function EventsList({ allItems, currentVoteIconImage }) {
 	console.log(allItems);
+	console.log(currentVoteIconImage);
+
 	return (
 		<>
 			{allItems ? (
 				<StyledList>
 					{allItems.map((item) => (
-						<StyledListItem key={item.id}>
-							<StyledLink href={`/votepage/${item.id}`}>
-								<EventCardData item={item} />
+						<StyledListItem key={item.eventId}>
+							<StyledLink href={`/votepage/${item.eventId}`}>
+								<EventCardData
+									currentVoteIconImage={currentVoteIconImage}
+									item={item}
+								/>
 							</StyledLink>
 						</StyledListItem>
 					))}

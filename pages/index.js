@@ -8,8 +8,14 @@ import Head from "next/head";
 import { Animated } from "react-animated-css";
 import Image from "next/image";
 import { optionIcons } from "@/Icons/optionIcon";
-
-export default function Homepage({ allItems, voteResultData }) {
+import { Paper, Stack, Grid, Item } from "@mui/material";
+export default function Homepage({
+	allItems,
+	voteResultData,
+	currentVoteIconImage,
+	deleteEvent,
+}) {
+	console.log(currentVoteIconImage);
 	return (
 		<>
 			<Head>
@@ -23,15 +29,24 @@ export default function Homepage({ allItems, voteResultData }) {
 					<StyledAppTitle>Friends Wall</StyledAppTitle>
 				</Animated>
 			</StyledHeaderHomepage>
-			<EventsList allItems={allItems} voteResultData={voteResultData} />
-			<StyledAddEventLink href="/createEventPage">
-				<Image
-					src={optionIcons[1].imageSrc}
-					alt="Plus-Icon for create new event "
-					width={70}
-					height={70}
-				/>
-			</StyledAddEventLink>
+			<EventsList
+				currentVoteIconImage={currentVoteIconImage}
+				allItems={allItems}
+				voteResultData={voteResultData}
+			/>
+
+			<Stack>
+				<Stack>
+					<StyledAddEventLink href="/createEventPage">
+						<Image
+							src={optionIcons[1].imageSrc}
+							alt={optionIcons[1].description}
+							width={70}
+							height={70}
+						/>
+					</StyledAddEventLink>
+				</Stack>
+			</Stack>
 		</>
 	);
 }

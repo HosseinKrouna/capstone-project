@@ -4,35 +4,46 @@ import { v4 as uuidv4 } from "uuid";
 import { useState } from "react";
 
 import { useLiveQuery } from "dexie-react-hooks";
-import Dexie from "dexie";
+import { db } from "@/components/Dexie";
 
-const db = new Dexie("eventCards");
-db.version(1).stores({
-	eventDetails: "++id,title,startTime,endTime,location,introduce,creator",
-});
-
+// export const eventDetailsTable = db.table("eventDetails");
 const { eventDetails } = db;
 
 export default function App({ Component, pageProps }) {
 	const allItems = useLiveQuery(() => eventDetails.toArray(), []);
-	// console.log("======>", allItems);
+	console.log("======>", allItems);
 
+	const [currentVoteIconImage, setCurrentVoteIconImage] = useState();
 	//-------------------------------------------------------------------------------------------------------------
-	const [entryData, setEntryData] = useState();
-
-	console.log(entryData);
 
 	async function handleEntryData(data) {
-		await eventDetails.add({
-			title: data.title,
-			startTime: data.startTime,
-			endTime: data.endTime,
-			location: data.location,
-			introduce: data.introduce,
-			creator: data.creator,
-		});
+		// const newData = { ...data, id: uuidv4() };
+		// setEntryData([newData, ...entryData]);
+		// console.log(entryData);
+		// console.log(newData);
 
-		setEntryData([data]);
+		try {
+			await db.eventDetails.add({
+				eventId: uuidv4(),
+				title: data.title,
+				startTime: data.startTime,
+				endTime: data.endTime,
+				location: data.location,
+				introduce: data.introduce,
+				creator: data.creator,
+			});
+		} catch (error) {
+			alert(`Error: ${error}`);
+		}
+	}
+
+	function handleDeleteEvent(item) {
+		console.log(item);
+		// 	setDeleteEvent(currentEvent);
+		// setDeleteEvent(item);
+		// console.log(item);
+		// async (id) => eventDetails.delete(item.id);
+		// setDeleteEvent(item);
 	}
 	//-------------------------------------------------------------------------------------------------------------
 	function handleUpdateVoteEvent(resultVoteEvent) {
@@ -44,6 +55,16 @@ export default function App({ Component, pageProps }) {
 		// });
 	}
 	//-------------------------------------------------------------------------------------------------------------
+
+	function handleCurrentVoteElement(currentVoteIcon) {
+		// const currentVoteIconImage = currentVoteIcon;
+
+		// console.log("currentVoteIconImage ======> ", currentVoteIconImage);
+		console.log(currentVoteIcon);
+		setCurrentVoteIconImage(currentVoteIcon);
+		console.log(currentVoteIconImage);
+	}
+
 	return (
 		<>
 			<GlobalStyle />
@@ -52,11 +73,17 @@ export default function App({ Component, pageProps }) {
 			</Head>
 			<main>
 				<Component
-					allItems={allItems}
-					entryData={entryData}
+					currentVoteIconImage={currentVoteIconImage}
+					onHandledeleteEvent={handleDeleteEvent}
+					// deleteEvent={deleteEvent}
+					// entryData={entryData}
+
 					{...pageProps}
+					allItems={allItems}
 					onHandleEntryData={handleEntryData}
 					onHandleUpdateVoteEvent={handleUpdateVoteEvent}
+					// currentEvent={currentEvent}
+					onHandleCurrentVoteElement={handleCurrentVoteElement}
 				/>
 			</main>
 		</>
