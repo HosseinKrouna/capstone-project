@@ -73,17 +73,13 @@ export default function App({ Component, pageProps }) {
 			</Head>
 			<main>
 				<Component
-					currentVoteIconImage={currentVoteIconImage}
+					// currentVoteIconImage={currentVoteIconImage}
 					onHandledeleteEvent={handleDeleteEvent}
-					// deleteEvent={deleteEvent}
-					// entryData={entryData}
-
 					{...pageProps}
 					allItems={allItems}
 					onHandleEntryData={handleEntryData}
 					onHandleUpdateVoteEvent={handleUpdateVoteEvent}
-					// currentEvent={currentEvent}
-					onHandleCurrentVoteElement={handleCurrentVoteElement}
+					// onHandleCurrentVoteElement={handleCurrentVoteElement}
 				/>
 			</main>
 		</>

@@ -14,15 +14,10 @@ import {
 	StyledVoteButtonContainer,
 } from "@/components/styles/VotepageStyle";
 import { db } from "@/components/Dexie";
-import Dexie from "dexie";
-
+import { optionIcons } from "@/Icons/optionIcon";
 const { eventDetails } = db;
 
-function Votepage({
-	allItems,
-	onHandleCurrentVoteElement,
-	onHandleUpdateVoteEvent,
-}) {
+function Votepage({ allItems, onHandleCurrentVoteElement }) {
 	const [voteCheckmarkImage, setVoteCheckmarkImage] = useState();
 
 	console.log("voteCheckmarkImage => ", voteCheckmarkImage);
@@ -34,79 +29,19 @@ function Votepage({
 	console.log("currentEvent ==> ", currentEvent);
 
 	function handleVoteResult() {
-		// const voteResultId = allItems.find(
-		// 	(voteImage) => voteImage.eventId === allItems.eventId
-		// );
-		// console.log(voteResultId);
-		// const voteIconSymbolElementAlt = voteCheckmarkImage.props.alt;
-		// console.log("voteIconSymbolElementAlt =====> ", voteIconSymbolElementAlt);
-		//---------------------------------------------------------------------------------------------
 		const currentVoteIcon = voteIcons?.find(
 			(voteIcon) => voteIcon.description === voteCheckmarkImage?.props.alt
 		);
-		onHandleCurrentVoteElement(currentVoteIcon);
+		// onHandleCurrentVoteElement(currentVoteIcon);
 
 		console.log("currentVoteIcon =======>", currentVoteIcon);
-		//.map((voteicon) => voteicon.imageSrc);
-		// const currentVoteIconImageSrc = currentVoteIcon.imageSrc;
-		// console.log("currentVoteIconImageSrc =======>", currentVoteIconImageSrc);
 		eventDetails
 			.where("eventId")
 			.equals(currentEvent.eventId)
 			.modify((voteEvent) => {
-				voteEvent.voteResult = currentVoteIcon?.id;
+				voteEvent.voteResult = currentVoteIcon.id;
 			});
-		// console.log("eventDetails ======> ", eventDetails);
-		// console.log("currentEvent =======>", currentEvent);
-		// 	.catch(Dexie.ModifyError, (error) => {
-		// 		console.error(error.failures.length + " items failed to modify");
-		// 	})
-		// 	.catch((error) => {
-		// 		console.log("Generic error: " + error);
-		// 	});
 	}
-	//---------------------------------------------------------------------------------------------
-
-	// const currentVote = voteIcons.find(
-	// 	(voteIcon) => voteIcon.imageSrc === voteCheckmarkImage.imageSrc
-	// );
-
-	// 	await eventDetails
-	// 		.toCollection()
-	// 		.modify({ voteResult: voteCheckmarkImage });
-	// }
-	// console.log("currentVote =============>" + currentVote);
-	// setVoteResult(voteCheckmarkImage);
-	// db.eventDetails.modify(function (value) {
-	// 	this.value = new Vote({ voteResult: voteResult });
-	// });
-	// 	db.eventDetails.version(2).stores({
-	// 		voteResult: 'voteResult',
-	// }).upgrade(tx => {
-	// 		return tx.table("eventDetails").toCollection().modify(voteStatus => {
-	// 				const names = friend.name.split(' ');
-	//  				friend.firstName = names.shift();
-	//  				friend.lastName = names.join(' ');
-	//  				delete friend.name;
-	//  		});
-	//  });
-
-	//  	try {
-	//  		await db.eventDetails.add({
-	//  			voteResult: voteCheckmarkImage
-	//  		})
-	//  	}
-	//  } catch (error) {
-	//  	alert(`Error: ${error}`);
-	//  };
-
-	//  const resultVoteEvent = {
-	//  	...currentEvent,
-	//  	voteResult: voteCheckmarkImage,
-	//  };
-	//  console.log("======>" + resultVoteEvent);
-	//  onHandleUpdateVoteEvent(resultVoteEvent);
-	//  }
 
 	return (
 		<>
@@ -145,13 +80,13 @@ function Votepage({
 					))}
 				</StyledVoteButtonContainer>
 
-				<StyledButtonConfirm
-					type="button"
-					// value={voteCheckmarkImage}
+				<Image
+					src={optionIcons[2].imageSrc}
+					alt={optionIcons[2].description}
+					width={45}
+					height={45}
 					onClick={handleVoteResult}
-				>
-					Confirm
-				</StyledButtonConfirm>
+				/>
 			</StyledMain>
 		</>
 	);

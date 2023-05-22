@@ -14,10 +14,7 @@ function EventsList({ allItems, currentVoteIconImage }) {
 					{allItems.map((item) => (
 						<StyledListItem key={item.eventId}>
 							<StyledLink href={`/votepage/${item.eventId}`}>
-								<EventCardData
-									currentVoteIconImage={currentVoteIconImage}
-									item={item}
-								/>
+								<EventCardData item={item} />
 							</StyledLink>
 						</StyledListItem>
 					))}

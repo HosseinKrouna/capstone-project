@@ -1,7 +1,6 @@
 import { TextField, Stack, FormControl, Paper } from "@mui/material";
 import { StyledSubmitButton } from "./styles/SubmitButton";
 import { useRouter } from "next/router";
-import { eventDetailsTable } from "@/pages/_app";
 function MuiCreateEventForm({ onHandleEntryData }) {
 	const router = useRouter();
 
@@ -44,7 +43,6 @@ function MuiCreateEventForm({ onHandleEntryData }) {
 								}}
 							>
 								<TextField
-									// value={title}
 									id="title"
 									name="title"
 									sx={{
@@ -59,7 +57,6 @@ function MuiCreateEventForm({ onHandleEntryData }) {
 									InputLabelProps={{
 										shrink: true,
 									}}
-									// value={startTime}
 									type="datetime-local"
 									label="StartTime"
 									id="startTime"
@@ -72,7 +69,6 @@ function MuiCreateEventForm({ onHandleEntryData }) {
 									InputLabelProps={{
 										shrink: true,
 									}}
-									// value={endTime}
 									type="datetime-local"
 									label="EndTime"
 									id="endTime"
@@ -82,7 +78,6 @@ function MuiCreateEventForm({ onHandleEntryData }) {
 									}}
 								/>
 								<TextField
-									// value={location}
 									id="location"
 									name="location"
 									sx={{ background: "#E8F6F6" }}
@@ -91,7 +86,6 @@ function MuiCreateEventForm({ onHandleEntryData }) {
 									required
 								/>
 								<TextField
-									// value={introduce}
 									id="introduce"
 									name="introduce"
 									sx={{ background: "#E8F6F6" }}
@@ -100,7 +94,6 @@ function MuiCreateEventForm({ onHandleEntryData }) {
 									required
 								/>
 								<TextField
-									// value={creator}
 									name="creator"
 									id="creator"
 									sx={{ background: "#E8F6F6" }}

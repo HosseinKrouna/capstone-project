@@ -7,6 +7,11 @@ export const optionIcons = [
 	{
 		id: 1,
 		imageSrc: require("@/Icons/hinzufugen.png"),
-		description: "Plus-Icon for create new event ",
+		description: "Plus Icon for create new event ",
+	},
+	{
+		id: 2,
+		imageSrc: require("@/Icons/einloggen.png"),
+		description: "Confirm Icon to log vote",
 	},
 ];
