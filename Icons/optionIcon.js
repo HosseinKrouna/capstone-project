@@ -24,4 +24,14 @@ export const optionIcons = [
 		imageSrc: require("@/Icons/auswahl.png"),
 		description: "Vote Image",
 	},
+	{
+		id: 5,
+		imageSrc: require("@/Icons/edit.png"),
+		description: "Edit Image",
+	},
+	{
+		id: 6,
+		imageSrc: require("@/Icons/delete.png"),
+		description: "Delete Image",
+	},
 ];

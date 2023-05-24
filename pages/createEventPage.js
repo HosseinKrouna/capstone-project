@@ -6,6 +6,7 @@ import Image from "next/image";
 import { optionIcons } from "@/Icons/optionIcon";
 
 function CreateEventForm({ onHandleEntryData }) {
+	//TODO - setup Cloudenary for imag uploader
 	return (
 		<>
 			<Stack justifyContent="center" alignItems="center">

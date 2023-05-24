@@ -1,7 +1,8 @@
 import { TextField, Stack, FormControl, Paper } from "@mui/material";
 import { StyledSubmitButton } from "./styles/SubmitButton";
 import { useRouter } from "next/router";
-function MuiCreateEventForm({ onHandleEntryData }) {
+
+function MuiCreateEventForm({ currentevent, onHandleEntryData }) {
 	const router = useRouter();
 
 	async function handleSubmit(event) {

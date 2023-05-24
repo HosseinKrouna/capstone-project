@@ -1,28 +1,64 @@
 import { Stack } from "@mui/material";
 import styled from "styled-components";
+import Image from "next/image";
+import { optionIcons } from "@/Icons/optionIcon";
+import { db } from "@/components/Dexie";
+import { useRouter } from "next/router";
 
 export default function DetailsEventData({ currentEvent }) {
+	const router = useRouter();
+
+	const { eventDetails } = db;
+
+	function handelDelete() {
+		eventDetails
+			.where("eventId")
+			.equals(currentEvent.eventId)
+			.delete()
+			.then(() => {
+				console.log("Database successfully deleted");
+			})
+			.catch((err) => {
+				console.error("Could not delete database");
+			})
+			.finally(() => {
+				router.push("/");
+			});
+	}
+
 	return (
 		<Stack>
-			<StyledVoteEventCard>
+			<StyledDetailsCard>
 				<StyledListItem>{currentEvent?.title}</StyledListItem>
 				<StyledListItem>{currentEvent?.startTime}</StyledListItem>
 				<StyledListItem>{currentEvent?.endTime}</StyledListItem>
 				<StyledListItem>{currentEvent?.location}</StyledListItem>
 				<StyledListItem>{currentEvent?.intoduce}</StyledListItem>
 				<StyledListItem>{currentEvent?.creator}</StyledListItem>
-			</StyledVoteEventCard>
+				<StyledDeleteImage
+					onClick={handelDelete}
+					src={optionIcons[6].imageSrc}
+					alt={optionIcons[6].description}
+					width={100}
+					height={100}
+				/>
+			</StyledDetailsCard>
 		</Stack>
 	);
 }
 
-export const StyledListItem = styled.li`
+const StyledDeleteImage = styled(Image)`
+	cursor: pointer;
+`;
+
+const StyledListItem = styled.li`
 	font-size: 27px;
 	font-weight: 900;
 `;
 
-export const StyledVoteEventCard = styled.span`
+const StyledDetailsCard = styled.ul`
 	display: flex;
+	flex-direction: column;
 	justify-content: space-between;
 	margin-bottom: 10px;
 	padding: 10px;

@@ -18,13 +18,13 @@ import styled from "styled-components";
 import Link from "next/link";
 
 export default function EventCardData({ item }) {
-	const router = useRouter();
+	// const router = useRouter();
 	// const { id } = router.query;
 	// const currentEvent = allItems.find((voteEvent) => voteEvent.eventId === id);
 
-	function handleEdit() {
-		router.push(`/editpage/${item.eventId}`);
-	}
+	// function handleEdit() {
+	// 	router.push(`/editpage/${item.eventId}`);
+	// }
 
 	//TODO -
 	// - modify: voteLink for all voteResults to vote again
@@ -32,13 +32,13 @@ export default function EventCardData({ item }) {
 	// fix: Grid-Styles and sign limits
 	return (
 		<StyledCardContainer>
-			<Image
+			{/* <Image
 				onClick={handleEdit}
 				src={optionIcons[0].imageSrc}
 				alt={optionIcons[0].description}
 				width={30}
 				height={30}
-			/>
+			/> */}
 			<StyledEventTitle>{item.title}</StyledEventTitle>
 
 			<StyledFromText>From: </StyledFromText>
@@ -62,12 +62,15 @@ export default function EventCardData({ item }) {
 					"Your Vote: "
 				)}
 				{!item.voteResult ? null : (
-					<Image
-						src={voteIcons[item.voteResult].imageSrc}
-						alt={voteIcons[item.voteResult].description}
-						width={30}
-						height={30}
-					/>
+					<StyledLink href={`/votepage/${item.eventId}`}>
+						<Image
+							src={voteIcons[item.voteResult].imageSrc}
+							alt={voteIcons[item.voteResult].description}
+							width={30}
+							hei
+							ght={30}
+						/>
+					</StyledLink>
 				)}
 			</StyledVoteResult>
 		</StyledCardContainer>
