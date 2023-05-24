@@ -16,12 +16,12 @@ export default function VoteDetails({ currentEvent }) {
 	);
 }
 
-const StyledListItem = styled.li`
+export const StyledListItem = styled.li`
 	font-size: 27px;
 	font-weight: 900;
 `;
 
-const StyledVoteCardDetails = styled.ul`
+export const StyledVoteCardDetails = styled.ul`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;

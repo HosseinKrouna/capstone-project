@@ -13,7 +13,7 @@ function EventsList({ allItems, currentVoteIconImage }) {
 				<StyledList>
 					{allItems.map((item) => (
 						<StyledListItem key={item.eventId}>
-							<StyledLink href={`/votepage/${item.eventId}`}>
+							<StyledLink href={`/detailspage/${item.eventId}`}>
 								<EventCardData item={item} />
 							</StyledLink>
 						</StyledListItem>
@@ -63,7 +63,6 @@ const StyledLink = styled(Link)`
 	cursor: pointer;
 	width: 300px;
 	height: 200px;
-	overflow: hidden;
 `;
 
 export default EventsList;

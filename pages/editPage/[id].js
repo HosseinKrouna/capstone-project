@@ -7,6 +7,10 @@ function EditPage({ allItems }) {
 	const { id } = router.query;
 	const currentEvent = allItems.find((item) => item.eventId === id);
 
+	//TODO - modify: turn page into edit
+	// add: the delete function
+	// add: BackLink
+
 	return (
 		<>
 			<h1>{currentEvent.title}</h1>

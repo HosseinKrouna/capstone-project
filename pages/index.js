@@ -16,6 +16,10 @@ export default function Homepage({
 	deleteEvent,
 }) {
 	console.log(currentVoteIconImage);
+
+	//TODO -
+	// fix: plus-icon responsive positioning
+	// add: Animation pointing to the plaus icon when the event list is empty
 	return (
 		<>
 			<Head>

@@ -14,6 +14,8 @@ import Image from "next/image";
 import { voteIcons } from "@/Icons/dataIcons";
 import { optionIcons } from "@/Icons/optionIcon";
 import { useRouter } from "next/router";
+import styled from "styled-components";
+import Link from "next/link";
 
 export default function EventCardData({ item }) {
 	const router = useRouter();
@@ -21,9 +23,13 @@ export default function EventCardData({ item }) {
 	// const currentEvent = allItems.find((voteEvent) => voteEvent.eventId === id);
 
 	function handleEdit() {
-		router.push(`/editPage/${item.eventId}`);
+		router.push(`/editpage/${item.eventId}`);
 	}
 
+	//TODO -
+	// - modify: voteLink for all voteResults to vote again
+	// fix: delete optionIcon - is actual not used
+	// fix: Grid-Styles and sign limits
 	return (
 		<StyledCardContainer>
 			<Image
@@ -44,12 +50,14 @@ export default function EventCardData({ item }) {
 			<StyledLocation>{item.location}</StyledLocation>
 			<StyledVoteResult>
 				{!item.voteResult ? (
-					<Image
-						src={optionIcons[4].imageSrc}
-						alt={optionIcons[4].description}
-						width={30}
-						height={30}
-					/>
+					<StyledLink href={`/votepage/${item.eventId}`}>
+						<Image
+							src={optionIcons[4].imageSrc}
+							alt={optionIcons[4].description}
+							width={30}
+							height={30}
+						/>
+					</StyledLink>
 				) : (
 					"Your Vote: "
 				)}
@@ -65,3 +73,13 @@ export default function EventCardData({ item }) {
 		</StyledCardContainer>
 	);
 }
+
+const StyledLink = styled(Link)`
+	text-decoration: none;
+	color: black;
+	font-weight: 600;
+	cursor: pointer;
+	width: 300px;
+	height: 200px;
+	overflow: hidden;
+`;
