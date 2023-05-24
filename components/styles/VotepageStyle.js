@@ -1,11 +1,17 @@
 import styled from "styled-components";
+import Image from "next/image";
 
 export const StyledEmojiCheckmark = styled.span`
 	font-size: 30px;
 `;
 
 export const StyledVoteTitle = styled.h2`
-	font-size: 40px;
+	font-size: 55px;
+	font-weight: 500;
+	color: #fdfdfe;
+	text-shadow: 0px 0px 5px #b393d3, 0px 0px 10px #b393d3, 0px 0px 10px #b393d3,
+		0px 0px 20px #b393d3;
+	padding: 3px;
 	margin: 0;
 `;
 
@@ -19,10 +25,15 @@ export const StyledVoteEventCard = styled.span`
 	justify-content: space-between;
 	margin-bottom: 10px;
 	padding: 10px;
-	border-radius: 4px;
-	background: linear-gradient(to left, white, #d9d9d9);
-	height: 350px;
+	border-radius: 8px;
+	background: linear-gradient(to left, #bef8fc, #056cb6);
+	height: 450px;
 	width: 350px;
+	border: solid 6px;
+	box-shadow: 0 1rem 1.25rem 0 rgba(22, 75, 195, 0.5),
+		0 -0.25rem 1.5rem rgba(110, 15, 155, 1) inset,
+		0 0.75rem 0.5rem rgba(255, 255, 255, 0.4) inset,
+		0 0.25rem 0.5rem 0 rgba(180, 70, 207, 1) inset;
 `;
 
 export const StyledMain = styled.main`
@@ -79,4 +90,21 @@ export const StyledVoteButtonContainer = styled.div`
 	display: flex;
 	justify-content: space-between;
 	gap: 10px;
+`;
+
+export const StyledLogInVoteImage = styled(Image)`
+	cursor: pointer;
+
+	&:hover {
+		transform: translate(0, 0.375em);
+	}
+	&:hover::before {
+		transform: translate3d(0, 0.75em, -1em);
+	}
+	&:active {
+		transform: translate(0em, 0.75em);
+	}
+	&:active::before {
+		transform: translate3d(0, 0, -1em);
+	}
 `;

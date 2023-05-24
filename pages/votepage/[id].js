@@ -5,6 +5,7 @@ import VoteDetails from "@/components/VoteDetails";
 import { voteIcons } from "@/Icons/dataIcons/";
 import Image from "next/image";
 import {
+	StyledLogInVoteImage,
 	StyledEmojiCheckmark,
 	StyledVoteTitle,
 	StyledButtonConfirm,
@@ -46,8 +47,14 @@ function Votepage({ allItems, onHandleCurrentVoteElement }) {
 	return (
 		<>
 			<StyledMain>
-				<StyledBackLink href="/">Home</StyledBackLink>
-
+				<StyledBackLink href="/">
+					<Image
+						src={optionIcons[3].imageSrc}
+						alt={optionIcons[3].description}
+						height={55}
+						width={55}
+					/>
+				</StyledBackLink>
 				<StyledVoteTitle>Voting</StyledVoteTitle>
 				<StyledVoteEventCard>
 					<VoteDetails currentEvent={currentEvent} />
@@ -79,8 +86,7 @@ function Votepage({ allItems, onHandleCurrentVoteElement }) {
 						</StyledVoteButtons>
 					))}
 				</StyledVoteButtonContainer>
-
-				<Image
+				<StyledLogInVoteImage
 					src={optionIcons[2].imageSrc}
 					alt={optionIcons[2].description}
 					width={45}

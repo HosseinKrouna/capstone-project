@@ -76,8 +76,8 @@ export const StyledLocation = styled.span`
 	grid-area: location;
 `;
 
-export const StyledOptionImage = styled(Image)`
-	grid-area: optionIcon;
-	justify-self: center;
-	cursor: pointer;
-`;
+// export const StyledOptionImage = styled(Image)`
+// 	grid-area: optionIcon;
+// 	justify-self: center;
+// 	cursor: pointer;
+// `;

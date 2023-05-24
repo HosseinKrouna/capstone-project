@@ -27,6 +27,7 @@ function EventsList({ allItems, currentVoteIconImage }) {
 }
 
 const StyledListItem = styled.li`
+	/* pointer-events: none; */
 	width: 350px;
 	height: 150px;
 
@@ -62,6 +63,7 @@ const StyledLink = styled(Link)`
 	cursor: pointer;
 	width: 300px;
 	height: 200px;
+	overflow: hidden;
 `;
 
 export default EventsList;

@@ -14,4 +14,14 @@ export const optionIcons = [
 		imageSrc: require("@/Icons/einloggen.png"),
 		description: "Confirm Icon to log vote",
 	},
+	{
+		id: 3,
+		imageSrc: require("@/Icons/zuruck.png"),
+		description: "Back Home Image",
+	},
+	{
+		id: 4,
+		imageSrc: require("@/Icons/auswahl.png"),
+		description: "Vote Image",
+	},
 ];
