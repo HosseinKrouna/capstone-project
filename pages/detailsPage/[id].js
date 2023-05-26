@@ -17,6 +17,7 @@ function DetailsPage({ allItems }) {
 
 	//TODO - Style Details Page
 	// - add: voteResult
+	// - modify: move hendelDelete to edit page
 	function handelEdit() {
 		router.push(`/editpage/${currentEvent.eventId}`);
 	}

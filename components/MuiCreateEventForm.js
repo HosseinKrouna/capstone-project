@@ -2,7 +2,7 @@ import { TextField, Stack, FormControl, Paper } from "@mui/material";
 import { StyledSubmitButton } from "./styles/SubmitButton";
 import { useRouter } from "next/router";
 
-function MuiCreateEventForm({ currentevent, onHandleEntryData }) {
+function MuiCreateEventForm({ currentEvent, onHandleEntryData }) {
 	const router = useRouter();
 
 	async function handleSubmit(event) {
@@ -33,7 +33,7 @@ function MuiCreateEventForm({ currentevent, onHandleEntryData }) {
 						justifyContent="flex-start"
 						alignItems="center"
 					>
-						<form id="createEventForm" onSubmit={handleSubmit}>
+						<form id="createEventForm" on onSubmit={handleSubmit}>
 							<FormControl
 								required
 								size="large"
