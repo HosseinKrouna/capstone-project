@@ -15,14 +15,12 @@ function EditPage({ allItems }) {
 
 	function handleChanges(event) {
 		const currentEventChanges = event.target.defaultValue;
-		console.log(currentEventChanges);
 	}
 
 	function handleSubmitChanges(event) {
 		event.preventDefault();
 		const formData = new FormData(event.target);
 		const data = Object.fromEntries(formData);
-		console.log(data);
 
 		eventDetails
 			.where("eventId")

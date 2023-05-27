@@ -20,20 +20,15 @@ const { eventDetails } = db;
 function Votepage({ allItems }) {
 	const [voteCheckmarkImage, setVoteCheckmarkImage] = useState();
 
-	console.log("voteCheckmarkImage => ", voteCheckmarkImage);
-
 	const router = useRouter();
 	const { id } = router.query;
 	const currentEvent = allItems.find((voteEvent) => voteEvent.eventId === id);
-
-	console.log("currentEvent ==> ", currentEvent);
 
 	function handleVoteResult() {
 		const currentVoteIcon = voteIcons?.find(
 			(voteIcon) => voteIcon.description === voteCheckmarkImage?.props.alt
 		);
 
-		console.log("currentVoteIcon =======>", currentVoteIcon);
 		eventDetails
 			.where("eventId")
 			.equals(currentEvent.eventId)
