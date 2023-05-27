@@ -11,7 +11,7 @@ import { TextField, Stack, FormControl, Paper } from "@mui/material";
 function EditPage({ allItems }) {
 	const router = useRouter();
 	const { id } = router.query;
-	const currentEvent = allItems?.find((item) => item.eventId === id);
+	const currentEvent = allItems.find((item) => item.eventId === id);
 
 	function handleChanges(event) {
 		const currentEventChanges = event.target.defaultValue;

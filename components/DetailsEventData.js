@@ -10,12 +10,12 @@ export default function DetailsEventData({ currentEvent }) {
 		<Stack>
 			<StyledDetailsCard>
 				<StyledListItem>
-					{!currentEvent?.voteResult ? (
+					{!currentEvent.voteResult ? (
 						"Are You there?"
 					) : (
 						<Image
-							src={voteIcons[currentEvent?.voteResult].imageSrc}
-							alt={voteIcons[currentEvent?.voteResult].description}
+							src={voteIcons[currentEvent.voteResult].imageSrc}
+							alt={voteIcons[currentEvent.voteResult].description}
 							width={30}
 							height={30}
 						/>
