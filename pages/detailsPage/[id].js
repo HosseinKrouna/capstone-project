@@ -1,14 +1,10 @@
 import { useRouter } from "next/router";
 import styled from "styled-components";
-import {
-	StyledVoteEventCard,
-	StyledMain,
-} from "@/components/styles/VotepageStyle";
+import { StyledMain } from "@/components/styles/VotepageStyle";
 import DetailsEventData from "@/components/DetailsEventData";
 import { StyledBackLink } from "@/components/styles/BackLink";
 import Image from "next/image";
 import { optionIcons } from "@/Icons/optionIcon";
-import Link from "next/link";
 
 function DetailsPage({ allItems }) {
 	const router = useRouter();
@@ -17,7 +13,6 @@ function DetailsPage({ allItems }) {
 
 	//TODO - Style Details Page
 	// - add: voteResult
-	// - modify: move hendelDelete to edit page
 	function handelEdit() {
 		router.push(`/editpage/${currentEvent.eventId}`);
 	}
@@ -35,7 +30,7 @@ function DetailsPage({ allItems }) {
 						/>
 					</StyledBackLink>
 
-					<StyledTitle>{currentEvent?.title}</StyledTitle>
+					<StyledTitle>{currentEvent.title}</StyledTitle>
 					<DetailsEventData currentEvent={currentEvent} />
 
 					<StyledEditImage
