@@ -10,7 +10,7 @@ export default function DetailsEventData({ currentEvent }) {
 		<Stack>
 			<StyledDetailsCard>
 				<StyledListItem>
-					{!currentEvent.voteResult ? (
+					{!currentEvent?.voteResult ? (
 						"Are You there?"
 					) : (
 						<Image
