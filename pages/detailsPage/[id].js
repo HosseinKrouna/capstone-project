@@ -9,7 +9,7 @@ import { optionIcons } from "@/Icons/optionIcon";
 function DetailsPage({ allItems }) {
 	const router = useRouter();
 	const { id } = router.query;
-	const currentEvent = allItems.find((item) => item.eventId === id);
+	const currentEvent = allItems?.find((item) => item.eventId === id);
 
 	//TODO - Style Details Page
 
