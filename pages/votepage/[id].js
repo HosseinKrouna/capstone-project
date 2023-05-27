@@ -25,7 +25,7 @@ function Votepage({ allItems }) {
 	const currentEvent = allItems?.find((voteEvent) => voteEvent.eventId === id);
 
 	function handleVoteResult() {
-		const currentVoteIcon = voteIcons?.find(
+		const currentVoteIcon = voteIcons.find(
 			(voteIcon) => voteIcon.description === voteCheckmarkImage?.props.alt
 		);
 

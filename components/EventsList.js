@@ -3,10 +3,7 @@ import styled from "styled-components";
 import EventCardData from "@/components/EventCardData";
 import ConfettiExplosion from "react-confetti-explosion";
 
-function EventsList({ allItems, currentVoteIconImage }) {
-	console.log(allItems);
-	console.log(currentVoteIconImage);
-
+function EventsList({ allItems }) {
 	return (
 		<>
 			{allItems ? (

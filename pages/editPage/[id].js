@@ -62,7 +62,7 @@ function EditPage({ allItems }) {
 			});
 	}
 	//TODO - Delete function should be modal dialog using
-
+	// - fix: Data should be retained when the page is reloaded
 	return (
 		<>
 			<StyledBackLink href={"/"}>
@@ -104,7 +104,7 @@ function EditPage({ allItems }) {
 									}}
 								>
 									<TextField
-										defaultValue={currentEvent.title}
+										defaultValue={currentEvent?.title}
 										onChange={handleChanges}
 										id="title"
 										name="title"
@@ -118,7 +118,7 @@ function EditPage({ allItems }) {
 									/>
 									<TextField
 										onChange={handleChanges}
-										defaultValue={currentEvent.startTime}
+										defaultValue={currentEvent?.startTime}
 										InputLabelProps={{
 											shrink: true,
 										}}
@@ -133,7 +133,7 @@ function EditPage({ allItems }) {
 
 									<TextField
 										onChange={handleChanges}
-										defaultValue={currentEvent.endTime}
+										defaultValue={currentEvent?.endTime}
 										InputLabelProps={{
 											shrink: true,
 										}}
@@ -147,7 +147,7 @@ function EditPage({ allItems }) {
 									/>
 									<TextField
 										onChange={handleChanges}
-										defaultValue={currentEvent.location}
+										defaultValue={currentEvent?.location}
 										id="location"
 										name="location"
 										sx={{ background: "#E8F6F6" }}
@@ -157,7 +157,7 @@ function EditPage({ allItems }) {
 									/>
 									<TextField
 										onChange={handleChanges}
-										defaultValue={currentEvent.introduce}
+										defaultValue={currentEvent?.introduce}
 										id="introduce"
 										name="introduce"
 										sx={{ background: "#E8F6F6" }}
@@ -167,7 +167,7 @@ function EditPage({ allItems }) {
 									/>
 									<TextField
 										onChange={handleChanges}
-										defaultValue={currentEvent.creator}
+										defaultValue={currentEvent?.creator}
 										name="creator"
 										id="creator"
 										sx={{ background: "#E8F6F6" }}

@@ -5,7 +5,6 @@ import {
 	StyledLocation,
 	StyledStartTime,
 	StyledVoteResult,
-	StyledOptionImage,
 	StyledFromText,
 	StyledToText,
 	StyledWhereText,
@@ -13,32 +12,14 @@ import {
 import Image from "next/image";
 import { voteIcons } from "@/Icons/dataIcons";
 import { optionIcons } from "@/Icons/optionIcon";
-import { useRouter } from "next/router";
 import styled from "styled-components";
 import Link from "next/link";
 
 export default function EventCardData({ item }) {
-	// const router = useRouter();
-	// const { id } = router.query;
-	// const currentEvent = allItems.find((voteEvent) => voteEvent.eventId === id);
-
-	// function handleEdit() {
-	// 	router.push(`/editpage/${item.eventId}`);
-	// }
-
 	//TODO -
-	// - modify: voteLink for all voteResults to vote again
-	// fix: delete optionIcon - is actual not used
-	// fix: Grid-Styles and sign limits
+	// fix: sign limits
 	return (
 		<StyledCardContainer>
-			{/* <Image
-				onClick={handleEdit}
-				src={optionIcons[0].imageSrc}
-				alt={optionIcons[0].description}
-				width={30}
-				height={30}
-			/> */}
 			<StyledEventTitle>{item.title}</StyledEventTitle>
 
 			<StyledFromText>From: </StyledFromText>

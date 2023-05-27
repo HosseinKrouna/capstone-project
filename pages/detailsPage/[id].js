@@ -12,7 +12,7 @@ function DetailsPage({ allItems }) {
 	const currentEvent = allItems?.find((item) => item.eventId === id);
 
 	//TODO - Style Details Page
-	// - add: voteResult
+
 	function handelEdit() {
 		router.push(`/editpage/${currentEvent.eventId}`);
 	}
@@ -30,7 +30,7 @@ function DetailsPage({ allItems }) {
 						/>
 					</StyledBackLink>
 
-					<StyledTitle>{currentEvent.title}</StyledTitle>
+					<StyledTitle>{currentEvent?.title}</StyledTitle>
 					<DetailsEventData currentEvent={currentEvent} />
 
 					<StyledEditImage
