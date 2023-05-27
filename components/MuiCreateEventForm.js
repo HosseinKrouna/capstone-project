@@ -2,7 +2,7 @@ import { TextField, Stack, FormControl, Paper } from "@mui/material";
 import { StyledSubmitButton } from "./styles/SubmitButton";
 import { useRouter } from "next/router";
 
-function MuiCreateEventForm({ currentEvent, onHandleEntryData }) {
+function MuiCreateEventForm({ onHandleEntryData }) {
 	const router = useRouter();
 
 	async function handleSubmit(event) {
@@ -102,7 +102,7 @@ function MuiCreateEventForm({ currentEvent, onHandleEntryData }) {
 									color="secondary"
 									required
 								/>
-								<StyledSubmitButton type="Submit">Submit</StyledSubmitButton>
+								<StyledSubmitButton type="submit">Submit</StyledSubmitButton>
 							</FormControl>
 						</form>
 					</Stack>

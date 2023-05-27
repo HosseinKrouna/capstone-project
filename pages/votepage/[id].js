@@ -8,7 +8,6 @@ import {
 	StyledLogInVoteImage,
 	StyledEmojiCheckmark,
 	StyledVoteTitle,
-	StyledButtonConfirm,
 	StyledVoteEventCard,
 	StyledMain,
 	StyledVoteButtons,
@@ -18,7 +17,7 @@ import { db } from "@/components/Dexie";
 import { optionIcons } from "@/Icons/optionIcon";
 const { eventDetails } = db;
 
-function Votepage({ allItems, onHandleCurrentVoteElement }) {
+function Votepage({ allItems }) {
 	const [voteCheckmarkImage, setVoteCheckmarkImage] = useState();
 
 	console.log("voteCheckmarkImage => ", voteCheckmarkImage);
@@ -33,7 +32,6 @@ function Votepage({ allItems, onHandleCurrentVoteElement }) {
 		const currentVoteIcon = voteIcons?.find(
 			(voteIcon) => voteIcon.description === voteCheckmarkImage?.props.alt
 		);
-		// onHandleCurrentVoteElement(currentVoteIcon);
 
 		console.log("currentVoteIcon =======>", currentVoteIcon);
 		eventDetails

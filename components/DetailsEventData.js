@@ -25,7 +25,7 @@ export default function DetailsEventData({ currentEvent }) {
 				<StyledListItem>{currentEvent?.startTime}</StyledListItem>
 				<StyledListItem>{currentEvent?.endTime}</StyledListItem>
 				<StyledListItem>{currentEvent?.location}</StyledListItem>
-				<StyledListItem>{currentEvent?.intoduce}</StyledListItem>
+				<StyledListItem>{currentEvent?.introduce}</StyledListItem>
 				<StyledListItem>{currentEvent?.creator}</StyledListItem>
 			</StyledDetailsCard>
 		</Stack>

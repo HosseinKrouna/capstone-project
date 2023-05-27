@@ -14,39 +14,37 @@ function EditPage({ allItems }) {
 	const { id } = router.query;
 	const currentEvent = allItems.find((item) => item.eventId === id);
 
-	const [newTitleValue, setNewTitleValue] = useState({});
-
-	function handleChanges() {
-		setNewTitleValue(input.title);
-		console.log(newTitleValue);
+	function handleChanges(event) {
+		const currentEventChanges = event.target.defaultValue;
 	}
 
-	function handleConfirmChanges() {
-		//TODO - make as form
+	function handleSubmitChanges(event) {
+		event.preventDefault();
+		const formData = new FormData(event.target);
+		const data = Object.fromEntries(formData);
+		console.log(data);
+
 		eventDetails
 			.where("eventId")
 			.equals(currentEvent.eventId)
 			.modify((updateEvent) => {
-				updateEvent.title = newTitleValue;
-				// updateEvent.startTime = newCurrentEvent;
-				// updateEvent.endTime = newCurrentEvent;
-				// updateEvent.location = newCurrentEvent;
-				// updateEvent.introduce = newCurrentEvent;
-				// updateEvent.creator = newCurrentEvent;
+				updateEvent.title = data.title;
+				updateEvent.startTime = data.startTime;
+				updateEvent.endTime = data.endTime;
+				updateEvent.location = data.location;
+				updateEvent.introduce = data.introduce;
+				updateEvent.creator = data.creator;
+			})
+			.then(() => {
+				console.log("Database successfully updated");
+			})
+			.catch((err) => {
+				console.error(err + "Could not update database");
+			})
+			.finally(() => {
+				router.push("/");
 			});
-		// .then(() => {
-		// 	console.log("Database successfully updated");
-		// })
-		// .catch((err) => {
-		// 	console.error(err + "Could not update database");
-		// })
-		// .finally(() => {
-		// 	router.push("/");
-		// });
 	}
-
-	//TODO - modify: turn page into edit
-	// add: the delete function
 
 	const { eventDetails } = db;
 
@@ -65,6 +63,7 @@ function EditPage({ allItems }) {
 				router.push("/");
 			});
 	}
+	//TODO - Delete function should be modal dialog using
 
 	return (
 		<>
@@ -96,97 +95,96 @@ function EditPage({ allItems }) {
 							justifyContent="flex-start"
 							alignItems="center"
 						>
-							<FormControl
-								required
-								size="large"
-								variant="outlined"
-								sx={{
-									gap: "25px",
-									width: "360px",
-								}}
-							>
-								<TextField
-									defaultValue={currentEvent.title}
-									onChange={handleChanges}
-									id="title"
-									name="title"
-									sx={{
-										mt: "22px",
-										background: "#E8F6F6",
-									}}
-									label="Title"
-									color="secondary"
+							<form id="editForm" onSubmit={handleSubmitChanges}>
+								<FormControl
 									required
-								/>
-								<TextField
-									onChange={handleChanges}
-									defaultValue={currentEvent.startTime}
-									InputLabelProps={{
-										shrink: true,
-									}}
-									type="datetime-local"
-									label="StartTime"
-									id="startTime"
-									name="startTime"
+									size="large"
+									variant="outlined"
 									sx={{
-										background: "#E8F6F6",
+										gap: "25px",
+										width: "360px",
 									}}
-								/>
+								>
+									<TextField
+										defaultValue={currentEvent.title}
+										onChange={handleChanges}
+										id="title"
+										name="title"
+										sx={{
+											mt: "22px",
+											background: "#E8F6F6",
+										}}
+										label="Title"
+										color="secondary"
+										required
+									/>
+									<TextField
+										onChange={handleChanges}
+										defaultValue={currentEvent.startTime}
+										InputLabelProps={{
+											shrink: true,
+										}}
+										type="datetime-local"
+										label="StartTime"
+										id="startTime"
+										name="startTime"
+										sx={{
+											background: "#E8F6F6",
+										}}
+									/>
 
-								<TextField
-									onChange={handleChanges}
-									defaultValue={currentEvent.endTime}
-									InputLabelProps={{
-										shrink: true,
-									}}
-									type="datetime-local"
-									label="EndTime"
-									id="endTime"
-									name="endTime"
-									sx={{
-										background: "#E8F6F6",
-									}}
-								/>
-								<TextField
-									onChange={handleChanges}
-									defaultValue={currentEvent.location}
-									id="location"
-									name="location"
-									sx={{ background: "#E8F6F6" }}
-									label="Location"
-									color="secondary"
-									required
-								/>
-								<TextField
-									onChange={handleChanges}
-									defaultValue={currentEvent.introduce}
-									id="introduce"
-									name="introduce"
-									sx={{ background: "#E8F6F6" }}
-									label="Introduce"
-									color="secondary"
-									required
-								/>
-								<TextField
-									onChange={handleChanges}
-									defaultValue={currentEvent.creator}
-									name="creator"
-									id="creator"
-									sx={{ background: "#E8F6F6" }}
-									label="Creator"
-									color="secondary"
-									required
-								/>
-								<StyledConfirmButton onClick={handleConfirmChanges}>
-									Done
-								</StyledConfirmButton>
-							</FormControl>
+									<TextField
+										onChange={handleChanges}
+										defaultValue={currentEvent.endTime}
+										InputLabelProps={{
+											shrink: true,
+										}}
+										type="datetime-local"
+										label="EndTime"
+										id="endTime"
+										name="endTime"
+										sx={{
+											background: "#E8F6F6",
+										}}
+									/>
+									<TextField
+										onChange={handleChanges}
+										defaultValue={currentEvent.location}
+										id="location"
+										name="location"
+										sx={{ background: "#E8F6F6" }}
+										label="Location"
+										color="secondary"
+										required
+									/>
+									<TextField
+										onChange={handleChanges}
+										defaultValue={currentEvent.introduce}
+										id="introduce"
+										name="introduce"
+										sx={{ background: "#E8F6F6" }}
+										label="Introduce"
+										color="secondary"
+										required
+									/>
+									<TextField
+										onChange={handleChanges}
+										defaultValue={currentEvent.creator}
+										name="creator"
+										id="creator"
+										sx={{ background: "#E8F6F6" }}
+										label="Creator"
+										color="secondary"
+										required
+									/>
+									<StyledConfirmButton type="submit">Done</StyledConfirmButton>
+								</FormControl>
+							</form>
 						</Stack>
 					</Stack>
 				</Stack>
 			</Paper>
 
-			{/* <MuiCreateEventForm currentEvent={currentEvent} /> */}
 			<StyledDeleteImage
 				onClick={handelDelete}
 				src={optionIcons[6].imageSrc}
@@ -194,14 +192,6 @@ function EditPage({ allItems }) {
 				width={100}
 				height={100}
 			/>
-
-			{/* <StyledCardContainer>
-				<span>Start Time: {currentEvent.startTime}</span>
-				<span>End Time: {currentEvent.endTime}</span>
-				<span>Location: {currentEvent.location}</span>
-				<span>Let a Comment: {currentEvent.description}</span>
-				<span>Creator: {currentEvent.creator}</span>
-			</StyledCardContainer> */}
 		</>
 	);
 }
