@@ -6,10 +6,10 @@ import { StyledBackLink } from "@/components/styles/BackLink";
 import Image from "next/image";
 import { optionIcons } from "@/Icons/optionIcon";
 
-function DetailsPage({ allItems }) {
+async function DetailsPage({ allItems }) {
 	const router = useRouter();
 	const { id } = router.query;
-	const currentEvent = allItems.find((item) => item.eventId === id);
+	const currentEvent = await allItems.find((item) => item.eventId === id);
 
 	//TODO - Style Details Page
 	// - add: voteResult
