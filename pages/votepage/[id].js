@@ -22,7 +22,7 @@ function Votepage({ allItems }) {
 
 	const router = useRouter();
 	const { id } = router.query;
-	const currentEvent = allItems.find((voteEvent) => voteEvent.eventId === id);
+	const currentEvent = allItems?.find((voteEvent) => voteEvent.eventId === id);
 
 	function handleVoteResult() {
 		const currentVoteIcon = voteIcons?.find(
