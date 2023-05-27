@@ -4,13 +4,22 @@ import {
 	StyledAppTitle,
 } from "../components/styles/Homepage";
 import { StyledAddEventLink } from "../components/styles/AddEventLink";
-import { Icon } from "react-icons-kit";
-import { ic_add_circle_outline_outline } from "react-icons-kit/md/ic_add_circle_outline_outline";
-import styled from "styled-components";
 import Head from "next/head";
 import { Animated } from "react-animated-css";
+import Image from "next/image";
+import { optionIcons } from "@/Icons/optionIcon";
+import { Paper, Stack, Grid, Item } from "@mui/material";
+export default function Homepage({
+	allItems,
+	voteResultData,
+	currentVoteIconImage,
+	deleteEvent,
+}) {
+	console.log(currentVoteIconImage);
 
-export default function HomePage({ entryData, voteResultData }) {
+	//TODO -
+	// fix: plus-icon responsive positioning
+	// add: Animation pointing to the plaus icon when the event list is empty
 	return (
 		<>
 			<Head>
@@ -24,27 +33,24 @@ export default function HomePage({ entryData, voteResultData }) {
 					<StyledAppTitle>Friends Wall</StyledAppTitle>
 				</Animated>
 			</StyledHeaderHomepage>
-			<StyledEventTitle>Events</StyledEventTitle>
-			<StyledMain>
-				<EventsList entryData={entryData} voteResultData={voteResultData} />
-				<StyledAddEventLink href="/createEventPage">
-					<Icon icon={ic_add_circle_outline_outline} size={80} />
-				</StyledAddEventLink>
-			</StyledMain>
+			<EventsList
+				currentVoteIconImage={currentVoteIconImage}
+				allItems={allItems}
+				voteResultData={voteResultData}
+			/>
+
+			<Stack>
+				<Stack>
+					<StyledAddEventLink href="/createEventPage">
+						<Image
+							src={optionIcons[1].imageSrc}
+							alt={optionIcons[1].description}
+							width={70}
+							height={70}
+						/>
+					</StyledAddEventLink>
+				</Stack>
+			</Stack>
 		</>
 	);
 }
-const StyledMain = styled.main`
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: 11px;
-`;
-
-const StyledEventTitle = styled.h2`
-	margin: 0;
-	padding-left: 60px;
-	color: #e0ffff;
-	font-size: 32px;
-	left: 50px;
-`;
