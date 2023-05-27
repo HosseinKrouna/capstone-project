@@ -6,7 +6,6 @@ import styled from "styled-components";
 import { optionIcons } from "@/Icons/optionIcon";
 import Image from "next/image";
 import { db } from "@/components/Dexie";
-import { useState } from "react";
 import { TextField, Stack, FormControl, Paper } from "@mui/material";
 
 function EditPage({ allItems }) {
@@ -16,6 +15,7 @@ function EditPage({ allItems }) {
 
 	function handleChanges(event) {
 		const currentEventChanges = event.target.defaultValue;
+		console.log(currentEventChanges);
 	}
 
 	function handleSubmitChanges(event) {
