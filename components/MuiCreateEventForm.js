@@ -14,7 +14,7 @@ function MuiCreateEventForm({ onHandleEntryData }) {
 
 		router.push(`/`);
 	}
-
+	//TODO - add Cloudinery image uplpader
 	return (
 		<Paper sx={{ backgroundColor: "transparent" }}>
 			<Stack justifyContent="center" alignItems="center">
@@ -36,14 +36,14 @@ function MuiCreateEventForm({ onHandleEntryData }) {
 						<form id="createEventForm" on onSubmit={handleSubmit}>
 							<FormControl
 								required
-								size="large"
 								variant="outlined"
 								sx={{
 									gap: "25px",
-									width: "360px",
+									width: 300,
 								}}
 							>
 								<TextField
+									size="small"
 									id="title"
 									name="title"
 									sx={{
@@ -55,6 +55,7 @@ function MuiCreateEventForm({ onHandleEntryData }) {
 									required
 								/>
 								<TextField
+									size="small"
 									InputLabelProps={{
 										shrink: true,
 									}}
@@ -67,6 +68,7 @@ function MuiCreateEventForm({ onHandleEntryData }) {
 									}}
 								/>
 								<TextField
+									size="small"
 									InputLabelProps={{
 										shrink: true,
 									}}
@@ -79,6 +81,7 @@ function MuiCreateEventForm({ onHandleEntryData }) {
 									}}
 								/>
 								<TextField
+									size="small"
 									id="location"
 									name="location"
 									sx={{ background: "#E8F6F6" }}
@@ -87,6 +90,7 @@ function MuiCreateEventForm({ onHandleEntryData }) {
 									required
 								/>
 								<TextField
+									size="small"
 									id="introduce"
 									name="introduce"
 									sx={{ background: "#E8F6F6" }}
@@ -95,6 +99,7 @@ function MuiCreateEventForm({ onHandleEntryData }) {
 									required
 								/>
 								<TextField
+									size="small"
 									name="creator"
 									id="creator"
 									sx={{ background: "#E8F6F6" }}

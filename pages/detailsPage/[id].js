@@ -12,7 +12,10 @@ function DetailsPage({ allItems }) {
 	const currentEvent = allItems?.find((item) => item.eventId === id);
 
 	//TODO - Style Details Page
-
+	//FIXME - Data Transfer via verscel
+	//FIXME -  add handling empty confirm
+	// - TypeError: Cannot read poperties of undefined (reading 'id')
+	//FIXME - TypeError: Cannot read properties of undefined (reading 'voteResult')
 	function handelEdit() {
 		router.push(`/editpage/${currentEvent?.eventId}`);
 	}
@@ -30,7 +33,7 @@ function DetailsPage({ allItems }) {
 						/>
 					</StyledBackLink>
 
-					<StyledTitle>{currentEvent?.title}</StyledTitle>
+					<StyledTitle>Event Details</StyledTitle>
 					<DetailsEventData currentEvent={currentEvent} />
 
 					<StyledEditImage

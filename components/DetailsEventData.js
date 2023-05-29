@@ -4,13 +4,13 @@ import Image from "next/image";
 import { voteIcons } from "@/Icons/dataIcons";
 
 export default function DetailsEventData({ currentEvent }) {
-	//TODO - fix: set voteResetImage (index 0) to hidden
+	//TODO  - modify: set voteResetImage (index 0) to hidden
 
 	return (
 		<Stack>
 			<StyledDetailsCard>
 				<StyledListItem>
-					{!currentEvent.voteResult ? (
+					{!currentEvent?.voteResult ? (
 						"Are You there?"
 					) : (
 						<Image
@@ -21,12 +21,12 @@ export default function DetailsEventData({ currentEvent }) {
 						/>
 					)}
 				</StyledListItem>
-				<StyledListItem>{currentEvent.title}</StyledListItem>
-				<StyledListItem>{currentEvent.startTime}</StyledListItem>
-				<StyledListItem>{currentEvent.endTime}</StyledListItem>
-				<StyledListItem>{currentEvent.location}</StyledListItem>
-				<StyledListItem>{currentEvent.introduce}</StyledListItem>
-				<StyledListItem>{currentEvent.creator}</StyledListItem>
+				<StyledListItem>{currentEvent?.title}</StyledListItem>
+				<StyledListItem>{currentEvent?.startTime}</StyledListItem>
+				<StyledListItem>{currentEvent?.endTime}</StyledListItem>
+				<StyledListItem>{currentEvent?.location}</StyledListItem>
+				<StyledListItem>{currentEvent?.introduce}</StyledListItem>
+				<StyledListItem>{currentEvent?.creator}</StyledListItem>
 			</StyledDetailsCard>
 		</Stack>
 	);
