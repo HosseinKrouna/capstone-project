@@ -29,11 +29,18 @@ function Votepage({ allItems }) {
 			(voteIcon) => voteIcon.description === voteCheckmarkImage?.props.alt
 		);
 
+		//TODO - fix: add handling empty confirm
+		// - [Cannot read properties of undefined (reading 'id')]
+
 		eventDetails
 			.where("eventId")
 			.equals(currentEvent.eventId)
 			.modify((voteEvent) => {
-				voteEvent.voteResult = currentVoteIcon.id;
+				if (!voteEvent.voteResult) {
+					voteEvent.voteResult = currentVoteIcon.id;
+				} else {
+					console.log("voteResult no exist");
+				}
 			});
 	}
 
