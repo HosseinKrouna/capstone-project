@@ -10,7 +10,7 @@ export default function DetailsEventData({ currentEvent }) {
 		<Stack>
 			<StyledDetailsCard>
 				<StyledListItem>
-					{!currentEvent?.voteResult ? (
+					{!currentEvent.voteResult ? (
 						"Are You there?"
 					) : (
 						<Image
@@ -21,12 +21,12 @@ export default function DetailsEventData({ currentEvent }) {
 						/>
 					)}
 				</StyledListItem>
-				<StyledListItem>{currentEvent?.title}</StyledListItem>
-				<StyledListItem>{currentEvent?.startTime}</StyledListItem>
-				<StyledListItem>{currentEvent?.endTime}</StyledListItem>
-				<StyledListItem>{currentEvent?.location}</StyledListItem>
-				<StyledListItem>{currentEvent?.introduce}</StyledListItem>
-				<StyledListItem>{currentEvent?.creator}</StyledListItem>
+				<StyledListItem>{currentEvent.title}</StyledListItem>
+				<StyledListItem>{currentEvent.startTime}</StyledListItem>
+				<StyledListItem>{currentEvent.endTime}</StyledListItem>
+				<StyledListItem>{currentEvent.location}</StyledListItem>
+				<StyledListItem>{currentEvent.introduce}</StyledListItem>
+				<StyledListItem>{currentEvent.creator}</StyledListItem>
 			</StyledDetailsCard>
 		</Stack>
 	);
