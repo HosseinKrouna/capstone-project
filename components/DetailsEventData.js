@@ -9,7 +9,7 @@ export default function DetailsEventData({ currentEvent }) {
 	return (
 		<Stack>
 			<StyledDetailsCard>
-				<StyledListItem>
+				{/* <StyledListItem>
 					{!currentEvent?.voteResult ? (
 						"Are You there?"
 					) : (
@@ -20,7 +20,7 @@ export default function DetailsEventData({ currentEvent }) {
 							height={30}
 						/>
 					)}
-				</StyledListItem>
+				</StyledListItem> */}
 				<StyledListItem>{currentEvent?.title}</StyledListItem>
 				<StyledListItem>{currentEvent?.startTime}</StyledListItem>
 				<StyledListItem>{currentEvent?.endTime}</StyledListItem>
