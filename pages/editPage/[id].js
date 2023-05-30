@@ -8,6 +8,8 @@ import Image from "next/image";
 import { db } from "@/components/Dexie";
 import { TextField, Stack, FormControl, Paper } from "@mui/material";
 
+const { eventDetails } = db;
+
 function EditPage({ allItems }) {
 	const router = useRouter();
 	const { id } = router.query;
@@ -43,8 +45,6 @@ function EditPage({ allItems }) {
 				router.push("/");
 			});
 	}
-
-	const { eventDetails } = db;
 
 	function handelDelete() {
 		eventDetails

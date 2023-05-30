@@ -9,7 +9,9 @@ import { optionIcons } from "@/Icons/optionIcon";
 function DetailsPage({ allItems }) {
 	const router = useRouter();
 	const { id } = router.query;
-	const currentEvent = allItems?.find((item) => item.eventId === id);
+	const currentEvent = allItems?.find(
+		(detailsItem) => detailsItem.eventId === id
+	);
 
 	//TODO - Style Details Page
 	//FIXME - Data Transfer via verscel
@@ -17,7 +19,7 @@ function DetailsPage({ allItems }) {
 	// - TypeError: Cannot read poperties of undefined (reading 'id')
 	//FIXME - TypeError: Cannot read properties of undefined (reading 'voteResult')
 	function handelEdit() {
-		router.push(`/editpage/${currentEvent?.eventId}`);
+		router.push(`/editpage/${currentEvent.eventId}`);
 	}
 
 	return (
