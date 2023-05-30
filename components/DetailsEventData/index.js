@@ -9,9 +9,9 @@ export default function DetailsEventData({ allItems, currentEvent }) {
 	console.log("=====>", currentEvent);
 	// const currentEventDetails = allItems?.find((voteEvent) => voteEvent.eventId === currentEvent.eventId.id);
 
-	useEffect(() => {
-		currentEvent;
-	});
+	// useEffect(() => {
+	// 	currentEvent;
+	// });
 
 	return (
 		<Stack>
