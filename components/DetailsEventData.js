@@ -5,12 +5,12 @@ import { voteIcons } from "@/Icons/dataIcons";
 
 export default function DetailsEventData({ currentEvent }) {
 	//TODO - fix: set voteResetImage (index 0) to hidden
-
+	console.log("=====>", currentEvent);
 	return (
 		<Stack>
 			<StyledDetailsCard>
-				<StyledListItem>
-					{!currentEvent?.voteResult ? (
+				{/* <StyledListItem>
+					{!currentEvent.voteResult ? (
 						"Are You there?"
 					) : (
 						<Image
@@ -20,7 +20,7 @@ export default function DetailsEventData({ currentEvent }) {
 							height={30}
 						/>
 					)}
-				</StyledListItem>
+				</StyledListItem> */}
 				<StyledListItem>{currentEvent?.title}</StyledListItem>
 				<StyledListItem>{currentEvent?.startTime}</StyledListItem>
 				<StyledListItem>{currentEvent?.endTime}</StyledListItem>
