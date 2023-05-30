@@ -16,8 +16,6 @@ function DetailsPage({ allItems }) {
 	//TODO - Style Details Page
 	//FIXME - Data Transfer via verscel
 	//FIXME -  add handling empty confirm
-	// - TypeError: Cannot read poperties of undefined (reading 'id')
-	//FIXME - TypeError: Cannot read properties of undefined (reading 'voteResult')
 	function handelEdit() {
 		router.push(`/editpage/${currentEvent.eventId}`);
 	}

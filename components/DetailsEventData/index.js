@@ -3,9 +3,11 @@ import styled from "styled-components";
 import Image from "next/image";
 import { voteIcons } from "@/Icons/dataIcons";
 
-export default function DetailsEventData({ currentEvent }) {
+export default function DetailsEventData({ allItems, currentEvent }) {
 	//TODO - fix: set voteResetImage (index 0) to hidden
 	console.log("=====>", currentEvent);
+	// const currentEventDetails = allItems?.find((voteEvent) => voteEvent.eventId === currentEvent.eventId.id);
+
 	return (
 		<Stack>
 			<StyledDetailsCard>

@@ -13,7 +13,6 @@ export default function Homepage({
 	allItems,
 	voteResultData,
 	currentVoteIconImage,
-	deleteEvent,
 }) {
 	console.log(currentVoteIconImage);
 
