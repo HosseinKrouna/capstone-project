@@ -13,7 +13,7 @@ export default function App({ Component, pageProps }) {
 
 	async function handleEntryData(data) {
 		try {
-			await db.eventDetails.add({
+			await eventDetails.add({
 				eventId: uuidv4(),
 				title: data.title,
 				startTime: data.startTime,

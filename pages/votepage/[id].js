@@ -28,7 +28,10 @@ function Votepage({ allItems }) {
 		const currentVoteIcon = voteIcons.find(
 			(voteIcon) => voteIcon.description === voteCheckmarkImage?.props.alt
 		);
+		//TODO - fix: add handling empty confirm
+		// - Cannot read poperties of undefined (reading 'id')
 		eventDetails
+			.version(2)
 			.where("eventId")
 			.equals(currentEvent.eventId)
 			.modify((voteEvent) => {
