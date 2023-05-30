@@ -2,11 +2,16 @@ import { Stack } from "@mui/material";
 import styled from "styled-components";
 import Image from "next/image";
 import { voteIcons } from "@/Icons/dataIcons";
+import { useEffect } from "react";
 
 export default function DetailsEventData({ allItems, currentEvent }) {
 	//TODO - fix: set voteResetImage (index 0) to hidden
 	console.log("=====>", currentEvent);
 	// const currentEventDetails = allItems?.find((voteEvent) => voteEvent.eventId === currentEvent.eventId.id);
+
+	useEffect(() => {
+		currentEvent;
+	});
 
 	return (
 		<Stack>

@@ -9,6 +9,7 @@ import { optionIcons } from "@/Icons/optionIcon";
 function DetailsPage({ allItems }) {
 	const router = useRouter();
 	const { id } = router.query;
+
 	const currentEvent = allItems?.find(
 		(detailsItem) => detailsItem.eventId === id
 	);
