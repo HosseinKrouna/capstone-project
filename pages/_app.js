@@ -11,20 +11,22 @@ export default function App({ Component, pageProps }) {
 
 	//-------------------------------------------------------------------------------------------------------------
 
-	async function handleEntryData(data) {
-		try {
-			await eventDetails.add({
-				eventId: uuidv4(),
-				title: data.title,
-				startTime: data.startTime,
-				endTime: data.endTime,
-				location: data.location,
-				introduce: data.introduce,
-				creator: data.creator,
+	function handleEntryData(dataFromHandleSubmit) {
+		db.open();
+		// try {
+		db.transaction("rw", eventDetails, function () {
+			eventDetails.add({
+				eventId: dataFromHandleSubmit.eventId,
+				title: dataFromHandleSubmit.title,
+				startTime: dataFromHandleSubmit.startTime,
+				endTime: dataFromHandleSubmit.endTime,
+				location: dataFromHandleSubmit.location,
+				introduce: dataFromHandleSubmit.introduce,
+				creator: dataFromHandleSubmit.creator,
 			});
-		} catch (error) {
-			alert(`Error: ${error}`);
-		}
+		}).catch((e) => {
+			alert(e.stack || e);
+		});
 	}
 
 	return (

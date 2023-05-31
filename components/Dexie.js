@@ -5,4 +5,3 @@ db.version(1).stores({
 	eventDetails:
 		"++id, eventId, title, startTime, endTime, location, introduce, creator, voteResult",
 });
-db.open();

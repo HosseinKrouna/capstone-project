@@ -35,6 +35,9 @@ function Votepage({ allItems }) {
 			.equals(currentEvent.eventId)
 			.modify((voteEvent) => {
 				voteEvent.voteResult = currentVoteIcon.id;
+			})
+			.catch(function (e) {
+				alert("Error: " + (e.stack || e));
 			});
 	}
 

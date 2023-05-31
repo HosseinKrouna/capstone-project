@@ -1,6 +1,7 @@
 import { TextField, Stack, FormControl, Paper } from "@mui/material";
 import { StyledSubmitButton } from "./styles/SubmitButton";
 import { useRouter } from "next/router";
+import { v4 as uuidv4 } from "uuid";
 
 function MuiCreateEventForm({ onHandleEntryData }) {
 	const router = useRouter();
@@ -9,8 +10,10 @@ function MuiCreateEventForm({ onHandleEntryData }) {
 		event.preventDefault();
 		const formData = new FormData(event.target);
 		const data = Object.fromEntries(formData);
-
-		onHandleEntryData(data);
+		console.log(data);
+		const dataFromHandleSubmit = { ...data, eventId: uuidv4() };
+		console.log(dataFromHandleSubmit);
+		onHandleEntryData(dataFromHandleSubmit);
 
 		router.push(`/`);
 	}
