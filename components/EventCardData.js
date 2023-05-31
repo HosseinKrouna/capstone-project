@@ -31,27 +31,24 @@ export default function EventCardData({ item }) {
 			<StyledLocation>{item.location}</StyledLocation>
 			<StyledVoteResult>
 				{!item.voteResult ? (
-					<StyledLink href={`/votepage/${item.eventId}`}>
-						<Image
-							src={optionIcons[4].imageSrc}
-							alt={optionIcons[4].description}
-							width={30}
-							height={30}
-						/>
-					</StyledLink>
+					// <StyledLink href={`/votepage/${item.eventId}`}>
+					<Image
+						src={optionIcons[4].imageSrc}
+						alt={optionIcons[4].description}
+						width={30}
+						height={30}
+					/>
 				) : (
-					"Your Vote: "
+					// </StyledLink>
+					<p>Your Vote: </p>
 				)}
 				{!item.voteResult ? null : (
-					<StyledLink href={`/votepage/${item.eventId}`}>
-						<Image
-							src={voteIcons[item.voteResult].imageSrc}
-							alt={voteIcons[item.voteResult].description}
-							width={30}
-							hei
-							ght={30}
-						/>
-					</StyledLink>
+					<Image
+						src={voteIcons[item.voteResult].imageSrc}
+						alt={voteIcons[item.voteResult].description}
+						width={30}
+						height={30}
+					/>
 				)}
 			</StyledVoteResult>
 		</StyledCardContainer>

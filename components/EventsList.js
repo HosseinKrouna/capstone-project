@@ -2,8 +2,12 @@ import Link from "next/link";
 import styled from "styled-components";
 import EventCardData from "@/components/EventCardData";
 import ConfettiExplosion from "react-confetti-explosion";
+import Head from "next/head";
+import { optionIcons } from "@/Icons/optionIcon";
+import Image from "next/image";
 
 function EventsList({ allItems }) {
+	//FIXME - ternary operator
 	return (
 		<>
 			{allItems ? (
@@ -17,8 +21,19 @@ function EventsList({ allItems }) {
 					))}
 				</StyledList>
 			) : (
-				<ConfettiExplosion />
+				<Image
+					src={optionIcons[7].imageSrc}
+					alt={optionIcons[7].description}
+					width={150}
+					height={150}
+				/>
 			)}
+			{/* <Image
+				src={optionIcons[7].imageSrc}
+				alt={optionIcons[7].description}
+				width={150}
+				height={150}
+			/> */}
 		</>
 	);
 }

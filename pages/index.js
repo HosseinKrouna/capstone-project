@@ -14,23 +14,13 @@ export default function Homepage({
 	voteResultData,
 	currentVoteIconImage,
 }) {
-	console.log(currentVoteIconImage);
-
 	//TODO -
 	// fix: plus-icon responsive positioning
 	// add: Animation pointing to the plaus icon when the event list is empty
 	return (
 		<>
-			<Head>
-				<link
-					rel="stylesheet"
-					href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"
-				/>
-			</Head>
 			<StyledHeaderHomepage>
-				<Animated animationIn="flash" animationOut="fadeOut" isVisible={true}>
-					<StyledAppTitle>Friends Wall</StyledAppTitle>
-				</Animated>
+				<StyledAppTitle>Friends Wall</StyledAppTitle>
 			</StyledHeaderHomepage>
 			<EventsList
 				currentVoteIconImage={currentVoteIconImage}

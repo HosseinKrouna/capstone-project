@@ -34,4 +34,9 @@ export const optionIcons = [
 		imageSrc: require("@/Icons/delete.png"),
 		description: "Delete Image",
 	},
+	{
+		id: 7,
+		imageSrc: require("@/Icons/rechter-pfeil.png"),
+		description: "Arrow Right",
+	},
 ];

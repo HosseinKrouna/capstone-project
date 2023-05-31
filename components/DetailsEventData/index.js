@@ -3,11 +3,11 @@ import styled from "styled-components";
 import Image from "next/image";
 import { voteIcons } from "@/Icons/dataIcons";
 import { useEffect } from "react";
-
+import { optionIcons } from "@/Icons/optionIcon";
 export default function DetailsEventData({ allItems, currentEvent }) {
 	//TODO - fix: set voteResetImage (index 0) to hidden
 	// const currentEventDetails = allItems?.find((voteEvent) => voteEvent.eventId === currentEvent.eventId.id);
-
+	console.log("======> currentEvent: ", currentEvent);
 	// useEffect(() => {
 	// 	currentEvent;
 	// });
@@ -15,18 +15,27 @@ export default function DetailsEventData({ allItems, currentEvent }) {
 	return (
 		<Stack>
 			<StyledDetailsCard>
-				{/* <StyledListItem>
-					{!currentEvent.voteResult ? (
-						"Are You there?"
-					) : (
-						<Image
-							src={voteIcons[currentEvent.voteResult].imageSrc}
-							alt={voteIcons[currentEvent.voteResult].description}
-							width={30}
-							height={30}
-						/>
-					)}
-				</StyledListItem> */}
+				{
+					<StyledListItem>
+						{!currentEvent?.voteResult ? null : (
+							<Image
+								src={voteIcons[currentEvent.voteResult].imageSrc}
+								alt={voteIcons[currentEvent.voteResult].description}
+								width={30}
+								height={30}
+							/>
+						)}
+						{currentEvent?.voteResult ? <p>Are You still in?</p> : null}
+						<a href={`/votepage/${currentEvent?.eventId}`}>
+							<Image
+								src={optionIcons[4].imageSrc}
+								alt={optionIcons[4].description}
+								with={40}
+								height={40}
+							/>
+						</a>
+					</StyledListItem>
+				}
 				<StyledListItem>{currentEvent?.title}</StyledListItem>
 				<StyledListItem>{currentEvent?.startTime}</StyledListItem>
 				<StyledListItem>{currentEvent?.endTime}</StyledListItem>

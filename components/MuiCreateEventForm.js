@@ -33,7 +33,7 @@ function MuiCreateEventForm({ onHandleEntryData }) {
 						justifyContent="flex-start"
 						alignItems="center"
 					>
-						<form id="createEventForm" on onSubmit={handleSubmit}>
+						<form id="createEventForm" onSubmit={handleSubmit}>
 							<FormControl
 								required
 								variant="outlined"

@@ -38,7 +38,7 @@ export default class MyDocument extends Document {
 				</Head>
 				<body>
 					<Main />
-					<div id="modal-root"></div>
+					<div id="root"></div>
 					<NextScript />
 				</body>
 			</Html>
