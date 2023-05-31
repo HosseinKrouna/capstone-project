@@ -13,7 +13,6 @@ export default function App({ Component, pageProps }) {
 
 	function handleEntryData(dataFromHandleSubmit) {
 		db.open();
-		// try {
 		db.transaction("rw", eventDetails, function () {
 			eventDetails.add({
 				eventId: dataFromHandleSubmit.eventId,
@@ -24,8 +23,8 @@ export default function App({ Component, pageProps }) {
 				introduce: dataFromHandleSubmit.introduce,
 				creator: dataFromHandleSubmit.creator,
 			});
-		}).catch((e) => {
-			alert(e.stack || e);
+		}).catch((event) => {
+			alert(event.stack || event);
 		});
 	}
 

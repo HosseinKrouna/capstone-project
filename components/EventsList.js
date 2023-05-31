@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import styled from "styled-components";
 import EventCardData from "@/components/EventCardData";
@@ -5,6 +7,7 @@ import ConfettiExplosion from "react-confetti-explosion";
 import Head from "next/head";
 import { optionIcons } from "@/Icons/optionIcon";
 import Image from "next/image";
+import { ErrorBoundary } from "react-error-boundary";
 
 function EventsList({ allItems }) {
 	//FIXME - ternary operator
@@ -14,9 +17,11 @@ function EventsList({ allItems }) {
 				<StyledList>
 					{allItems.map((item) => (
 						<StyledListItem key={item.eventId}>
-							<a href={`/detailspage/${item.eventId}`}>
-								<EventCardData item={item} />
-							</a>
+							<StyledLink href={`/detailspage/${item.eventId}`}>
+								<ErrorBoundary fallback={<div>Something went wrong</div>}>
+									<EventCardData item={item} />
+								</ErrorBoundary>
+							</StyledLink>
 						</StyledListItem>
 					))}
 				</StyledList>
