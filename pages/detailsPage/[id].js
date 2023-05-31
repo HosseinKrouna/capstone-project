@@ -5,7 +5,7 @@ import DetailsEventData from "@/components/DetailsEventData";
 import { StyledBackLink } from "@/components/styles/BackLink";
 import Image from "next/image";
 import { optionIcons } from "@/Icons/optionIcon";
-
+import Link from "next/link";
 function DetailsPage({ allItems }) {
 	const router = useRouter();
 	const { id } = router.query;
@@ -17,9 +17,9 @@ function DetailsPage({ allItems }) {
 	//TODO - Style Details Page
 	//FIXME - Data Transfer via verscel
 	//FIXME -  add handling empty confirm
-	function handelEdit() {
-		router.push(`/editpage/${currentEvent.eventId}`);
-	}
+	// function handelEdit() {
+	// 	router.push;
+	// }
 
 	return (
 		<>
@@ -37,20 +37,22 @@ function DetailsPage({ allItems }) {
 					<StyledTitle>Event Details</StyledTitle>
 					<DetailsEventData currentEvent={currentEvent} />
 
-					<StyledEditImage
-						onClick={handelEdit}
-						src={optionIcons[5].imageSrc}
-						alt={optionIcons[5].description}
-						width={55}
-						height={55}
-					/>
+					<StyledEditImageLink href={`/editpage/${currentEvent?.eventId}`}>
+						{/* // onClick={handelEdit} */}
+						<Image
+							src={optionIcons[5].imageSrc}
+							alt={optionIcons[5].description}
+							width={55}
+							height={55}
+						/>
+					</StyledEditImageLink>
 				</StyledMain>
 			</span>
 		</>
 	);
 }
 
-const StyledEditImage = styled(Image)`
+const StyledEditImageLink = styled(Link)`
 	cursor: pointer;
 
 	&:hover {
