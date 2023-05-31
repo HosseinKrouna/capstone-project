@@ -14,9 +14,9 @@ function EventsList({ allItems }) {
 				<StyledList>
 					{allItems.map((item) => (
 						<StyledListItem key={item.eventId}>
-							<StyledLink href={`/detailspage/${item.eventId}`}>
+							<a href={`/detailspage/${item.eventId}`}>
 								<EventCardData item={item} />
-							</StyledLink>
+							</a>
 						</StyledListItem>
 					))}
 				</StyledList>
