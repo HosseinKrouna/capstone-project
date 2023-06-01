@@ -8,9 +8,15 @@ import Head from "next/head";
 import { optionIcons } from "@/Icons/optionIcon";
 import Image from "next/image";
 import { ErrorBoundary } from "react-error-boundary";
+import { useRouter } from "next/router";
 
 function EventsList({ allItems }) {
-	//FIXME - ternary operator
+	// const router = useRouter();
+	// const eventId = router.query.eventId;
+
+	// console.log("====> currentDetailsEvent: ", currentDetailsEvent);
+	console.log("====> allItems: ", allItems);
+
 	return (
 		<>
 			{allItems ? (

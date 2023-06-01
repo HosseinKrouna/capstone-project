@@ -8,6 +8,7 @@ const { eventDetails } = db;
 
 export default function App({ Component, pageProps }) {
 	const allItems = useLiveQuery(() => eventDetails.toArray(), []);
+	console.log("====> allItems: ", allItems);
 
 	//-------------------------------------------------------------------------------------------------------------
 

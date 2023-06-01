@@ -18,19 +18,31 @@ import Link from "next/link";
 export default function EventCardData({ item }) {
 	//TODO -
 	// fix: sign limits
+	console.log("====> item: ", item);
+
+	const {
+		creator,
+		startTime,
+		endTime,
+		eventId,
+		introduce,
+		location,
+		title,
+		voteResult,
+	} = item ?? {};
 	return (
 		<StyledCardContainer>
-			<StyledEventTitle>{item.title}</StyledEventTitle>
+			<StyledEventTitle>{title}</StyledEventTitle>
 
 			<StyledFromText>From: </StyledFromText>
 			<StyledToText>To: </StyledToText>
 			<StyledWhereText>Where? </StyledWhereText>
-			<StyledStartTime>{item.startTime}</StyledStartTime>
+			<StyledStartTime>{startTime}</StyledStartTime>
 
-			<StyledEndTime>{item.endTime}</StyledEndTime>
-			<StyledLocation>{item.location}</StyledLocation>
+			<StyledEndTime>{endTime}</StyledEndTime>
+			<StyledLocation>{location}</StyledLocation>
 			<StyledVoteResult>
-				{!item.voteResult ? (
+				{!voteResult ? (
 					// <StyledLink href={`/votepage/${item.eventId}`}>
 					<Image
 						src={optionIcons[4].imageSrc}
@@ -42,10 +54,10 @@ export default function EventCardData({ item }) {
 					// </StyledLink>
 					<p>Your Vote: </p>
 				)}
-				{!item.voteResult ? null : (
+				{!voteResult ? null : (
 					<Image
-						src={voteIcons[item.voteResult].imageSrc}
-						alt={voteIcons[item.voteResult].description}
+						src={voteIcons[voteResult].imageSrc}
+						alt={voteIcons[voteResult].description}
 						width={30}
 						height={30}
 					/>

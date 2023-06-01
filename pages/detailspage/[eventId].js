@@ -9,11 +9,12 @@ import Link from "next/link";
 
 function DetailsPage({ allItems }) {
 	const router = useRouter();
-	const { id } = router.query;
+	const { eventId } = router.query;
 
 	const currentEvent = allItems?.find(
-		(detailsItem) => detailsItem.eventId === id
+		(detailsItem) => detailsItem.eventId === eventId
 	);
+	console.log("====> currentEvent: ", currentEvent);
 
 	//TODO - Style Details Page
 	//FIXME - Data Transfer via verscel

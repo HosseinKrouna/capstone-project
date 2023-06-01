@@ -9,11 +9,14 @@ import { Animated } from "react-animated-css";
 import Image from "next/image";
 import { optionIcons } from "@/Icons/optionIcon";
 import { Paper, Stack, Grid, Item } from "@mui/material";
+import { ErrorBoundary } from "react-error-boundary";
 export default function Homepage({
 	allItems,
 	voteResultData,
 	currentVoteIconImage,
 }) {
+	console.log("====> allItems: ", allItems);
+
 	//TODO -
 	// fix: plus-icon responsive positioning
 	// add: Animation pointing to the plaus icon when the event list is empty
@@ -22,12 +25,13 @@ export default function Homepage({
 			<StyledHeaderHomepage>
 				<StyledAppTitle>Friends Wall</StyledAppTitle>
 			</StyledHeaderHomepage>
-			<EventsList
-				currentVoteIconImage={currentVoteIconImage}
-				allItems={allItems}
-				voteResultData={voteResultData}
-			/>
-
+			<ErrorBoundary>
+				<EventsList
+					currentVoteIconImage={currentVoteIconImage}
+					allItems={allItems}
+					voteResultData={voteResultData}
+				/>
+			</ErrorBoundary>
 			<Stack>
 				<Stack>
 					<StyledAddEventLink href="/createEventPage">
