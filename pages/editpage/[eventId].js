@@ -12,8 +12,8 @@ const { eventDetails } = db;
 
 function EditPage({ allItems }) {
 	const router = useRouter();
-	const { id } = router.query;
-	const currentEvent = allItems?.find((item) => item.eventId === id);
+	const { eventId } = router.query;
+	const currentEvent = allItems?.find((item) => item.eventId === eventId);
 
 	function handleChanges(event) {
 		const currentEventChanges = event.target.defaultValue;

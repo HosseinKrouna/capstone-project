@@ -21,8 +21,10 @@ function Votepage({ allItems }) {
 	const [voteCheckmarkImage, setVoteCheckmarkImage] = useState();
 
 	const router = useRouter();
-	const { id } = router.query;
-	const currentEvent = allItems?.find((voteEvent) => voteEvent.eventId === id);
+	const { eventId } = router.query;
+	const currentEvent = allItems?.find(
+		(voteEvent) => voteEvent.eventId === eventId
+	);
 
 	function handleVoteResult() {
 		const currentVoteIcon = voteIcons.find(
