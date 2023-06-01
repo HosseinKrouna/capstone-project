@@ -7,10 +7,11 @@ import { optionIcons } from "@/Icons/optionIcon";
 export default function DetailsEventData({ allItems, currentEvent }) {
 	//TODO - fix: set voteResetImage (index 0) to hidden
 	// const currentEventDetails = allItems?.find((voteEvent) => voteEvent.eventId === currentEvent.eventId.id);
-	console.log("======> currentEvent: ", currentEvent);
+	// console.log("======> currentEvent: ", currentEvent);
 	// useEffect(() => {
 	// 	currentEvent;
 	// });
+
 	const {
 		creator,
 		startTime,
@@ -20,7 +21,8 @@ export default function DetailsEventData({ allItems, currentEvent }) {
 		location,
 		title,
 		voteResult,
-	} = currentEvent;
+	} = currentEvent ?? {};
+
 	return (
 		<Stack>
 			<StyledDetailsCard>
