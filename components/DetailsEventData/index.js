@@ -11,22 +11,31 @@ export default function DetailsEventData({ allItems, currentEvent }) {
 	// useEffect(() => {
 	// 	currentEvent;
 	// });
-
+	const {
+		creator,
+		startTime,
+		endTime,
+		eventId,
+		introduce,
+		location,
+		title,
+		voteResult,
+	} = currentEvent;
 	return (
 		<Stack>
 			<StyledDetailsCard>
 				{
 					<StyledListItem>
-						{!currentEvent?.voteResult ? null : (
+						{!voteResult ? null : (
 							<Image
-								src={voteIcons[currentEvent.voteResult].imageSrc}
-								alt={voteIcons[currentEvent.voteResult].description}
+								src={voteIcons[voteResult].imageSrc}
+								alt={voteIcons[voteResult].description}
 								width={30}
 								height={30}
 							/>
 						)}
-						{currentEvent?.voteResult ? <p>Are You still in?</p> : null}
-						<a href={`/votepage/${currentEvent?.eventId}`}>
+						{voteResult ? <p>Are You still in?</p> : null}
+						<a href={`/votepage/${eventId}`}>
 							<Image
 								src={optionIcons[4].imageSrc}
 								alt={optionIcons[4].description}
@@ -36,12 +45,12 @@ export default function DetailsEventData({ allItems, currentEvent }) {
 						</a>
 					</StyledListItem>
 				}
-				<StyledListItem>{currentEvent?.title}</StyledListItem>
-				<StyledListItem>{currentEvent?.startTime}</StyledListItem>
-				<StyledListItem>{currentEvent?.endTime}</StyledListItem>
-				<StyledListItem>{currentEvent?.location}</StyledListItem>
-				<StyledListItem>{currentEvent?.introduce}</StyledListItem>
-				<StyledListItem>{currentEvent?.creator}</StyledListItem>
+				<StyledListItem>{title}</StyledListItem>
+				<StyledListItem>{startTime}</StyledListItem>
+				<StyledListItem>{endTime}</StyledListItem>
+				<StyledListItem>{location}</StyledListItem>
+				<StyledListItem>{introduce}</StyledListItem>
+				<StyledListItem>{creator}</StyledListItem>
 			</StyledDetailsCard>
 		</Stack>
 	);

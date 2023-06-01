@@ -6,6 +6,7 @@ import { StyledBackLink } from "@/components/styles/BackLink";
 import Image from "next/image";
 import { optionIcons } from "@/Icons/optionIcon";
 import Link from "next/link";
+
 function DetailsPage({ allItems }) {
 	const router = useRouter();
 	const { id } = router.query;
