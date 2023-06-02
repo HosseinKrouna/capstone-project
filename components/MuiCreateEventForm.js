@@ -2,17 +2,17 @@ import { TextField, Stack, FormControl, Paper } from "@mui/material";
 import { StyledSubmitButton } from "./styles/SubmitButton";
 import { useRouter } from "next/router";
 import { v4 as uuidv4 } from "uuid";
+import { useState } from "react";
 
 function MuiCreateEventForm({ onHandleEntryData }) {
 	const router = useRouter();
 
-	async function handleSubmit(event) {
+	function handleSubmit(event) {
 		event.preventDefault();
 		const formData = new FormData(event.target);
 		const data = Object.fromEntries(formData);
-		console.log(data);
+
 		const dataFromHandleSubmit = { ...data, eventId: uuidv4() };
-		console.log(dataFromHandleSubmit);
 		onHandleEntryData(dataFromHandleSubmit);
 
 		router.push(`/`);
@@ -57,6 +57,7 @@ function MuiCreateEventForm({ onHandleEntryData }) {
 									color="secondary"
 									required
 								/>
+
 								<TextField
 									size="small"
 									InputLabelProps={{

@@ -9,7 +9,7 @@ import { optionIcons } from "@/Icons/optionIcon";
 import Image from "next/image";
 import { ErrorBoundary } from "react-error-boundary";
 import { useRouter } from "next/router";
-
+import { useState } from "react";
 function EventsList({ allItems }) {
 	// const router = useRouter();
 	// const eventId = router.query.eventId;
