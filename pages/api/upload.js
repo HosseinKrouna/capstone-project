@@ -22,6 +22,8 @@ export default async function handler(request, response) {
 				public_id: imageFile.newFilename,
 			});
 
+			// response.status(405).json({ message: "failed to load data" });
+
 			response.status(201).json(result);
 			break;
 		default:

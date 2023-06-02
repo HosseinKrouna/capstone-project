@@ -37,7 +37,7 @@ function CreateEventForm({ onHandleEntryData }) {
 			height: 150,
 			alt: "",
 		};
-		setImages([...images, newImage]);
+		setImages([newImage]);
 	}
 
 	//TODO - setup Cloudenary for imag uploader
