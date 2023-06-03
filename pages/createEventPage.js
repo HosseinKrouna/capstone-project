@@ -30,17 +30,37 @@ function CreateEventForm({ onHandleEntryData }) {
 			method: "post",
 			body: formData,
 		});
+
 		const data = await response.json();
 
 		const newImage = {
 			id: data.public_id,
 			url: data.secure_url,
-			width: 150,
-			height: 150,
+			width: data.width,
+			height: data.height,
 			alt: "",
 		};
 		setImages([newImage]);
 	}
+
+	// async function handleuploadSubmit(event) {
+	// 	event.preventDefault();
+	// 	const formData = new FormData(event.target);
+	// 	const response = await fetch("/api/upload", {
+	// 		method: "post",
+	// 		body: formData,
+	// 	});
+	// 	const data = await response.json();
+
+	// 	const newImage = {
+	// 		id: data.public_id,
+	// 		url: data.secure_url,
+	// 		width: 150,
+	// 		height: 150,
+	// 		alt: "",
+	// 	};
+	// 	setImages([newImage]);
+	// }
 
 	return (
 		<>
