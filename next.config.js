@@ -13,14 +13,19 @@ const nextConfig = {
 
 		return config;
 	},
+
 	images: {
-		remotePatterns: [
-			{
-				protocol: "https",
-				hostname: "res.cloudinary.com",
-			},
-		],
+		domains: ["res.cloudinary.com"],
 	},
+	// images:
+	// {
+	// 	remotePatterns: [
+	// 		{
+	// 			protocol: "https",
+	// 			hostname: "res.cloudinary.com",
+	// 		},
+	// 	],
+	// },
 };
 
 module.exports = nextConfig;
