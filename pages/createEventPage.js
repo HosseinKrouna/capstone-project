@@ -1,5 +1,3 @@
-"use client";
-
 import MuiCreateEventForm from "@/components/MuiCreateEventForm";
 import { StyledBackLink } from "@/components/styles/BackLink";
 import { Paper, Stack, Grid, Item } from "@mui/material";
