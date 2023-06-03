@@ -42,7 +42,6 @@ function CreateEventForm({ onHandleEntryData }) {
 		setImages([newImage]);
 	}
 
-	//TODO - setup Cloudenary for imag uploader
 	return (
 		<>
 			<Stack justifyContent="center" alignItems="center">
@@ -61,7 +60,7 @@ function CreateEventForm({ onHandleEntryData }) {
 				</Stack>
 				{
 					<AppImageContainer>
-						<ImagesContainer>
+						<ImageContainer>
 							{images.map(({ id, url, width, height }) => (
 								<li key={id}>
 									<StyledImage
@@ -72,19 +71,19 @@ function CreateEventForm({ onHandleEntryData }) {
 									/>
 								</li>
 							))}
-						</ImagesContainer>
+						</ImageContainer>
 
 						<form action="" onSubmit={handleuploadSubmit}>
 							<input
 								type="file"
 								size="small"
 								name="imageFile"
-								sx={{
-									mt: "22px",
-									background: "#E8F6F6",
-								}}
+								// sx={{
+								// 	mt: "22px",
+								// 	background: "#E8F6F6",
+								// }}
 								label="File"
-								color="secondary"
+								// color="secondary"
 							/>
 							<button type="submit">Upload</button>
 						</form>
@@ -104,7 +103,7 @@ const AppImageContainer = styled.span`
 	gap: 50px;
 `;
 
-const ImagesContainer = styled.ul`
+const ImageContainer = styled.ul`
 	list-style: none;
 	padding: 0;
 	display: flex;
