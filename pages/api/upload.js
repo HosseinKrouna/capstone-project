@@ -21,12 +21,20 @@ export default async function handler(request, response) {
 			const result = await cloudinary.v2.uploader.upload(imageFile.filepath, {
 				public_id: imageFile.newFilename,
 			});
+
+			// const result = await cloudinary.v2.uploader
+			// 	.upload(imageFile.filepath)
+			// 	.then((uploadResult) =>
+			// 		console.log(JSON.stringify(uploadResult, null, 2))
+			// 	)
+			// 	.catch((error) => console.error("error: ", error));
+
 			console.log(result);
 			// response.status(405).json({ message: "failed to load data" });
-
 			response.status(201).json(result);
 			break;
 		default:
+			response.status(405).json({ error: "Method Not Allowed" });
 			response.status(400).json({ message: "Bad Request" });
 	}
 }

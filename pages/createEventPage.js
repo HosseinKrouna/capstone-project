@@ -30,12 +30,13 @@ function CreateEventForm({ onHandleEntryData }) {
 		});
 
 		const data = await response.json();
-
-		try {
-			JSON.parse(data);
-		} catch (error) {
-			console.log("Error parsing JSON:", error, data);
-		}
+		console.log(data);
+		// JSON.stringify(data);
+		// try {
+		// 	JSON.parse(data);
+		// } catch (error) {
+		// 	console.log("Error parsing JSON:", error, data);
+		// }
 
 		const newImage = {
 			id: data.public_id,
