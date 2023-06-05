@@ -14,24 +14,28 @@ cloudinary.config({
 });
 
 export default async function handler(request, response) {
-	if (request.method === "POST") {
-		const files = await parseAsync(request);
-		const { imageFile } = files;
-		const result = await cloudinary.v2.uploader.upload(imageFile.filepath, {
-			public_id: imageFile.newFilename,
-		});
-		console.log(result);
-		response.status(201).json(result);
+	switch (request.method) {
+		case "POST":
+			try {
+				const files = await parseAsync(request);
+				const { imageFile } = files;
 
-		// const result = await cloudinary.v2.uploader
-		// 	.upload(imageFile.filepath)
-		// 	.then((uploadResult) =>
-		// 		console.log(JSON.stringify(uploadResult, null, 2))
-		// 	)
-		// 	.catch((error) => console.error("error: ", error));
-	} else {
-		// response.status(405).json({ message: "failed to load data" });
-		response.status(405).json({ error: "Method Not Allowed" });
+				console.log("Received file:", imageFile);
+
+				const result = await cloudinary.v2.uploader.upload(imageFile.filepath, {
+					public_id: imageFile.newFilename,
+				});
+
+				console.log("Uploaded file:", result);
+
+				response.status(201).json(result);
+			} catch (error) {
+				console.error("Error uploading file:", error);
+				response.status(500).json({ message: "File upload failed" });
+			}
+			break;
+		default:
+			response.status(400).json({ message: "Bad Request" });
 	}
 }
 
@@ -44,7 +48,7 @@ function parseAsync(request) {
 		// 		 parse form request with callback
 		form.parse(request, (error, fields, files) => {
 			if (error) {
-				console.log(error);
+				console.log("Form parse error:", error);
 				// reject Promise if something went wrong
 				reject(error);
 				return;
