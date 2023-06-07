@@ -12,8 +12,6 @@ import {
 import Image from "next/image";
 import { voteIcons } from "@/Icons/dataIcons";
 import { optionIcons } from "@/Icons/optionIcon";
-import styled from "styled-components";
-import Link from "next/link";
 
 export default function EventCardData({ item }) {
 	//TODO -
@@ -21,6 +19,7 @@ export default function EventCardData({ item }) {
 	console.log("====> item: ", item);
 
 	const {
+		images,
 		creator,
 		startTime,
 		endTime,
@@ -33,7 +32,7 @@ export default function EventCardData({ item }) {
 	return (
 		<StyledCardContainer>
 			<StyledEventTitle>{title}</StyledEventTitle>
-
+			<Image src={images.url} alt={images.alt} width={40} height={40} />
 			<StyledFromText>From: </StyledFromText>
 			<StyledToText>To: </StyledToText>
 			<StyledWhereText>Where? </StyledWhereText>
@@ -43,7 +42,6 @@ export default function EventCardData({ item }) {
 			<StyledLocation>{location}</StyledLocation>
 			<StyledVoteResult>
 				{!voteResult ? (
-					// <StyledLink href={`/votepage/${item.eventId}`}>
 					<Image
 						src={optionIcons[4].imageSrc}
 						alt={optionIcons[4].description}
@@ -51,7 +49,6 @@ export default function EventCardData({ item }) {
 						height={30}
 					/>
 				) : (
-					// </StyledLink>
 					<p>Your Vote: </p>
 				)}
 				{!voteResult ? null : (
@@ -66,13 +63,3 @@ export default function EventCardData({ item }) {
 		</StyledCardContainer>
 	);
 }
-
-const StyledLink = styled(Link)`
-	text-decoration: none;
-	color: black;
-	font-weight: 600;
-	cursor: pointer;
-	width: 300px;
-	height: 200px;
-	overflow: hidden;
-`;

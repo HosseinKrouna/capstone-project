@@ -4,11 +4,9 @@ import {
 	StyledAppTitle,
 } from "../components/styles/Homepage";
 import { StyledAddEventLink } from "../components/styles/AddEventLink";
-import { Animated } from "react-animated-css";
 import Image from "next/image";
 import { optionIcons } from "@/Icons/optionIcon";
-import { Paper, Stack, Grid, Item } from "@mui/material";
-import { ErrorBoundary } from "react-error-boundary";
+import { Stack } from "@mui/material";
 export default function Homepage({
 	allItems,
 	voteResultData,
@@ -24,13 +22,11 @@ export default function Homepage({
 			<StyledHeaderHomepage>
 				<StyledAppTitle>Friends Wall</StyledAppTitle>
 			</StyledHeaderHomepage>
-			<ErrorBoundary>
-				<EventsList
-					currentVoteIconImage={currentVoteIconImage}
-					allItems={allItems}
-					voteResultData={voteResultData}
-				/>
-			</ErrorBoundary>
+			<EventsList
+				currentVoteIconImage={currentVoteIconImage}
+				allItems={allItems}
+				voteResultData={voteResultData}
+			/>
 			<Stack>
 				<Stack>
 					<StyledAddEventLink href="/createEventPage">

@@ -15,11 +15,6 @@ export const StyledVoteTitle = styled.h2`
 	margin: 0;
 `;
 
-// export const StyledLogInImage = styled(Image)`
-// 	font-weight: 50px;
-// 	/* background-image: "@/Icons/einloggen.png"; */
-// `;
-
 export const StyledVoteEventCard = styled.span`
 	display: flex;
 	justify-content: space-between;

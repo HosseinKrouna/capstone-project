@@ -2,7 +2,6 @@ import { Stack } from "@mui/material";
 import styled from "styled-components";
 import Image from "next/image";
 import { voteIcons } from "@/Icons/dataIcons";
-import { useEffect } from "react";
 import { optionIcons } from "@/Icons/optionIcon";
 export default function DetailsEventData({ allItems, currentEvent }) {
 	//TODO - fix: set voteResetImage (index 0) to hidden

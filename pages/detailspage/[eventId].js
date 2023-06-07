@@ -40,7 +40,6 @@ function DetailsPage({ allItems }) {
 					<DetailsEventData currentEvent={currentEvent} />
 
 					<StyledEditImageLink href={`/editpage/${currentEvent?.eventId}`}>
-						{/* // onClick={handelEdit} */}
 						<Image
 							src={optionIcons[5].imageSrc}
 							alt={optionIcons[5].description}

@@ -1,6 +1,4 @@
-import MuiCreateEventForm from "@/components/MuiCreateEventForm";
 import { StyledBackLink } from "@/components/styles/BackLink";
-import { StyledCardContainer } from "@/components/styles/CardContainer";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 import { optionIcons } from "@/Icons/optionIcon";
@@ -14,10 +12,8 @@ function EditPage({ allItems }) {
 	const router = useRouter();
 	const { eventId } = router.query;
 	const currentEvent = allItems?.find((item) => item.eventId === eventId);
-
-	function handleChanges(event) {
-		const currentEventChanges = event.target.defaultValue;
-	}
+	console.log("allItems from editpage", allItems);
+	console.log("currentEvent from editpage", currentEvent);
 
 	function handleSubmitChanges(event) {
 		event.preventDefault();
@@ -105,7 +101,7 @@ function EditPage({ allItems }) {
 								>
 									<TextField
 										defaultValue={currentEvent?.title}
-										onChange={handleChanges}
+										// onChange={handleChanges}
 										id="title"
 										name="title"
 										sx={{
@@ -117,7 +113,7 @@ function EditPage({ allItems }) {
 										required
 									/>
 									<TextField
-										onChange={handleChanges}
+										// onChange={handleChanges}
 										defaultValue={currentEvent?.startTime}
 										InputLabelProps={{
 											shrink: true,
@@ -132,7 +128,7 @@ function EditPage({ allItems }) {
 									/>
 
 									<TextField
-										onChange={handleChanges}
+										// onChange={handleChanges}
 										defaultValue={currentEvent?.endTime}
 										InputLabelProps={{
 											shrink: true,
@@ -146,7 +142,7 @@ function EditPage({ allItems }) {
 										}}
 									/>
 									<TextField
-										onChange={handleChanges}
+										// onChange={handleChanges}
 										defaultValue={currentEvent?.location}
 										id="location"
 										name="location"
@@ -156,7 +152,7 @@ function EditPage({ allItems }) {
 										required
 									/>
 									<TextField
-										onChange={handleChanges}
+										// onChange={handleChanges}
 										defaultValue={currentEvent?.introduce}
 										id="introduce"
 										name="introduce"
@@ -166,7 +162,7 @@ function EditPage({ allItems }) {
 										required
 									/>
 									<TextField
-										onChange={handleChanges}
+										// onChange={handleChanges}
 										defaultValue={currentEvent?.creator}
 										name="creator"
 										id="creator"

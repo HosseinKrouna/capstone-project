@@ -1,22 +1,10 @@
-"use client";
-
 import Link from "next/link";
 import styled from "styled-components";
 import EventCardData from "@/components/EventCardData";
-import ConfettiExplosion from "react-confetti-explosion";
-import Head from "next/head";
 import { optionIcons } from "@/Icons/optionIcon";
 import Image from "next/image";
-import { ErrorBoundary } from "react-error-boundary";
-import { useRouter } from "next/router";
-import { useState } from "react";
+
 function EventsList({ allItems }) {
-	// const router = useRouter();
-	// const eventId = router.query.eventId;
-
-	// console.log("====> currentDetailsEvent: ", currentDetailsEvent);
-	console.log("====> allItems: ", allItems);
-
 	return (
 		<>
 			{allItems ? (
@@ -24,9 +12,7 @@ function EventsList({ allItems }) {
 					{allItems.map((item) => (
 						<StyledListItem key={item.eventId}>
 							<StyledLink href={`/detailspage/${item.eventId}`}>
-								<ErrorBoundary fallback={<div>Something went wrong</div>}>
-									<EventCardData item={item} />
-								</ErrorBoundary>
+								<EventCardData item={item} />
 							</StyledLink>
 						</StyledListItem>
 					))}
@@ -39,21 +25,13 @@ function EventsList({ allItems }) {
 					height={150}
 				/>
 			)}
-			{/* <Image
-				src={optionIcons[7].imageSrc}
-				alt={optionIcons[7].description}
-				width={150}
-				height={150}
-			/> */}
 		</>
 	);
 }
 
 const StyledListItem = styled.li`
-	/* pointer-events: none; */
 	width: 350px;
 	height: 150px;
-
 	background-color: #e8f6f6;
 	border: solid 5px;
 	border-radius: 50px;
