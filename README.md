@@ -25,6 +25,9 @@ The Friends Wall App is built using the following technologies:
 - [styled components](https://styled-components.com/) - A CSS-in-JS library for styling React components
 - [Immer](https://immerjs.github.io/immer/example-setstate/) - A library for working with immutable state
 - [npm](https://docs.npmjs.com/about-npm) - A package manager for Node.js
+- [Formidable](https://github.com/node-formidable/formidable) - A module for handling forms and file uploads in Node.js.
+- [Cloudinary](https://cloudinary.com/) - A cloud-based media storage service with extensive features for managing and optimizing images and videos.
+
 
 ## Development
 
