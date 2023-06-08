@@ -12,58 +12,61 @@ import {
 import Image from "next/image";
 import { voteIcons } from "@/Icons/dataIcons";
 import { optionIcons } from "@/Icons/optionIcon";
-import styled from "styled-components";
-import Link from "next/link";
-
 export default function EventCardData({ item }) {
 	//TODO -
 	// fix: sign limits
+	const {
+		images,
+		creator,
+		startTime,
+		endTime,
+		eventId,
+		introduce,
+		location,
+		title,
+		voteResult,
+	} = item ?? {};
+
 	return (
 		<StyledCardContainer>
-			<StyledEventTitle>{item.title}</StyledEventTitle>
+			<StyledEventTitle>{title}</StyledEventTitle>
+			{images.map((image, public_id) => (
+				<Image
+					key={public_id}
+					src={image.url}
+					alt={image.alt}
+					width={40}
+					height={40}
+				/>
+			))}
 
 			<StyledFromText>From: </StyledFromText>
 			<StyledToText>To: </StyledToText>
 			<StyledWhereText>Where? </StyledWhereText>
-			<StyledStartTime>{item.startTime}</StyledStartTime>
+			<StyledStartTime>{startTime}</StyledStartTime>
 
-			<StyledEndTime>{item.endTime}</StyledEndTime>
-			<StyledLocation>{item.location}</StyledLocation>
+			<StyledEndTime>{endTime}</StyledEndTime>
+			<StyledLocation>{location}</StyledLocation>
 			<StyledVoteResult>
-				{!item.voteResult ? (
-					<StyledLink href={`/votepage/${item.eventId}`}>
-						<Image
-							src={optionIcons[4].imageSrc}
-							alt={optionIcons[4].description}
-							width={30}
-							height={30}
-						/>
-					</StyledLink>
+				{!voteResult ? (
+					<Image
+						src={optionIcons[4].imageSrc}
+						alt={optionIcons[4].description}
+						width={30}
+						height={30}
+					/>
 				) : (
-					"Your Vote: "
+					<p>Your Vote: </p>
 				)}
-				{!item.voteResult ? null : (
-					<StyledLink href={`/votepage/${item.eventId}`}>
-						<Image
-							src={voteIcons[item.voteResult].imageSrc}
-							alt={voteIcons[item.voteResult].description}
-							width={30}
-							hei
-							ght={30}
-						/>
-					</StyledLink>
+				{!voteResult ? null : (
+					<Image
+						src={voteIcons[voteResult].imageSrc}
+						alt={voteIcons[voteResult].description}
+						width={30}
+						height={30}
+					/>
 				)}
 			</StyledVoteResult>
 		</StyledCardContainer>
 	);
 }
-
-const StyledLink = styled(Link)`
-	text-decoration: none;
-	color: black;
-	font-weight: 600;
-	cursor: pointer;
-	width: 300px;
-	height: 200px;
-	overflow: hidden;
-`;

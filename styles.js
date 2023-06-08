@@ -8,7 +8,8 @@ export default createGlobalStyle`
   }
 
   body {
-    background-image: url(https://images.unsplash.com/photo-1581850518616-bcb8077a2336?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80);
+    background: linear-gradient(#97F7A2, #4FFA4A, #97F7D3);
+    /* background-image: url(https://images.unsplash.com/photo-1581850518616-bcb8077a2336?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80); */
   margin: 0;
   padding: 0;
   box-sizing: border-box;

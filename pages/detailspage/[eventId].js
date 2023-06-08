@@ -5,17 +5,21 @@ import DetailsEventData from "@/components/DetailsEventData";
 import { StyledBackLink } from "@/components/styles/BackLink";
 import Image from "next/image";
 import { optionIcons } from "@/Icons/optionIcon";
+import Link from "next/link";
 
 function DetailsPage({ allItems }) {
 	const router = useRouter();
-	const { id } = router.query;
-	const currentEvent = allItems?.find((item) => item.eventId === id);
+	const { eventId } = router.query;
+
+	const currentEvent = allItems?.find(
+		(detailsItem) => detailsItem.eventId === eventId
+	);
 
 	//TODO - Style Details Page
-
-	function handelEdit() {
-		router.push(`/editpage/${currentEvent.eventId}`);
-	}
+	//FIXME -  add handling empty confirm
+	// function handelEdit() {
+	// 	router.push;
+	// }
 
 	return (
 		<>
@@ -30,23 +34,24 @@ function DetailsPage({ allItems }) {
 						/>
 					</StyledBackLink>
 
-					<StyledTitle>{currentEvent?.title}</StyledTitle>
+					<StyledTitle>Event Details</StyledTitle>
 					<DetailsEventData currentEvent={currentEvent} />
 
-					<StyledEditImage
-						onClick={handelEdit}
-						src={optionIcons[5].imageSrc}
-						alt={optionIcons[5].description}
-						width={55}
-						height={55}
-					/>
+					<StyledEditImageLink href={`/editpage/${currentEvent?.eventId}`}>
+						<Image
+							src={optionIcons[5].imageSrc}
+							alt={optionIcons[5].description}
+							width={55}
+							height={55}
+						/>
+					</StyledEditImageLink>
 				</StyledMain>
 			</span>
 		</>
 	);
 }
 
-const StyledEditImage = styled(Image)`
+const StyledEditImageLink = styled(Link)`
 	cursor: pointer;
 
 	&:hover {

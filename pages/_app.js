@@ -1,6 +1,5 @@
 import GlobalStyle from "@/styles";
 import Head from "next/head";
-import { v4 as uuidv4 } from "uuid";
 import { useLiveQuery } from "dexie-react-hooks";
 import { db } from "@/components/Dexie";
 
@@ -9,22 +8,41 @@ const { eventDetails } = db;
 export default function App({ Component, pageProps }) {
 	const allItems = useLiveQuery(() => eventDetails.toArray(), []);
 
-	//-------------------------------------------------------------------------------------------------------------
+	//FIXME - rerendrering after submitting
 
-	async function handleEntryData(data) {
+	async function handleEntryData(dataFromHandleSubmit) {
 		try {
-			await db.eventDetails.add({
-				eventId: uuidv4(),
-				title: data.title,
-				startTime: data.startTime,
-				endTime: data.endTime,
-				location: data.location,
-				introduce: data.introduce,
-				creator: data.creator,
+			await db.open();
+			await db.transaction("rw", eventDetails, async function () {
+				const {
+					images,
+					eventId,
+					title,
+					startTime,
+					endTime,
+					location,
+					introduce,
+					creator,
+				} = dataFromHandleSubmit;
+
+				await eventDetails.add({
+					eventId,
+					title,
+					startTime,
+					endTime,
+					location,
+					introduce,
+					creator,
+					images,
+				});
 			});
 		} catch (error) {
-			alert(`Error: ${error}`);
+			alert(error.stack || error);
 		}
+	}
+
+	function handleFormUploadSubmit(data) {
+		console.log("data from muiForm to _app.js", data);
 	}
 
 	return (
@@ -38,6 +56,7 @@ export default function App({ Component, pageProps }) {
 					{...pageProps}
 					allItems={allItems}
 					onHandleEntryData={handleEntryData}
+					onHandleFormUploadSubmit={handleFormUploadSubmit}
 				/>
 			</main>
 		</>

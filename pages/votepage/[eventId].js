@@ -21,19 +21,25 @@ function Votepage({ allItems }) {
 	const [voteCheckmarkImage, setVoteCheckmarkImage] = useState();
 
 	const router = useRouter();
-	const { id } = router.query;
-	const currentEvent = allItems?.find((voteEvent) => voteEvent.eventId === id);
+	const { eventId } = router.query;
+	const currentEvent = allItems?.find(
+		(voteEvent) => voteEvent.eventId === eventId
+	);
 
 	function handleVoteResult() {
 		const currentVoteIcon = voteIcons.find(
 			(voteIcon) => voteIcon.description === voteCheckmarkImage?.props.alt
 		);
-
+		//TODO - fix: add handling empty confirm
+		// - Cannot read poperties of undefined (reading 'id')
 		eventDetails
 			.where("eventId")
 			.equals(currentEvent.eventId)
 			.modify((voteEvent) => {
 				voteEvent.voteResult = currentVoteIcon.id;
+			})
+			.catch(function (e) {
+				alert("Error: " + (e.stack || e));
 			});
 	}
 

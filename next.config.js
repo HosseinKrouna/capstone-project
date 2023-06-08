@@ -4,6 +4,10 @@ const nextConfig = {
 		styledComponents: true,
 	},
 	reactStrictMode: true,
+	images: {
+		domains: ["res.cloudinary.com"],
+	},
+
 	webpack(config) {
 		config.module.rules.push({
 			test: /\.svg$/i,
@@ -13,14 +17,24 @@ const nextConfig = {
 
 		return config;
 	},
-	images: {
-		remotePatterns: [
-			// {
-			//   protocol: "https",
-			//   hostname: "images.unsplash.com",
-			// },
-		],
-	},
+
+	// images: {
+	// 	loader: "cloudinary",
+	// 	loaderFile: "/api/upload.js",
+	// },
+
+	// images: {
+	// 	domains: ["res.cloudinary.com"],
+	// },
+	// images:
+	// {
+	// 	remotePatterns: [
+	// 		{
+	// 			protocol: "https",
+	// 			hostname: "res.cloudinary.com",
+	// 		},
+	// 	],
+	// },
 };
 
 module.exports = nextConfig;

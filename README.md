@@ -10,7 +10,7 @@
 
 **This is a capstone project for [neuefische](https://www.neuefische.de/) web development bootcamp.**
 
-You can create events and add them to a list. It is possible to pick and choose events. You could then have a vote on whether you are there or not or whether it is still unclear.
+You can create events and add them to a list. It is possible to pick and choose events. You could then have a vote on whether you are there or not or delete and create a new event.
 With a confirmation the party can start 🎉
 
 ### `Demo`

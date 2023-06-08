@@ -1,31 +1,35 @@
 import MuiCreateEventForm from "@/components/MuiCreateEventForm";
 import { StyledBackLink } from "@/components/styles/BackLink";
-import { Paper, Stack, Grid, Item } from "@mui/material";
+import { Stack } from "@mui/material";
 import styled from "styled-components";
 import Image from "next/image";
 import { optionIcons } from "@/Icons/optionIcon";
 
-function CreateEventForm({ onHandleEntryData }) {
-	//TODO - setup Cloudenary for imag uploader
+function CreateEventForm({ onHandleEntryData, onHandleFormUploadSubmit }) {
 	return (
-		<>
-			<Stack justifyContent="center" alignItems="center">
-				<Stack direction="row">
-					<StyledBackLink href="/">
-						<Image
-							src={optionIcons[3].imageSrc}
-							alt={optionIcons[3].description}
-							height={45}
-							width={45}
-						/>
-					</StyledBackLink>
-					<StyledCreateEventPageTitle>
-						Create New Event
-					</StyledCreateEventPageTitle>
-				</Stack>
-				<MuiCreateEventForm onHandleEntryData={onHandleEntryData} />;
+		<Stack
+			sx={{ paddingBottom: "50px" }}
+			justifyContent="center"
+			alignItems="center"
+		>
+			<Stack direction="row">
+				<StyledBackLink href="/">
+					<Image
+						src={optionIcons[3].imageSrc}
+						alt={optionIcons[3].description}
+						height={45}
+						width={45}
+					/>
+				</StyledBackLink>
+				<StyledCreateEventPageTitle>
+					Create New Event
+				</StyledCreateEventPageTitle>
 			</Stack>
-		</>
+			<MuiCreateEventForm
+				onHandleFormUploadSubmit={onHandleFormUploadSubmit}
+				onHandleEntryData={onHandleEntryData}
+			/>
+		</Stack>
 	);
 }
 
