@@ -12,12 +12,9 @@ import {
 import Image from "next/image";
 import { voteIcons } from "@/Icons/dataIcons";
 import { optionIcons } from "@/Icons/optionIcon";
-
 export default function EventCardData({ item }) {
 	//TODO -
 	// fix: sign limits
-	console.log("====> item: ", item);
-
 	const {
 		images,
 		creator,
@@ -29,10 +26,20 @@ export default function EventCardData({ item }) {
 		title,
 		voteResult,
 	} = item ?? {};
+
 	return (
 		<StyledCardContainer>
 			<StyledEventTitle>{title}</StyledEventTitle>
-			<Image src={images.url} alt={images.alt} width={40} height={40} />
+			{images.map((image, public_id) => (
+				<Image
+					key={public_id}
+					src={image.url}
+					alt={image.alt}
+					width={40}
+					height={40}
+				/>
+			))}
+
 			<StyledFromText>From: </StyledFromText>
 			<StyledToText>To: </StyledToText>
 			<StyledWhereText>Where? </StyledWhereText>

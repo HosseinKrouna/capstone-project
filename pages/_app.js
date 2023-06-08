@@ -7,13 +7,15 @@ const { eventDetails } = db;
 
 export default function App({ Component, pageProps }) {
 	const allItems = useLiveQuery(() => eventDetails.toArray(), []);
-	console.log("====> allItems: ", allItems);
+
+	//FIXME - rerendrering after submitting
 
 	async function handleEntryData(dataFromHandleSubmit) {
 		try {
 			await db.open();
 			await db.transaction("rw", eventDetails, async function () {
 				const {
+					images,
 					eventId,
 					title,
 					startTime,
@@ -31,11 +33,7 @@ export default function App({ Component, pageProps }) {
 					location,
 					introduce,
 					creator,
-					images: {
-						id: newImage.id,
-						url: newImage.url,
-						alt: "uploaded image",
-					},
+					images,
 				});
 			});
 		} catch (error) {
@@ -45,7 +43,6 @@ export default function App({ Component, pageProps }) {
 
 	function handleFormUploadSubmit(data) {
 		console.log("data from muiForm to _app.js", data);
-		const { public_id, secure_url } = data;
 	}
 
 	return (

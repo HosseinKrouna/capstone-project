@@ -12,8 +12,6 @@ function EditPage({ allItems }) {
 	const router = useRouter();
 	const { eventId } = router.query;
 	const currentEvent = allItems?.find((item) => item.eventId === eventId);
-	console.log("allItems from editpage", allItems);
-	console.log("currentEvent from editpage", currentEvent);
 
 	function handleSubmitChanges(event) {
 		event.preventDefault();

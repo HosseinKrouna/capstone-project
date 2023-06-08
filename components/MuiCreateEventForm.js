@@ -19,7 +19,6 @@ function MuiCreateEventForm({ onHandleFormUploadSubmit, onHandleEntryData }) {
 			alt: alt,
 		},
 	]);
-
 	async function handleUploadSubmit(event) {
 		event.preventDefault();
 		const formData = new FormData(event.target);
@@ -40,6 +39,7 @@ function MuiCreateEventForm({ onHandleFormUploadSubmit, onHandleEntryData }) {
 		};
 
 		setImages([newImage]);
+
 		onHandleFormUploadSubmit(data);
 	}
 
@@ -47,7 +47,20 @@ function MuiCreateEventForm({ onHandleFormUploadSubmit, onHandleEntryData }) {
 		const formData = new FormData(event.target);
 		const data = Object.fromEntries(formData);
 
-		const dataFromHandleSubmit = { ...data, eventId: uuidv4() };
+		const dataFromHandleSubmit = {
+			...data,
+			eventId: uuidv4(),
+			images: images,
+		};
+
+		// if (images) {
+		// 	dataFromHandleSubmit.images = {
+		// 		id: images.id,
+		// 		url: images.url,
+		// 		alt: "uploaded image",
+		// 	};
+		// }
+
 		onHandleEntryData(dataFromHandleSubmit);
 
 		router.push(`/`);

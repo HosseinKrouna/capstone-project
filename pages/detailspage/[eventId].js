@@ -14,10 +14,8 @@ function DetailsPage({ allItems }) {
 	const currentEvent = allItems?.find(
 		(detailsItem) => detailsItem.eventId === eventId
 	);
-	console.log("====> currentEvent: ", currentEvent);
 
 	//TODO - Style Details Page
-	//FIXME - Data Transfer via verscel
 	//FIXME -  add handling empty confirm
 	// function handelEdit() {
 	// 	router.push;

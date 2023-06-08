@@ -12,8 +12,6 @@ export default function Homepage({
 	voteResultData,
 	currentVoteIconImage,
 }) {
-	console.log("====> allItems: ", allItems);
-
 	//TODO -
 	// fix: plus-icon responsive positioning
 	// add: Animation pointing to the plaus icon when the event list is empty
