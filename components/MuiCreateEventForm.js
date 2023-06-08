@@ -14,8 +14,6 @@ function MuiCreateEventForm({ onHandleFormUploadSubmit, onHandleEntryData }) {
 		{
 			id: idPicture,
 			url: url,
-			width: 150,
-			height: 150,
 			alt: alt,
 		},
 	]);
@@ -33,8 +31,6 @@ function MuiCreateEventForm({ onHandleFormUploadSubmit, onHandleEntryData }) {
 		const newImage = {
 			id: public_id,
 			url: secure_url,
-			width: 150,
-			height: 150,
 			alt: "new image",
 		};
 
@@ -53,14 +49,6 @@ function MuiCreateEventForm({ onHandleFormUploadSubmit, onHandleEntryData }) {
 			images: images,
 		};
 
-		// if (images) {
-		// 	dataFromHandleSubmit.images = {
-		// 		id: images.id,
-		// 		url: images.url,
-		// 		alt: "uploaded image",
-		// 	};
-		// }
-
 		onHandleEntryData(dataFromHandleSubmit);
 
 		router.push(`/`);
@@ -69,12 +57,12 @@ function MuiCreateEventForm({ onHandleFormUploadSubmit, onHandleEntryData }) {
 		<>
 			<AppImageContainer>
 				<ImageContainer>
-					{images.map(({ id, url, width, height }) => (
+					{images.map(({ id, url }) => (
 						<li key={id}>
 							<StyledImage
 								src={url}
-								width={width}
-								height={height}
+								width={150}
+								height={150}
 								alt="uploaded image"
 							/>
 						</li>
