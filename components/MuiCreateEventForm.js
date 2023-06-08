@@ -180,6 +180,7 @@ const StyledImage = styled(Image)`
 	object-fit: cover;
 	border-radius: 14px;
 	overflow: hidden;
+	box-shadow: limegreen;
 `;
 const AppImageContainer = styled.span`
 	display: grid;
