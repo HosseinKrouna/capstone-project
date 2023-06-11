@@ -53,6 +53,11 @@ function MuiCreateEventForm({ onHandleFormUploadSubmit, onHandleEntryData }) {
 
 		router.push(`/`);
 	}
+
+	const handleClickOpenMap = () => {
+		router.push("/locationpage");
+	};
+
 	return (
 		<>
 			<AppImageContainer>
@@ -146,6 +151,7 @@ function MuiCreateEventForm({ onHandleFormUploadSubmit, onHandleEntryData }) {
 										label="Location"
 										color="secondary"
 										required
+										onClick={handleClickOpenMap}
 									/>
 									<TextField
 										size="small"
