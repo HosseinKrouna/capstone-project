@@ -1,7 +1,8 @@
 import dynamic from "next/dynamic";
 import { v4 as uuidv4 } from "uuid";
 import styled from "styled-components";
-import { Stack } from "@mui/material";
+import { Button, Stack } from "@mui/material";
+import { StyledBackLink } from "@/components/styles/BackLink";
 
 const DynamicMap = dynamic(() => import("../components/Map/MainMap"), {
 	ssr: false,
@@ -25,6 +26,7 @@ const markers = [
 function locationpage() {
 	return (
 		<Stack>
+			<StyledBackLink href={"/"} />
 			<StyledLocationPageTitle> Where should it be?</StyledLocationPageTitle>
 			<DynamicMap markers={markers} />
 		</Stack>
