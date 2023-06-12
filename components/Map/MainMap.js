@@ -6,10 +6,10 @@ import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility
 import "leaflet-defaulticon-compatibility";
 import LocationMarker from "./LocationMarker";
 import { Stack, Button } from "@mui/material";
-// import SearchBarMap from "./SearchBarMap";
 import CustomTileLayer from "./CustomTileLayer";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import SearchBarMap from "./SearchBarMap";
 
 const goldIcon = new L.Icon({
 	iconUrl:
@@ -24,9 +24,7 @@ const goldIcon = new L.Icon({
 
 export default function MainMap({ markers }) {
 	//
-	// function handleSearch(address) {
-	// 	console.log("Search address:", address);
-	// }
+
 	const [returnCurrentPosition, setReturnCurrentPosition] = useState();
 	function handleReturnCurrentPosition() {
 		console.log("I have clicked return button!!");
@@ -60,18 +58,19 @@ export default function MainMap({ markers }) {
 						</Marker>
 					);
 				})}
-				{/* <Marker position={[50.123, 8.234]} icon={goldIcon}>
+				{/* //TODO - Set searchCurrenMarker */}
+				<Marker position={[50.123, 8.234]} icon={goldIcon}>
 					<Popup>
 						<h2>Search Current Marker</h2>
 						<p>This is a very interesting spot</p>
 					</Popup>
-				</Marker> */}
+				</Marker>
 				{LocationMarkerComponent}
-				{/* <SearchBarMap onHandleSearch={handleSearch} /> */}
 			</StyledMapContainer>
 			<Button onClick={handleReturnCurrentPosition}>
 				Return current position
 			</Button>
+			<SearchBarMap />
 		</Stack>
 	);
 }

@@ -1,55 +1,136 @@
-import { useState, useEffect } from "react";
-import { MainContainer as LeafletMap } from "react-leaflet";
-import { GeoSearchControl, OpenStreetMapProvider } from "leaflet-geosearch";
-import CustomTileLayer from "./CustomTileLayer";
-import { Stack } from "@mui/material";
+import { Button, Stack, TextField } from "@mui/material";
+import { useState } from "react";
 
-function SearchBarMap({ onHandleSearch }) {
+function SearchBarMap() {
 	const [address, setAddress] = useState("");
-	const [map, setMap] = useState(null);
 
-	useEffect(() => {
-		if (map) {
-			const searchControl = new GeoSearchControl({
-				provider: new OpenStreetMapProvider(),
-				style: "bar",
-			});
-
-			map.addControl(searchControl);
-		}
-	}, [map]);
-
-	function handleInputChange(event) {
+	function handleChange(event) {
 		setAddress(event.target.value);
-		console.log("address ", address);
+		console.log(event.target.value);
 	}
 
-	function handleSubmit(event) {
+	async function handleSubmit(event) {
 		event.preventDefault();
-		onHandleSearch(address);
+		await searchAddress(address);
+	}
+
+	async function searchAddress(query) {
+		try {
+			const apiUrl = `https://nominatim.openstreetmap.org/search?format=json&q=${query}`;
+			const response = await fetch(apiUrl);
+			const data = await response.json();
+
+			// Process the received data
+			processAddressResults(data);
+		} catch (error) {
+			console.error("Error requesting Nominatim:", error);
+		}
+	}
+	// To processing the received data
+	function processAddressResults(data) {
+		// Extract relevant information from the data
+		const addresses = data.map((result) => ({
+			address: result.display_name,
+			lat: result.lat,
+			lon: result.lon,
+		}));
+		// "addresses" can be used for application
+		renderAddresses(addresses);
+	}
+
+	function renderAddresses(addresses) {
+		// Display the addresses on a map or show them in a list
+
+		return <Stack>{addresses}</Stack>;
 	}
 
 	return (
 		<Stack>
-			<LeafletMap
-				center={[51.505, -0.09]}
-				zoom={13}
-				style={{ height: "400px", width: "100%" }}
-				whenCreated={setMap}
-			>
-				<CustomTileLayer />
-				<form onSubmit={handleSubmit}>
-					<input
-						type="text"
-						value={address}
-						onChange={handleInputChange}
-						placeholder="Enter address"
-					/>
-					<button type="submit">Search</button>
-				</form>
-			</LeafletMap>
+			<form name="searchForm" onSubmit={handleSubmit}>
+				<TextField
+					value={address}
+					onChange={handleChange}
+					name="address-input"
+					label="Address"
+					placeholder="Enter address"
+				/>
+				<Button type="submit">Search</Button>
+			</form>
 		</Stack>
 	);
 }
 
 export default SearchBarMap;
+
+//ANCHOR - import { Button, Stack, TextField } from "@mui/material";
+// import { useState } from "react";
+
+// function SearchBarMap() {
+//   const [address, setAddress] = useState("");
+//   const [searchResults, setSearchResults] = useState([]);
+
+//   async function handleChange(event) {
+//     const query = event.target.value;
+//     setAddress(query);
+//     console.log(query);
+
+//     if (query) {
+//       await searchAddress(query);
+//     } else {
+//       setSearchResults([]);
+//     }
+//   }
+
+//   async function handleSubmit(event) {
+//     event.preventDefault();
+//     await searchAddress(address);
+//   }
+
+//   async function searchAddress(query) {
+//     try {
+//       const apiUrl = `https://nominatim.openstreetmap.org/search?format=json&q=${query}`;
+//       const response = await fetch(apiUrl);
+//       const data = await response.json();
+
+//       // Process the received data
+//       processAddressResults(data);
+//     } catch (error) {
+//       console.error("Error requesting Nominatim:", error);
+//     }
+//   }
+
+//   // To process the received data
+//   function processAddressResults(data) {
+//     // Extract relevant information from the data
+//     const addresses = data.map((result) => ({
+//       address: result.display_name,
+//       lat: result.lat,
+//       lon: result.lon,
+//     }));
+//     // Update the search results
+//     setSearchResults(addresses);
+//   }
+
+//   return (
+//     <Stack>
+//       <form name="searchForm" onSubmit={handleSubmit}>
+//         <TextField
+//           value={address}
+//           onChange={handleChange}
+//           name="address-input"
+//           label="Address"
+//           placeholder="Enter address"
+//         />
+//         <Button type="submit">Search</Button>
+//       </form>
+
+//       <Stack>
+//         {searchResults.map((address) => (
+//           <div key={address.address}>{address.address}</div>
+//         ))}
+//       </Stack>
+//     </Stack>
+//   );
+// }
+
+// export default SearchBarMap;
