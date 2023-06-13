@@ -2,7 +2,7 @@ import { Button, Stack, TextField } from "@mui/material";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
-function SearchBarMap({ renderMarker }) {
+function SearchBarMap({ renderMarkers }) {
 	const [address, setAddress] = useState("");
 	const [searchResults, setSearchResults] = useState([]);
 	const [selectedAddress, setSelectedAddress] = useState(null);
@@ -62,7 +62,7 @@ function SearchBarMap({ renderMarker }) {
 
 	function renderMarkerComponent() {
 		if (selectedAddress) {
-			return renderMarker(selectedAddress);
+			return renderMarkers(selectedAddress);
 		} else {
 			return null;
 		}

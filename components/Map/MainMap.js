@@ -48,20 +48,24 @@ export default function MainMap({ markers }) {
 		<LocationMarker />
 	);
 
-	function handleRenderMarkers(selectedAddress) {
-		if (selectedAddress) {
-			const { lat, lon, address } = selectedAddress;
+	function handleSetMarker(selectedAddress) {
+		setSelectedMarker(selectedAddress);
+	}
+
+	function renderSearchMarkerComponent() {
+		if (selectedMarker) {
+			const { lat, lon, address } = selectedMarker;
 			const position = L.latLng(lat, lon);
 			return (
-				selectedAddress && (
-					<Marker position={position} icon={blueIcon}>
-						<Popup>
-							<h2>{address}</h2>
-							<p>Seleced position</p>
-						</Popup>
-					</Marker>
-				)
+				<Marker position={position} icon={blueIcon}>
+					<Popup>
+						<h2>{address}</h2>
+						<p>Seleced position</p>
+					</Popup>
+				</Marker>
 			);
+		} else {
+			return null;
 		}
 	}
 
@@ -83,9 +87,10 @@ export default function MainMap({ markers }) {
 						</Marker>
 					);
 				})}
+				{renderSearchMarkerComponent()}
 				{LocationMarkerComponent}
 			</StyledMapContainer>
-			<SearchBarMap renderMarker={handleRenderMarkers} />
+			<SearchBarMap renderMarkers={handleSetMarker} />
 			<Button onClick={handleReturnCurrentPosition}>
 				Return current position
 			</Button>
