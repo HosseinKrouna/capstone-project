@@ -46,7 +46,6 @@
 		"react-leaflet": "^4.2.1",
 		"react-modal": "^3.16.1",
 		"react-overlays": "^5.2.1",
-		"react-places-autocomplete": "^7.3.0",
 		"styled-components": "^5.3.11",
 		"use-local-storage-state": "^18.1.2",
 		"uuid": "^9.0.0"

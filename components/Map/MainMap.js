@@ -22,16 +22,24 @@ const goldIcon = new L.Icon({
 	shadowSize: [41, 41],
 });
 
+const blueIcon = new L.Icon({
+	iconUrl: "/assets/mapIcons/blue_marker.png",
+
+	shadowUrl:
+		"https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png",
+	iconSize: [45, 51],
+	iconAnchor: [12, 41],
+	popupAnchor: [1, -34],
+	shadowSize: [41, 41],
+});
+
 export default function MainMap({ markers }) {
 	//
-
+	const [selectedMarker, setSelectedMarker] = useState(null);
 	const [returnCurrentPosition, setReturnCurrentPosition] = useState();
 	function handleReturnCurrentPosition() {
-		console.log("I have clicked return button!!");
-
 		const newCurrentPositionId = uuidv4();
 		setReturnCurrentPosition(newCurrentPositionId);
-		console.log(newCurrentPositionId);
 	}
 
 	const LocationMarkerComponent = returnCurrentPosition ? (
@@ -39,6 +47,23 @@ export default function MainMap({ markers }) {
 	) : (
 		<LocationMarker />
 	);
+
+	function handleRenderMarkers(selectedAddress) {
+		if (selectedAddress) {
+			const { lat, lon, address } = selectedAddress;
+			const position = L.latLng(lat, lon);
+			return (
+				selectedAddress && (
+					<Marker position={position} icon={blueIcon}>
+						<Popup>
+							<h2>{address}</h2>
+							<p>Seleced position</p>
+						</Popup>
+					</Marker>
+				)
+			);
+		}
+	}
 
 	return (
 		<Stack>
@@ -58,19 +83,12 @@ export default function MainMap({ markers }) {
 						</Marker>
 					);
 				})}
-				{/* //TODO - Set searchCurrenMarker */}
-				<Marker position={[50.123, 8.234]} icon={goldIcon}>
-					<Popup>
-						<h2>Search Current Marker</h2>
-						<p>This is a very interesting spot</p>
-					</Popup>
-				</Marker>
 				{LocationMarkerComponent}
 			</StyledMapContainer>
+			<SearchBarMap renderMarker={handleRenderMarkers} />
 			<Button onClick={handleReturnCurrentPosition}>
 				Return current position
 			</Button>
-			<SearchBarMap />
 		</Stack>
 	);
 }
