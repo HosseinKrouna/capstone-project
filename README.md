@@ -1,6 +1,6 @@
 ##### <img align='right' src='https://user-images.githubusercontent.com/5713670/87202985-820dcb80-c2b6-11ea-9f56-7ec461c497c3.gif' width='50'> <div align="right">[ in progress... ] </div>
 
-# Friends Wall - Capstone Project
+**"Friends Wall"** - Capstone Project
 
 > The Friends Wall App is a web application developed as a capstone project for the [neuefische](https://www.neuefische.de/) web development bootcamp. It aims to make it easier and faster to react to event entries.
 
@@ -8,7 +8,11 @@
 
 ## Description
 
-The Friends Wall App allows users to create events and add them to a list. Each event is accompanied by an image uploader, enabling users to upload images related to the event. Users can also edit and delete events according to their preferences. The app provides a convenient way to organize and coordinate events with friends and receive their responses through a voting system.
+"Friends Wall" is a web application that allows users to create and manage events with their friends. With this app, users can easily create events and add them to a list. Each event can be accompanied by an image uploaded by the user, allowing them to share visuals related to the event. Users have the flexibility to edit or delete events according to their preferences.
+
+The app provides a convenient platform for organizing and coordinating events with friends. It includes a voting system that allows friends to respond and provide their feedback on the events. This helps in streamlining the decision-making process and ensuring everyone's preferences are considered.
+
+With its user-friendly interface and comprehensive feature set, Friends Wall offers an excellent solution for organizing events and collaborating with friends.
 
 ### Demo
 
